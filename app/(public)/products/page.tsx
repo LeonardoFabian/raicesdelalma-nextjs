@@ -19,46 +19,46 @@ const metadata: Metadata = {
 
 export default function ProductsPage() {
 
-    // const schema = {
-    //     "@context": "https://schema.org",
-    //     "@type": "ItemList",
-    //     itemListElement: [
-    //       {
-    //         "@type": "Product",
-    //         name: "Coffee & Rose Bouquet",
-    //         image: "https://www.purplebutterflybouquets.com/images/coffee-rose.jpg",
-    //         description: "A luxurious bouquet of roses and specialty coffee pods.",
-    //         brand: "Purple Butterfly Bouquets",
-    //         offers: {
-    //           "@type": "Offer",
-    //           priceCurrency: "USD",
-    //           price: "45.00",
-    //           availability: "https://schema.org/InStock"
-    //         }
-    //       },
-    //       {
-    //         "@type": "Product",
-    //         name: "Tea & Lavender Set",
-    //         image: "https://www.purplebutterflybouquets.com/images/tea-lavender.jpg",
-    //         description: "Relaxing tea blends paired with dried lavender.",
-    //         brand: "Purple Butterfly Bouquets",
-    //         offers: {
-    //           "@type": "Offer",
-    //           priceCurrency: "USD",
-    //           price: "35.00",
-    //           availability: "https://schema.org/InStock"
-    //         }
-    //       }
-    //     ]
-    // }
+    const schema = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        itemListElement: [
+          {
+            "@type": "Product",
+            name: "Coffee & Rose Bouquet",
+            image: "https://www.purplebutterflybouquets.com/images/coffee-rose.jpg",
+            description: "A luxurious bouquet of roses and specialty coffee pods.",
+            brand: "Purple Butterfly Bouquets",
+            offers: {
+              "@type": "Offer",
+              priceCurrency: "USD",
+              price: "45.00",
+              availability: "https://schema.org/InStock"
+            }
+          },
+          {
+            "@type": "Product",
+            name: "Tea & Lavender Set",
+            image: "https://www.purplebutterflybouquets.com/images/tea-lavender.jpg",
+            description: "Relaxing tea blends paired with dried lavender.",
+            brand: "Purple Butterfly Bouquets",
+            offers: {
+              "@type": "Offer",
+              priceCurrency: "USD",
+              price: "35.00",
+              availability: "https://schema.org/InStock"
+            }
+          }
+        ]
+    }
 
     return (
         <>
             <PageHeader title="Products" />
-            {/* <script 
+            <script 
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-            /> */}
+            />
         </>
     )
 }

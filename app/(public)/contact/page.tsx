@@ -19,37 +19,37 @@ const metadata: Metadata = {
 
 export default function ContactPage() {
 
-    // const schema = {
-    //     "@context": "https://schema.org",
-    //     "@type": "ContactPage",
-    //     name: "Contact Purple Butterfly",
-    //     description: "Contact us for inquiries, gift customizations, or partnerships.",
-    //     url: "https://www.purplebutterflybouquets.com/contact-us",
-    //     potentialAction: {
-    //       "@type": "CommunicateAction",
-    //       target: "mailto:almapuello@gmail.com",
-    //       name: "Send Email"
-    //     },
-    //     "mainEntity": {
-    //         "@type": "Organization",
-    //         "name": "Purple Butterfly Bouquets",
-    //         "contactPoint": {
-    //             "@type": "ContactPoint",
-    //             "email": "almapuello@gmail.com",
-    //             "contactType": "Customer Support",
-    //             "areaServed": "US",
-    //             "availableLanguage": ["English", "Spanish"]
-    //         }
-    //     }
-    // }
+    const schema = {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        name: "Contact Purple Butterfly",
+        description: "Contact us for inquiries, gift customizations, or partnerships.",
+        url: "https://www.purplebutterflybouquets.com/contact-us",
+        potentialAction: {
+          "@type": "CommunicateAction",
+          target: "mailto:almapuello@gmail.com",
+          name: "Send Email"
+        },
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "Purple Butterfly Bouquets",
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "email": "almapuello@gmail.com",
+                "contactType": "Customer Support",
+                "areaServed": "US",
+                "availableLanguage": ["English", "Spanish"]
+            }
+        }
+    }
 
     return (
         <>
             <PageHeader title="Contact Us" />
-            {/* <script 
+            <script 
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-            /> */}
+            />
         </>
     )
 }

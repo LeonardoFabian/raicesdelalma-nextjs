@@ -1,4 +1,4 @@
-import { H1, PageHeader } from "@/components";
+import { PageHeader } from "@/components";
 import type { Metadata } from "next"
 
 
@@ -20,31 +20,31 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
 
-    // const schema = {
-    //     "@context": "https://schema.org",
-    //     "@type": "Organization",
-    //     "name": "Purple Butterfly Bouquets",
-    //     "url": "https://www.purplebutterflybouquets.com",
-    //     "logo": "https://www.purplebutterflybouquets.com/logo.svg", // reemplázalo por tu logo real
-    //     "sameAs": [
-    //         "https://www.instagram.com/purplebutterflyde",
-    //     ],
-    //     "description": "Purple Butterfly creates unique gift experiences through coffee, tea, and floral design.",
-    //     "founder": {
-    //         "@type": "Person",
-    //         "name": "Alma Puello"
-    //     },
-    //     "foundingDate": "2023-01-01",
-    //     "foundingLocation": "Delaware, USA"
-    // };
+    const schema = {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Purple Butterfly Bouquets",
+        "url": "https://www.purplebutterflybouquets.com",
+        "logo": "https://www.purplebutterflybouquets.com/logo.svg", // reemplázalo por tu logo real
+        "sameAs": [
+            "https://www.instagram.com/purplebutterflyde",
+        ],
+        "description": "Purple Butterfly creates unique gift experiences through coffee, tea, and floral design.",
+        "founder": {
+            "@type": "Person",
+            "name": "Alma Puello"
+        },
+        "foundingDate": "2023-01-01",
+        "foundingLocation": "Delaware, USA"
+    };
 
     return (
         <>
             <PageHeader title="About Us" />
-            {/* <script 
+            <script 
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-            /> */}
+            />
        </>
     )
 }

@@ -19,21 +19,21 @@ const metadata: Metadata = {
 
 export default function HowWorkPage() {
 
-    // const schema = {
-    //     "@context": "https://schema.org",
-    //     "@type": "WebPage",
-    //     name: "How It Works - Purple Butterfly",
-    //     description: "Step-by-step guide on how to choose, customize, and send a unique gift through Purple Butterfly.",
-    //     url: "https://www.purplebutterflybouquets.com/how-it-works"
-    // }
+    const schema = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        name: "How It Works - Purple Butterfly",
+        description: "Step-by-step guide on how to choose, customize, and send a unique gift through Purple Butterfly.",
+        url: "https://www.purplebutterflybouquets.com/how-it-works"
+    }
 
     return (
         <>
             <PageHeader title="How It Works" />
-            {/* <script 
+            <script 
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-            /> */}
+            />
         </>
     )
 }

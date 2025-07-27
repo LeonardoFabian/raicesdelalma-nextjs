@@ -19,34 +19,34 @@ const metadata: Metadata = {
 
 export default function CustomizePage() {
 
-    // const schema = {
-    //     "@context": "https://schema.org",
-    //     "@type": "Service",
-    //     serviceType: "Customized Gift Bundling",
-    //     provider: {
-    //       "@type": "Organization",
-    //       name: "Purple Butterfly Bouquets",
-    //       url: "https://www.purplebutterflybouquets.com"
-    //     },
-    //     areaServed: {
-    //       "@type": "Place",
-    //       address: {
-    //         "@type": "PostalAddress",
-    //         addressLocality: "Milford",
-    //         addressRegion: "DE",
-    //         addressCountry: "US"
-    //       }
-    //     },
-    //     description: "Build your own gift box with coffee, teas, flowers, and surprise accessories.",
-    // }
+    const schema = {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        serviceType: "Customized Gift Bundling",
+        provider: {
+          "@type": "Organization",
+          name: "Purple Butterfly Bouquets",
+          url: "https://www.purplebutterflybouquets.com"
+        },
+        areaServed: {
+          "@type": "Place",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Milford",
+            addressRegion: "DE",
+            addressCountry: "US"
+          }
+        },
+        description: "Build your own gift box with coffee, teas, flowers, and surprise accessories.",
+    }
 
     return (
         <>
             <PageHeader title="Customize Your Gift" />
-            {/* <script 
+            <script 
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-            /> */}
+            />
         </>
     )
 }

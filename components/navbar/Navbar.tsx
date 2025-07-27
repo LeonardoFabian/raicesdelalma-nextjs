@@ -53,6 +53,10 @@ export const Navbar = () => {
                 <ActiveLink key={navItem.path} {...navItem} />
             ))}
 
+            <Link href="/login" className="flex items-center py-2 px-4 transition-all bg-white hover:bg-purple-700 text-purple-600 hover:text-white font-semibold rounded-lg">
+                Log In
+            </Link>
+
         </nav>
     )
 }

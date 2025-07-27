@@ -6,7 +6,7 @@ interface Props {
 
 export const PageHeader = ({ title }: Props) => {
     return (
-        <div className="flex items-center justify-center w-full py-6 px-24" style={{ backgroundColor: "#d3fad6" }}>
+        <div className="flex items-center justify-center w-full py-4 px-24" style={{ backgroundColor: "#d3fad6" }}>
             <H1>{title}</H1>
         </div>
     );

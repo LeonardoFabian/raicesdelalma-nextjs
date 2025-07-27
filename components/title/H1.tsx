@@ -7,5 +7,5 @@ interface Props {
 }
 
 export const H1 = ({ children } : Props ) => {
-    return <h1 className={`${galada.className} text-5xl text-purple-600`}>{ children }</h1>
+    return <h1 className={`${galada.className} text-4xl text-purple-600`}>{ children }</h1>
 }

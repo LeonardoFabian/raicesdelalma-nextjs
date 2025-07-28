@@ -37,7 +37,7 @@ export const ProductCard = ({ product }: Props ) => {
                 </div>
                 <div className="flex items-center justify-between mt-auto">
                     <span className="text-xl font-bold text-gray-900 dark:text-white">{ `$${ product.price }` }</span>
-                    <Link href={ product.link || "#" } className="text-white bg-purple-600 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800">Add to cart</Link>
+                    <Link href={ product.link || "#" } className="text-white bg-purple-600 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-2 py-2 text-center dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800">Add to cart</Link>
                 </div>
             </div>
         </div>

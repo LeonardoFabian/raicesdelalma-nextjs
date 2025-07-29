@@ -1,7 +1,8 @@
 import { Product, ProductGrid, ProductsResponse } from "@/src/products";
 import Image from "next/image";
 
-const getProducts = async ( limit = 25, offset = 0 ): Promise<Product[]> => {
+
+export const getProducts = async ( limit: number = 25, offset: number = 0 ): Promise<Product[]> => {
     const data: ProductsResponse = await fetch(`https://dummyjson.com/products?limit=${ limit }&skip=${ offset }`)
         .then( res => res.json() );
 

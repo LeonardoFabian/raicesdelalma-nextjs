@@ -2,6 +2,12 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+Before, open CMD and run:
+
+```bash
+nvm use 20.12.2
+```
+
 First, run the development server:
 
 ```bash

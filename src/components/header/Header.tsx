@@ -91,7 +91,7 @@ export const Header = () => {
 
             </nav>
             {open && (
-                <div className="menu-mobile bg-primary absolute top-0 bottom-0 left-0 z-50 w-60 transition-all translate-x-0 ease-in-out duration-500">
+                <div className="menu-mobile bg-primary absolute top-0 bottom-0 left-0 z-50 w-72 transition-all translate-x-0 ease-in-out duration-500">
                     <ul className="flex flex-col items-center justify-center space-y-6 h-full text-white">
                         {navItems.map(( navItem ) => (
                             <ActiveLink key={navItem.path} {...navItem} />

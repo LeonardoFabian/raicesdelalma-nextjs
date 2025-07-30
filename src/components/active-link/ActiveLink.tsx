@@ -3,22 +3,26 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from './ActiveLink.module.css';
+import { NotificationBadge } from "../badges/NotificationBadge";
 
-interface Props {
+export interface ActiveLinkProps {
     path: string;
     label: string;
     icon?: JSX.Element;
+    badge?: JSX.Element;
 }
 
-export const ActiveLink = ( { path, label, icon }: Props ) => {
+export const ActiveLink = ( { path, label, icon, badge }: ActiveLinkProps ) => {
 
     const pathName = usePathname();
 
     return (
         <Link 
             href={ path } 
-            className={ `${ styles.link } ${ (pathName === path) && styles['active-link'] }` }
+            className={ `relative ${ styles.link } ${ (pathName === path) && styles['active-link'] }` }
+            title={ label }
         >
+            { badge ?? '' }
             { icon ?? label }
         </Link>
     )

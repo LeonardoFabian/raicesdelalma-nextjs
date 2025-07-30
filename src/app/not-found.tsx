@@ -8,24 +8,20 @@ export const metadata: Metadata = {
  
 export default function NotFound() {
   return (
-    <main className="h-screen w-full flex flex-col justify-center items-center bg-purple-600">
-	<h1 className="text-9xl font-extrabold text-white tracking-widest">404</h1>
-	<div className="bg-[#d3fad6] px-2 text-md rounded rotate-12 absolute text-purple-600 font-bold">
-		Page Not Found
-	</div>
-	<button className="mt-5">
-      <div
-        className="relative inline-block text-sm font-medium text-white group active:text-white focus:outline-none focus:ring"
-      >
-        <span
-          className="absolute inset-0 transition-transform translate-x-0.5 translate-y-0.5 bg-[#d3fad6] group-hover:translate-y-0 group-hover:translate-x-0 rounded-lg"
-        ></span>
-
-        <span className="relative block px-8 py-3 bg-purple-600 border border-white text-white font-bold rounded-lg">
-          <Link href="/">Go Home</Link>
-        </span>
+    <main className="h-screen w-full flex flex-col justify-center items-center bg-primary">
+      <h1 className="text-9xl font-extrabold text-white tracking-widest">404</h1>
+      <div className="bg-gold-pastel px-2 text-md rounded rotate-12 absolute -mt-24 text-primary font-heading font-bold">
+        Page Not Found
       </div>
-    </button>
-</main>
+      <div className="text-center mb-5 max-w-lg ">
+        <p className="text-white">The page you are looking for does not exist. Please check the URL or go back to the homepage.</p>
+      </div>
+      <button className="mt-5">       
+            <span className="relative flex px-8 py-3 bg-primary hover:bg-gold-pastel border border-white text-white hover:text-primary font-heading font-bold rounded-lg transition-all">
+              <Link href="/">Go Home</Link>
+            </span>
+        
+        </button>
+    </main>
   )
 }

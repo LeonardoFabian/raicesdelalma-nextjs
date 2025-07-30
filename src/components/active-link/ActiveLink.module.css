@@ -1,7 +1,7 @@
 .link {
-  @apply hover:font-medium hover:text-purple-50 mr-5 transition-all;
+  @apply hover:text-gold-pastel transition-all;
 }
 
 .active-link {
-  @apply text-white font-medium;
+  @apply text-gold-pastel;
 }

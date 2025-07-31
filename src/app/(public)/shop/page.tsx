@@ -1,5 +1,5 @@
 import { H1, PageHeader } from "@/src/components"
-import { Product, ProductGrid, ProductsResponse } from "@/src/products";
+import ShopProductList from "@/src/products/components/ShopProductList";
 import type { Metadata } from "next"
 import Script from "next/script";
 
@@ -20,27 +20,27 @@ export const metadata: Metadata = {
   },
 }
 
-export const getProducts = async ( limit: number = 25, offset: number = 0 ): Promise<Product[]> => {
-    const data: ProductsResponse = await fetch(`https://dummyjson.com/products?limit=${ limit }&skip=${ offset }`)
-        .then( res => res.json() );
+// export const getProducts = async ( limit: number = 25, offset: number = 0 ): Promise<Product[]> => {
+//     const data: ProductsResponse = await fetch(`https://dummyjson.com/products?limit=${ limit }&skip=${ offset }`)
+//         .then( res => res.json() );
 
-    const products = data.products.map( product => ({
-        id: product.id,
-        title: product.title,
-        thumbnail: product.images[0],
-        price: product.price,
-        rating: product.rating || 0,
-        link: `/product/${ product.id }`
-    }))
+//     const products = data.products.map( product => ({
+//         id: product.id,
+//         title: product.title,
+//         thumbnail: product.images[0],
+//         price: product.price,
+//         rating: product.rating || 0,
+//         link: `/product/${ product.id }`
+//     }))
 
-    // throw new Error('Error al obtener los productos');
+//     // throw new Error('Error al obtener los productos');
 
-    return products;
-}
+//     return products;
+// }
 
-const ShopPage = async (): Promise<JSX.Element> => {
+export default function ShopPage() {
 
-    const products = await getProducts(30, 0);
+    // const products = await getProducts(20, 0);
 
     const schema = {
         "@context": "https://schema.org",
@@ -96,12 +96,9 @@ const ShopPage = async (): Promise<JSX.Element> => {
                   <H1>Products for you</H1>
                   {/* { JSON.stringify( products ) } */}
                   <div className="flex flex-col ">
-                      <ProductGrid products={ products } />
+                      <ShopProductList />
                   </div>
               </div>
-           
         </>
     )
 }
-
-export default ShopPage;

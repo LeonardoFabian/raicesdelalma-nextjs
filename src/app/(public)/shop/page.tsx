@@ -1,6 +1,8 @@
 import { H1, PageHeader } from "@/src/components"
 import { Product, ProductGrid, ProductsResponse } from "@/src/products";
 import type { Metadata } from "next"
+import Script from "next/script";
+
 
 export const metadata: Metadata = {
     title: "Shop Coffee Bouquets, Tea & Flowers | Purple Butterfly",
@@ -36,7 +38,7 @@ export const getProducts = async ( limit: number = 25, offset: number = 0 ): Pro
     return products;
 }
 
-export default async function ShopPage() {
+const ShopPage = async (): Promise<JSX.Element> => {
 
     const products = await getProducts(30, 0);
 
@@ -76,10 +78,19 @@ export default async function ShopPage() {
     return (
         <>
             <PageHeader title="Shop" />
-            <script 
+            {/* <script 
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-            />
+            /> */}
+
+            <Script
+              id="jsonld-products"
+              type="application/ld+json"
+              strategy="afterInteractive"
+            >
+              {JSON.stringify(schema)}
+            </Script>
+
 
             <div className="latest-products text-left py-12 px-12 flex flex-col gap-6">
                   <H1>Products for you</H1>
@@ -92,3 +103,5 @@ export default async function ShopPage() {
         </>
     )
 }
+
+export default ShopPage;

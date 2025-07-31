@@ -3,21 +3,20 @@ import { Product, ProductGrid, ProductsResponse } from "@/src/products";
 import Image from "next/image";
 
 export const metadata = {
-    title: 'Favorites',
-    description: 'List of favorite products',
+    title: 'Shopping Cart',
+    description: 'Shopping cart page',
 }
 
 
-export default async function FavoritesPage() {
+export default async function CartPage() {
 
     return (
         <>
-            <PageHeader title="Favorites" />
-            
+            <PageHeader title="Shopping Cart" />
             {/* { JSON.stringify( products ) } */}
             <div className="flex flex-col">
 
-                <span>Favorite Products</span>
+                <span>List of Products</span>
 
                 <ProductGrid products={ [] } />
 

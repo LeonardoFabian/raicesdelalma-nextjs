@@ -1,7 +1,7 @@
 import { H1, PageHeader } from "@/src/components"
 import type { Metadata } from "next"
 
-const metadata: Metadata = {
+export const metadata: Metadata = {
     title: "Customize Your Gift | Build a Coffee or Floral Box | Purple Butterfly",
     description: "Create a one-of-a-kind gift with our customization options. Choose from coffee, tea, flowers, and surprise accessories — tailored with love.",
     openGraph: {

@@ -1,7 +1,7 @@
 import { PageHeader } from "@/src/components"
 import type { Metadata } from "next"
 
-const metadata: Metadata = {
+export const metadata: Metadata = {
     title: "Contact Purple Butterfly | Send Us Your Questions or Feedback",
     description: "We'd love to hear from you! Reach out to Purple Butterfly for inquiries, special requests, or collaboration opportunities.",
     openGraph: {

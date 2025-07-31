@@ -17,7 +17,7 @@ const navItems: ActiveLinkProps[] = [
         label: "About Us"
     },
     {
-        path: "/products",
+        path: "/shop",
         label: "Shop"
     },
     {

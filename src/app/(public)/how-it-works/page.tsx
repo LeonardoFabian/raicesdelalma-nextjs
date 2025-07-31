@@ -1,7 +1,7 @@
 import { PageHeader } from "@/src/components"
 import type { Metadata } from "next"
 
-const metadata: Metadata = {
+export const metadata: Metadata = {
     title: "How Purple Butterfly Works | Coffee & Floral Gift Delivery",
     description: "Learn how to order your personalized gift from Purple Butterfly in just a few steps. Easy, heartfelt, and beautifully delivered.",
     openGraph: {

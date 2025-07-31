@@ -1,7 +1,7 @@
 import { PageHeader } from "@/src/components"
 import type { Metadata } from "next"
 
-const metadata: Metadata = {
+export const metadata: Metadata = {
     title: "Shop Coffee Bouquets, Tea & Flowers | Purple Butterfly",
     description: "Explore our handcrafted coffee bouquets, tea gifts, and floral arrangements — perfect for every occasion. Delivered with heart from Purple Butterfly.",
     openGraph: {
@@ -17,7 +17,7 @@ const metadata: Metadata = {
   },
 }
 
-export default function ProductsPage() {
+export default function ShopPage() {
 
     const schema = {
         "@context": "https://schema.org",
@@ -54,7 +54,7 @@ export default function ProductsPage() {
 
     return (
         <>
-            <PageHeader title="Products" />
+            <PageHeader title="Shop" />
             <script 
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}

@@ -89,7 +89,7 @@ export const Navbar = () => {
                 </ul>  
 
                 <span className="md:hidden flex items-center justify-end">
-                    <ul className="flex items-center space-x-4">
+                    <ul className="flex items-center space-x-6">
                         {accountLinks.map(( accountLink ) => (
                             <ActiveLink key={accountLink.path} {...accountLink} />
                         ))}    

@@ -1,7 +1,6 @@
 import { H1, PageHeader } from "@/src/components"
-import ShopProductList from "@/src/products/components/ShopProductList";
+import { Product, ProductGrid, ProductsResponse } from "@/src/products";
 import type { Metadata } from "next"
-import Script from "next/script";
 
 
 export const metadata: Metadata = {
@@ -20,27 +19,27 @@ export const metadata: Metadata = {
   },
 }
 
-// export const getProducts = async ( limit: number = 25, offset: number = 0 ): Promise<Product[]> => {
-//     const data: ProductsResponse = await fetch(`https://dummyjson.com/products?limit=${ limit }&skip=${ offset }`)
-//         .then( res => res.json() );
+export const getProducts = async ( limit: number = 25, offset: number = 0 ): Promise<Product[]> => {
+    const data: ProductsResponse = await fetch(`https://dummyjson.com/products?limit=${ limit }&skip=${ offset }`)
+        .then( res => res.json() );
 
-//     const products = data.products.map( product => ({
-//         id: product.id,
-//         title: product.title,
-//         thumbnail: product.images[0],
-//         price: product.price,
-//         rating: product.rating || 0,
-//         link: `/product/${ product.id }`
-//     }))
+    const products = data.products.map( product => ({
+        id: product.id,
+        title: product.title,
+        thumbnail: product.images[0],
+        price: product.price,
+        rating: product.rating || 0,
+        link: `/product/${ product.id }`
+    }))
 
-//     // throw new Error('Error al obtener los productos');
+    // throw new Error('Error al obtener los productos');
 
-//     return products;
-// }
+    return products;
+}
 
-export default function ShopPage() {
+const ShopPage = async (): Promise<JSX.Element> => {
 
-    // const products = await getProducts(20, 0);
+    const products = await getProducts(20, 0);
 
     const schema = {
         "@context": "https://schema.org",
@@ -78,27 +77,29 @@ export default function ShopPage() {
     return (
         <>
             <PageHeader title="Shop" />
-            {/* <script 
+            <script 
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-            /> */}
+            />
 
-            <Script
+            {/* <Script
               id="jsonld-products"
               type="application/ld+json"
               strategy="afterInteractive"
             >
               {JSON.stringify(schema)}
-            </Script>
+            </Script> */}
 
 
             <div className="latest-products text-left py-12 px-12 flex flex-col gap-6">
                   <H1>Products for you</H1>
                   {/* { JSON.stringify( products ) } */}
                   <div className="flex flex-col ">
-                      <ShopProductList />
+                      <ProductGrid products={ products } />
                   </div>
               </div>
         </>
     )
 }
+
+export default ShopPage;

@@ -1,8 +1,8 @@
-import { Product, ProductForm, ProductResponse } from "@/src/products";
+import { Product, ProductResponse } from "@/src/products";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { MdAdd, MdOutlineRemove, MdAddShoppingCart, MdOutlineFavoriteBorder } from "react-icons/md";
+import { MdAddShoppingCart, } from "react-icons/md";
 import { H1 } from "@/src/components";
 import { CartCounter } from "@/src/shopping-cart/components/CartCounter";
 import { AddToWishlist } from "@/src/wishlist";
@@ -53,7 +53,7 @@ const getProduct  = async ( id: string ) : Promise<Product> => {
     }
 }
 
-export default async function PublicProductPage( { params }: Props  ) {
+const PublicProductPage = async ({ params }: Props  ): Promise<JSX.Element> => {
 
     console.log( params.id );
 
@@ -85,3 +85,4 @@ export default async function PublicProductPage( { params }: Props  ) {
 }
 
 
+export default PublicProductPage;

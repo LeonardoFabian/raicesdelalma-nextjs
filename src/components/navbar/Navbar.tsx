@@ -6,57 +6,58 @@ import Image from "next/image";
 import { HomeIcon } from "@primer/octicons-react";
 import { ActiveLink, type ActiveLinkProps } from "../active-link/ActiveLink";
 import { MdMenu, MdOutlineClose, MdOutlineFavoriteBorder, MdOutlineShoppingCart } from "react-icons/md";
-import { FavoritesCounterBadgeWidget } from "../widgets/FavoritesCounterBadge";
-import { CartCounterBadgeWidget } from "../widgets/CartCounterBadge";
 import { useState } from "react";
-
-
-const navItems: ActiveLinkProps[] = [
-    {
-        path: "/about",
-        label: "About Us"
-    },
-    {
-        path: "/shop",
-        label: "Shop"
-    },
-    {
-        path: "/customize",
-        label: "Customize"
-    },
-    {
-        path: "/how-it-works",
-        label: "How It Works"
-    },
-    {
-        path: "/contact",
-        label: "Contact Us"
-    },
-]
-
-const accountLinks: ActiveLinkProps[] = [
-    {
-        path: "/favorites",
-        label: "Favorites",
-        icon: <MdOutlineFavoriteBorder className="w-6 h-6" />,
-        badge: <FavoritesCounterBadgeWidget />
-    },
-    {
-        path: "/cart",
-        label: "Shopping Cart",
-        icon: <MdOutlineShoppingCart className="w-6 h-6" />,
-        badge: <CartCounterBadgeWidget />
-    }
-]
-
+import { useAppSelector } from "@/src/store";
+import { NotificationBadge } from "../badges/NotificationBadge";
 
 export const Navbar = () => {
 
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(false);   
+
+    const cartCount = useAppSelector( state => state.counter.count );
+    const wishlistCount = useAppSelector( state => state.wishlist.count );
 
     const handleMenuButtonClick = () => {
         setOpen(!open);
     }
+
+    const navItems: ActiveLinkProps[] = [
+        {
+            path: "/about",
+            label: "About Us"
+        },
+        {
+            path: "/shop",
+            label: "Shop"
+        },
+        {
+            path: "/customize",
+            label: "Customize"
+        },
+        {
+            path: "/how-it-works",
+            label: "How It Works"
+        },
+        {
+            path: "/contact",
+            label: "Contact Us"
+        },
+    ]
+
+    const accountLinks: ActiveLinkProps[] = [
+        {
+            path: "/favorites",
+            label: "Favorites",
+            icon: <MdOutlineFavoriteBorder className="w-6 h-6" />,
+            badge: <NotificationBadge value={`${wishlistCount}`} />
+        },
+        {
+            path: "/cart",
+            label: "Shopping Cart",
+            icon: <MdOutlineShoppingCart className="w-6 h-6" />,
+            badge: <NotificationBadge value={`${cartCount}`} />
+        }
+    ]
 
     return (
         <>

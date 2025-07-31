@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { MdAdd, MdOutlineRemove, MdAddShoppingCart, MdOutlineFavoriteBorder } from "react-icons/md";
 import { H1 } from "@/src/components";
+import { CartCounter } from "@/src/shopping-cart/components/CartCounter";
+import { AddToWishlist } from "@/src/wishlist";
 
 
 interface Props {
@@ -51,14 +53,14 @@ const getProduct  = async ( id: string ) : Promise<Product> => {
     }
 }
 
-export default async function ProductPage( { params }: Props  ) {
+export default async function PublicProductPage( { params }: Props  ) {
 
     console.log( params.id );
 
     const product = await getProduct( params.id );
 
     return (
-        <div className="product-pageflex flex-col gap-12 py-12 px-24">
+        <div className="product-pageflex flex-col gap-12 py-12 px-4 md:px-24">
             <div className="grid md:grid-cols-2 gap-12">
                 <div className="product-images flex flex-col items-center gap-4">
                     <Image src={product.thumbnail} alt={product.title} width={ 500 } height={ 500 } priority={false} />
@@ -69,17 +71,11 @@ export default async function ProductPage( { params }: Props  ) {
                     <p className="product-description">{product.description}</p>
                     <p className="product-price text-2xl text-text-primary"><strong>${product.price}</strong></p>
                     <div className="product-actions flex items-center space-x-6 mt-12">
-                        <span className="flex items-center">
-                            <button type="button" className="btn-decrement p-2 border border-gray-500"><MdOutlineRemove size={24} /></button>
-                                <span className="product-quantity py-2 px-6 bg-gray-50">1</span>
-                            <button type="button" className="btn-increment p-2 border border-gray-500"><MdAdd size={24} /></button>
-                        </span>
-                        <button type="button" className="btn-add-to-cart flex items-center gap-2 py-2 px-4 font-heading font-semibold border bg-primary border-primary text-white rounded-md" title="Add to Cart">
+                        <CartCounter value={0} />
+                        <button type="button" className="btn-add-to-cart flex items-center whitespace-nowrap gap-2 py-2 px-4 font-heading font-semibold border bg-primary border-primary text-white rounded-md" title="Add to Cart">
                             <MdAddShoppingCart size={24} /> Add to Cart
                         </button>
-                        <button type="button" className="bg-white border border-gray-500 text-text-primary p-2 rounded-full" title="Add to Wishlist">
-                            <MdOutlineFavoriteBorder size={24} />
-                        </button>
+                        <AddToWishlist />
                     </div>
 
                 </div>

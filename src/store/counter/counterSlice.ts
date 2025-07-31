@@ -2,24 +2,31 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 interface CounterState {
     count: number;
+    isReady: boolean;
 }
 
 const initialState: CounterState = {
-    count: 5
+    count: 0,
+    isReady: false,
 }
 
 const counterSlice = createSlice({
   name: 'counter',
   initialState,
   reducers: {
-    increment(state) {
+    initializeCart(state, action: PayloadAction<number>) {
+        if (state.isReady) return;
+        state.count = action.payload;
+        state.isReady = true;
+    },
+    incrementCartItem(state) {
         state.count++;
     },
-    decrement(state) {
+    decrementCartItem(state) {
         if ( state.count === 0 ) return;
         state.count--;
     },
-    reset( state, action: PayloadAction<number> ) {
+    resetCart( state, action: PayloadAction<number> ) {
         if ( state.count < 0 ) action.payload = 0;
         state.count = action.payload;
     }
@@ -27,6 +34,6 @@ const counterSlice = createSlice({
 }
 });
 
-export const { increment, decrement, reset } = counterSlice.actions;
+export const { initializeCart, incrementCartItem, decrementCartItem, resetCart } = counterSlice.actions;
 
 export default counterSlice.reducer;

@@ -2,53 +2,55 @@
 
 import { MdOutlineFavoriteBorder, MdOutlineShoppingCart, MdMenu, MdOutlineClose } from "react-icons/md"
 import { ActiveLink, ActiveLinkProps } from "../active-link/ActiveLink"
-import { FavoritesCounterBadgeWidget } from "../widgets/FavoritesCounterBadge"
-import { CartCounterBadgeWidget } from "../widgets/CartCounterBadge"
 import Link from "next/link"
 import Image from "next/image"
 import Logo from "@/public/logo.svg";
 import { HomeIcon } from "@primer/octicons-react"
 import { useState } from "react"
+import { useAppSelector } from "@/src/store"
+import { NotificationBadge } from '../badges/NotificationBadge';
 
-
-const navItems: ActiveLinkProps[] = [
-    {
-        path: "/about",
-        label: "About Us"
-    },
-    {
-        path: "/shop",
-        label: "Shop"
-    },
-    {
-        path: "/contact",
-        label: "Contact Us"
-    }
-]
-
-const accountLinks: ActiveLinkProps[] = [
-    {
-        path: "/favorites",
-        label: "Favorites",
-        icon: <MdOutlineFavoriteBorder className="w-6 h-6" />,
-        badge: <FavoritesCounterBadgeWidget />
-    },
-    {
-        path: "/cart",
-        label: "Shopping Cart",
-        icon: <MdOutlineShoppingCart className="w-6 h-6" />,
-        badge: <CartCounterBadgeWidget />
-    }
-]
 
 export const Header = () => {
 
     const [open, setOpen] = useState(false);
+    const cartCount = useAppSelector( state => state.counter.count );
+    const wishlistCount = useAppSelector( state => state.wishlist.count );
 
 
     const handleClick = () => {
         setOpen(!open);
     }
+
+    const navItems: ActiveLinkProps[] = [
+        {
+            path: "/about",
+            label: "About Us"
+        },
+        {
+            path: "/shop",
+            label: "Shop"
+        },
+        {
+            path: "/contact",
+            label: "Contact Us"
+        }
+    ]
+
+    const accountLinks: ActiveLinkProps[] = [
+        {
+            path: "/favorites",
+            label: "Favorites",
+            icon: <MdOutlineFavoriteBorder className="w-6 h-6" />,
+            badge: <NotificationBadge value={ `${wishlistCount}` } />
+        },
+        {
+            path: "/cart",
+            label: "Shopping Cart",
+            icon: <MdOutlineShoppingCart className="w-6 h-6" />,
+            badge: <NotificationBadge value={ `${cartCount}` } />
+        }
+    ]
 
     return (
         <>

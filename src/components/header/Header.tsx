@@ -52,7 +52,7 @@ export const Header = () => {
 
     return (
         <>
-            <nav className="absolute w-full top-0 left-0 right-0 z-50 grid md:grid-cols-3 bg-transparent text-text-secondary font-heading py-2 px-4">          
+            <nav className="absolute w-full top-0 left-0 right-0 z-50 grid md:grid-cols-3 bg-transparent text-text-secondary font-heading py-2 px-6">          
 
                 <span className="hidden md:flex items-start">
                     <ul className="flex items-center mt-4 space-x-6">

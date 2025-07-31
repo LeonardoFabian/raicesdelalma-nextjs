@@ -74,7 +74,7 @@ export const Navbar = () => {
 
                 <div className="hidden: md:flex flex-1"></div>
 
-                <ul className="hidden md:flex md:items-center space-x-6 mr-5">
+                <ul className="hidden md:flex md:items-center space-x-6">
                     {navItems.map(( navItem ) => (
                         <ActiveLink key={navItem.path} {...navItem} />
                     ))}    

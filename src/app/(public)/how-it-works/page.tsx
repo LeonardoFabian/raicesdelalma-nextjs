@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     openGraph: {
     title: "How It Works",
     description: "From choosing your bouquet to delivery — here’s how Purple Butterfly brings your gifts to life.",
-    url: "https://yourdomain.com/how-work",
+    url: "https://www.purplebutterflybouquets.com/how-it-works",
     type: "website",
   },
   twitter: {

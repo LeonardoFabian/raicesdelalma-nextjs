@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     openGraph: {
     title: "Customize Your Gift",
     description: "Build your perfect box with coffee, tea, flowers, and more. Thoughtful gifts made personal.",
-    url: "https://yourdomain.com/customize",
+    url: "https://www.purplebutterflybouquets.com/customize",
     type: "website",
   },
   twitter: {

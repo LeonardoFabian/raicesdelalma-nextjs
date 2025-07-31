@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     openGraph: {
     title: "Get in Touch with Purple Butterfly",
     description: "Questions, requests or feedback? We're here to help you with all your gifting needs.",
-    url: "https://yourdomain.com/contact-us",
+    url: "https://www.purplebutterflybouquets.com/contact",
     type: "website",
   },
   twitter: {
@@ -24,7 +24,7 @@ export default function ContactPage() {
         "@type": "ContactPage",
         name: "Contact Purple Butterfly",
         description: "Contact us for inquiries, gift customizations, or partnerships.",
-        url: "https://www.purplebutterflybouquets.com/contact-us",
+        url: "https://www.purplebutterflybouquets.com/contact",
         potentialAction: {
           "@type": "CommunicateAction",
           target: "mailto:almapuello@gmail.com",

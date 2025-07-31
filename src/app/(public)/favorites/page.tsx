@@ -1,18 +1,46 @@
 import { PageHeader } from "@/src/components";
 import { Product, ProductGrid, ProductsResponse } from "@/src/products";
+import { Metadata } from "next";
 import Image from "next/image";
 
-export const metadata = {
-    title: 'Favorites',
-    description: 'List of favorite products',
-}
-
+export const metadata: Metadata = {
+  title: "Your Favorite Gifts | Purple Butterfly",
+  description: "View and manage your favorite coffee bouquets, tea blends, and floral gifts in one place. Curate your soulful collection with Purple Butterfly.",
+  openGraph: {
+    title: "Your Favorites | Purple Butterfly",
+    description: "See your saved coffee, tea, and floral gifts — ready when your heart says yes.",
+    url: "https://www.purplebutterflybouquets.com/favorites",
+    type: "website",
+  },
+  twitter: {
+    title: "Favorites | Purple Butterfly",
+    description: "Your personal collection of coffee, tea, and flower gifts that touch the soul.",
+    card: "summary_large_image",
+  },
+};
 
 export default async function FavoritesPage() {
+
+    const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Favorites",
+    "description": "A list of your favorite personalized gifts from Purple Butterfly.",
+    "url": "https://www.purplebutterflybouquets.com/favorites",
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListOrder": "http://schema.org/ItemListOrderAscending",
+      "numberOfItems": 0 // puedes actualizar dinámicamente con el total real
+    }
+  };
 
     return (
         <>
             <PageHeader title="Favorites" />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            />
             
             {/* { JSON.stringify( products ) } */}
             <div className="flex flex-col">

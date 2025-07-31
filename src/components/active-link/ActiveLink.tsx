@@ -19,7 +19,7 @@ export const ActiveLink = ( { path, label, icon, badge }: ActiveLinkProps ) => {
     return (
         <Link 
             href={ path } 
-            className={ `relative ${ styles.link } ${ (pathName === path) && styles['active-link'] }` }
+            className={ `relative font-heading font-semibold ${ styles.link } ${ (pathName === path) && styles['active-link'] } ${ pathName !== "/" ? 'hover:text-gold-pastel' : 'hover:text-primary'}` }
             title={ label }
         >
             { badge ?? '' }

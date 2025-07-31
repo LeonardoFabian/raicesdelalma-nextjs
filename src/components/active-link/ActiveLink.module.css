@@ -1,6 +1,6 @@
-.link {
+/* .link {
   @apply hover:text-gold-pastel transition-all;
-}
+} */
 
 .active-link {
   @apply text-gold-pastel;

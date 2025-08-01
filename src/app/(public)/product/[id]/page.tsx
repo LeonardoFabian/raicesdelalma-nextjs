@@ -6,6 +6,7 @@ import { MdAddShoppingCart, } from "react-icons/md";
 import { H1 } from "@/src/components";
 import { CartCounter } from "@/src/shopping-cart/components/CartCounter";
 import { AddToWishlist } from "@/src/wishlist";
+import { getProduct } from "@/src/products";
 
 
 interface Props {
@@ -42,20 +43,9 @@ export async function generateMetadata({ params }: Props) : Promise<Metadata>{
     }
 }
 
-const getProduct  = async ( id: string ) : Promise<Product> => {
-    try {
-        const product: ProductResponse = await fetch(`https://dummyjson.com/products/${ id }`, { cache: 'force-cache' })
-            .then( res => res.json() );
-
-        return product;
-    } catch (error) {
-        notFound();
-    }
-}
-
 const PublicProductPage = async ({ params }: Props  ): Promise<JSX.Element> => {
 
-    console.log( params.id );
+    // console.log( params.id );
 
     const product = await getProduct( params.id );
 

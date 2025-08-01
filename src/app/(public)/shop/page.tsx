@@ -1,5 +1,5 @@
 import { H1, PageHeader } from "@/src/components"
-import { Product, ProductGrid, ProductsResponse } from "@/src/products";
+import { getProducts, Product, ProductGrid, ProductsResponse } from "@/src/products";
 import type { Metadata } from "next"
 
 
@@ -19,27 +19,10 @@ export const metadata: Metadata = {
   },
 }
 
-export const getProducts = async ( limit: number = 25, offset: number = 0 ): Promise<Product[]> => {
-    const data: ProductsResponse = await fetch(`https://dummyjson.com/products?limit=${ limit }&skip=${ offset }`)
-        .then( res => res.json() );
-
-    const products = data.products.map( product => ({
-        id: product.id,
-        title: product.title,
-        thumbnail: product.images[0],
-        price: product.price,
-        rating: product.rating || 0,
-        link: `/product/${ product.id }`
-    }))
-
-    // throw new Error('Error al obtener los productos');
-
-    return products;
-}
 
 const ShopPage = async (): Promise<JSX.Element> => {
 
-    const products = await getProducts(20, 0);
+    const products = await getProducts({ limit: 30, offset: 0 });
 
     const schema = {
         "@context": "https://schema.org",

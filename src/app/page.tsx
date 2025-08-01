@@ -1,31 +1,13 @@
 import { BannerHero, H1 } from '@/src/components'
 import Link from "next/link"
-import { Product, ProductGrid, type ProductsResponse } from '@/src/products';
+import { getProducts, ProductGrid, } from '@/src/products';
 import { Header } from '@/src/components/header/Header';
 
 
-export const getProducts = async ( limit: number = 25, offset: number = 0 ): Promise<Product[]> => {
-    const data: ProductsResponse = await fetch(`https://dummyjson.com/products?limit=${ limit }&skip=${ offset }`)
-        .then( res => res.json() );
 
-    const products = data.products.map( product => ({
-        id: product.id,
-        title: product.title,
-        thumbnail: product.images[0],
-        price: product.price,
-        rating: product.rating || 0,
-        link: `/product/${ product.id }`
-    }))
+const Main = async (): Promise<JSX.Element> => {
 
-    // throw new Error('Error al obtener los productos');
-
-    return products;
-}
-
-
-export default async function Main() {
-
-  const products = await getProducts(10, 0);
+  const products = await getProducts({ limit: 30, offset: 0 });
 
   return (
       <>
@@ -48,3 +30,5 @@ export default async function Main() {
       </>
   )
 }
+
+export default Main;

@@ -1,29 +1,9 @@
-import { Product, ProductGrid, ProductsResponse } from "@/src/products";
-import Image from "next/image";
+import { getProducts, ProductGrid,  } from "@/src/products";
 
 
-export const getProducts = async ( limit: number = 25, offset: number = 0 ): Promise<Product[]> => {
-    const data: ProductsResponse = await fetch(`https://dummyjson.com/products?limit=${ limit }&skip=${ offset }`)
-        .then( res => res.json() );
+const ProductsPage = async (): Promise<JSX.Element> => {
 
-    const products = data.products.map( product => ({
-        id: product.id,
-        title: product.title,
-        thumbnail: product.images[0],
-        price: product.price,
-        rating: product.rating || 0,
-        link: `/dashboard/product/${ product.id }`
-    }))
-
-    // throw new Error('Error al obtener los productos');
-
-    return products;
-}
-
-
-export default async function ProductsPage() {
-
-    const products = await getProducts();
+    const products = await getProducts({ limit: 30, offset: 0, basePath: '/dashboard/product' });
 
     return (
         <div>
@@ -39,3 +19,5 @@ export default async function ProductsPage() {
         </div>
     )
 }
+
+export default ProductsPage;

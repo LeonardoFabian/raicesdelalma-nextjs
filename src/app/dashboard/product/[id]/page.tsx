@@ -1,6 +1,5 @@
-import { Product, ProductForm, ProductResponse } from "@/src/products";
+import { getProduct, ProductForm,  } from "@/src/products";
 import { Metadata } from "next";
-import { notFound } from "next/navigation";
 
 
 interface Props {
@@ -37,20 +36,11 @@ export async function generateMetadata({ params }: Props) : Promise<Metadata>{
     }
 }
 
-const getProduct  = async ( id: string ) : Promise<Product> => {
-    try {
-        const product: ProductResponse = await fetch(`https://dummyjson.com/products/${ id }`, { cache: 'force-cache' })
-            .then( res => res.json() );
 
-        return product;
-    } catch (error) {
-        notFound();
-    }
-}
 
-export default async function ProductPage( { params }: Props  ) {
+const AdminProductPage = async ({ params }: Props  ): Promise<JSX.Element> => {
 
-    console.log( params.id );
+    // console.log( params.id );
 
     const product = await getProduct( params.id );
 
@@ -63,4 +53,4 @@ export default async function ProductPage( { params }: Props  ) {
     )
 }
 
-
+export default AdminProductPage;

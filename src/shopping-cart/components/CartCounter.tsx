@@ -28,7 +28,7 @@ export const CartCounter = ({ value = 0 }: Props ) => {
                 >
                     <MdOutlineRemove size={24} />
                 </button>
-                    <span className="product-quantity py-2 w-16 text-center bg-gray-200 border border-gray-200">
+                    <span className="product-quantity py-2 w-12 text-center bg-gray-200 border border-gray-200">
                         { count }
                     </span>
                 <button 

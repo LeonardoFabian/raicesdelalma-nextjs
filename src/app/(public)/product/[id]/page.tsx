@@ -50,7 +50,7 @@ const PublicProductPage = async ({ params }: Props  ): Promise<JSX.Element> => {
     const product = await getProduct( params.id );
 
     return (
-        <div className="product-pageflex flex-col gap-12 py-12 px-4 md:px-24">
+        <div className="product-pageflex flex-col gap-12 py-12 px-6 md:px-24">
             <div className="grid md:grid-cols-2 gap-12">
                 <div className="product-images flex flex-col items-center gap-4">
                     <Image src={product.thumbnail} alt={product.title} width={ 500 } height={ 500 } priority={false} />
@@ -60,7 +60,7 @@ const PublicProductPage = async ({ params }: Props  ): Promise<JSX.Element> => {
                     <small className="product-category text-text-secondary uppercase">{product.category}</small>
                     <p className="product-description">{product.description}</p>
                     <p className="product-price text-2xl text-text-primary"><strong>${product.price}</strong></p>
-                    <div className="product-actions flex items-center space-x-6 mt-12">
+                    <div className="product-actions flex items-center justify-between md:justify-start space-x-4 mt-12">
                         <CartCounter value={0} />
                         <button type="button" className="btn-add-to-cart flex items-center whitespace-nowrap gap-2 py-2 px-4 font-heading font-semibold border bg-primary border-primary text-white rounded-md" title="Add to Cart">
                             <MdAddShoppingCart size={24} /> Add to Cart

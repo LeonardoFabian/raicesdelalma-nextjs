@@ -74,7 +74,7 @@ const ShopPage = async (): Promise<JSX.Element> => {
             </Script> */}
 
 
-            <div className="latest-products text-left py-12 px-12 flex flex-col gap-6">
+            <div className="latest-products text-left w-full py-12 px-4 md:px-12 flex flex-col gap-6">
                   <H1>Products for you</H1>
                   {/* { JSON.stringify( products ) } */}
                   <div className="flex flex-col ">

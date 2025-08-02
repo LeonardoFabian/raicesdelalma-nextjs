@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "@/src/store";
 import {  decrementCartItem, incrementCartItem, initializeCart,  } from "@/src/store/counter/counterSlice";
 import { useEffect } from "react";
 import { MdAdd, MdOutlineRemove } from "react-icons/md";
+import {  getCount } from "../services/cart-service";
 
 interface Props {
     value?: number;
@@ -14,9 +15,14 @@ export const CartCounter = ({ value = 0 }: Props ) => {
     const count = useAppSelector( state => state.counter.count );
     const dispatch = useAppDispatch();
 
+    // useEffect(() => {
+    //     dispatch( initializeCart(value) );
+    // }, [dispatch, value]);
+
     useEffect(() => {
-        dispatch( initializeCart(value) );
-    }, [dispatch, value]);
+        getCount()
+            .then( ({ count }) => dispatch( initializeCart( count ) ) );
+    }, [dispatch]);
 
     return (
         <>

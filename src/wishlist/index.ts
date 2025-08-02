@@ -1,3 +1,3 @@
 
-// Client components 
-export { AddToWishlist } from "./components/AddToWishlist";
+// // Client components 
+// export { AddToWishlist } from "../products/components/AddToWishlist";

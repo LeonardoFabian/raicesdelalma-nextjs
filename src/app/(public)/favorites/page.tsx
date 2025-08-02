@@ -1,5 +1,5 @@
-import { PageHeader } from "@/src/components";
-import { Product, ProductGrid, ProductsResponse } from "@/src/products";
+import { H1, PageHeader } from "@/src/components";
+import { FavoriteProducts, Product, ProductGrid, ProductsResponse } from "@/src/products";
 import { Metadata } from "next";
 import Image from "next/image";
 
@@ -43,11 +43,11 @@ export default async function FavoritesPage() {
             />
             
             {/* { JSON.stringify( products ) } */}
-            <div className="flex flex-col">
+            <div className="latest-products text-left w-full py-12 px-4 md:px-12 flex flex-col justify-start gap-6">
 
-                <span>Favorite Products</span>
+                <H1>Favorite Products</H1>
 
-                <ProductGrid products={ [] } />
+                <FavoriteProducts />
 
             </div>
         </>

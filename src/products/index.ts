@@ -9,6 +9,8 @@ export { ProductForm } from './components/ProductForm';
 export type { ProductsResponse } from './interfaces/products-response';
 export type { ProductResponse } from './interfaces/product-response';
 export type { Product} from './interfaces/product';
+export { AddToWishlist } from './components/AddToWishlist';
+export { FavoriteProducts } from './components/FavoriteProducts';
 
 
 // Services

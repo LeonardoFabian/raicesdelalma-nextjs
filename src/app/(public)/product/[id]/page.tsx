@@ -1,11 +1,11 @@
-import { Product, ProductResponse } from "@/src/products";
+
+import { AddToWishlist, Product, ProductResponse } from "@/src/products";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { MdAddShoppingCart, } from "react-icons/md";
+import { MdAddShoppingCart, MdOutlineFavorite, MdOutlineFavoriteBorder, } from "react-icons/md";
 import { H1 } from "@/src/components";
 import { CartCounter } from "@/src/shopping-cart/components/CartCounter";
-import { AddToWishlist } from "@/src/wishlist";
 import { getProduct } from "@/src/products";
 
 
@@ -64,7 +64,7 @@ const PublicProductPage = async ({ params }: Props  ): Promise<JSX.Element> => {
                         <button type="button" className="btn-add-to-cart flex items-center whitespace-nowrap gap-2 py-2 px-4 font-heading font-semibold border bg-primary border-primary text-white rounded-md" title="Add to Cart">
                             <MdAddShoppingCart size={24} /> Add to Cart
                         </button>
-                        <AddToWishlist />
+                        <AddToWishlist product={ product } />
                     </div>
                     <h5 className="text-lg"><strong>Description</strong></h5>
                     <p className="product-description">{product.description}</p>

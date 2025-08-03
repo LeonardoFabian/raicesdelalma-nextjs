@@ -15,11 +15,11 @@ export const AddToWishlist = ({ product, size }: Props ) => {
 
     const { id } = product;
 
-    const isOnTheWishlist = useAppSelector( state => !!state.wishlist[id] );
+    const isOnTheWishlist = useAppSelector( state => !!state.wishlist.favorites[id] );
     const dispatch = useAppDispatch();
 
     const onToggle = () => {
-        console.log(`Toggle favorite product ${ id }`);
+        // console.log(`Toggle favorite product ${ id }`);
         dispatch( toggleFavorite( product ) );
     }
 
@@ -27,11 +27,11 @@ export const AddToWishlist = ({ product, size }: Props ) => {
         <>
             <button 
                 type="button" 
-                className={` border p-1 rounded-full bg-white border-gray-500 transition-all duration-300 ${ isOnTheWishlist ? ' text-primary' : ' text-text-primary' }`} 
+                className={`  rounded-full transition-all duration-300 ${ isOnTheWishlist ? ' text-primary' : ' text-text-primary' }`} 
                 title={ isOnTheWishlist ? 'Remove from wishlist' : 'Add to wishlist' }
                 onClick={ onToggle }
             >
-                { isOnTheWishlist ? <MdOutlineFavorite size={size ?? 32} /> :    <MdOutlineFavoriteBorder size={size ?? 32} /> }
+                { isOnTheWishlist ? <MdOutlineFavorite size={size ?? 35} /> :    <MdOutlineFavoriteBorder size={size ?? 35} /> }
             </button>
         </>
     )

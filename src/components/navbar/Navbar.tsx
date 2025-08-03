@@ -15,7 +15,7 @@ export const Navbar = () => {
     const [open, setOpen] = useState(false);   
 
     const cartCount = useAppSelector( state => state.counter.count );
-    const wishlistCount = useAppSelector( state => Object.values( state.wishlist ).length );
+    const wishlistCount = useAppSelector( state => Object.values( state.wishlist.favorites ).length );
 
     const handleMenuButtonClick = () => {
         setOpen(!open);

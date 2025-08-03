@@ -1,7 +1,6 @@
 import { H1, PageHeader } from "@/src/components";
 import { FavoriteProducts, Product, ProductGrid, ProductsResponse } from "@/src/products";
 import { Metadata } from "next";
-import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Your Favorite Gifts | Purple Butterfly",
@@ -53,3 +52,4 @@ export default async function FavoritesPage() {
         </>
     )
 }
+

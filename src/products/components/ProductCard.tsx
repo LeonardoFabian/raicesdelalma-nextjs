@@ -14,11 +14,11 @@ export const ProductCard = ({ product }: Props ) => {
     const { id, title, thumbnail, price, rating, link } = product;
 
     return (
-        <div className="mx-auto right-0 mt-2 w-60 bg-white flex flex-col justify-between">
+        <div className="mx-auto right-0 mt-2 w-full md:w-60 bg-white flex flex-col justify-between rounded-lg shadow-sm">
             <a href="#" className='block relative h-40 w-full overflow-hidden'>
                 <Image className="p-4 w-full h-40 rounded-t-lg object-contain" src={ product.thumbnail } alt={ product.title } width={ 150 } height={ 100 } priority={false} />
             </a>
-            <div className="flex flex-col flex-1 gap-4 justify-between py-4 px-2 h-auto">
+            <div className="flex flex-col flex-1 gap-4 justify-between py-4 px-2.5 h-full">
                 <div className="min-h-18">
                      <Link href={ product.link || "#" }>
                         <h5 className="text-md font-semibold text-left tracking-tight text-text-primary dark:text-white" style={{  lineHeight: '1.2' }}>{ product.title }</h5>
@@ -39,11 +39,14 @@ export const ProductCard = ({ product }: Props ) => {
                             { product.rating }
                         </span>
                     </div>
+                    <p className="text-lg text-left font-bold text-text-primary dark:text-white mt-2">{ `$${ product.price }` }</p>
                 </div>
-                <p className="text-lg text-left font-bold text-text-primary dark:text-white">{ `$${ product.price }` }</p>
-                <div className="flex items-center justify-between mt-2">
-                        <AddToWishlist product={ product } size={20} />
-                        <Link href={ product.link || "#" } className="text-white bg-primary hover:bg-accent focus:ring-4 focus:outline-none focus:ring-accent font-heading font-medium rounded-lg text-sm px-2 py-2 text-center dark:bg-primary dark:hover:bg-accent dark:focus:ring-accent">Add to cart</Link>
+                
+                    <div className='flex-1 mt-auto'>
+                        <div className="flex items-center justify-between mt-auto">
+                            <AddToWishlist product={ product } size={30} />
+                            <Link href={ product.link || "#" } className="text-white bg-primary hover:bg-accent focus:ring-4 focus:outline-none focus:ring-accent font-heading font-medium rounded-lg text-sm px-2 py-2 text-center dark:bg-primary dark:hover:bg-accent dark:focus:ring-accent">Add to cart</Link>
+                    </div>
                 </div>
             </div>
         </div>

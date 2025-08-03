@@ -8,7 +8,7 @@ interface Props {
 
 export const ProductGrid = ({ products }: Props ) => {
     return (
-        <div className="flex gap-4 flex-wrap items-start justify-start">
+        <div className="flex gap-2 flex-wrap items-start justify-start">
             {products.map((product) => (          
                 <ProductCard key={product.id} product={product} />       
             ))}

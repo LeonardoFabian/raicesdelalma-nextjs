@@ -11,7 +11,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
     return (
         <>
             <Navbar />
-            <main className="flex flex-col">
+            <main className="flex flex-col bg-background">
                 { children }
             </main>
         </>

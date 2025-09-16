@@ -1,7 +1,27 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
+/* Design tokens (remplaza/ajusta a tu gusto) */
+@theme {
+  --color-primary: #7b2d87;
+  --color-primary-hover: #9b4ca9;
+  --color-primary-dark: #5a1f63;
+  --color-accent: #d88cc4;
+  --color-background: #fdf6fa;
+  --color-text-primary: #2e2a35;
+  --color-text-secondary: #565959;
+  --color-link: #a134c4;
+
+  --color-blue-pastel: #c5d8f0;
+  --color-yellow-pastel: #fdf1c3;
+  --color-brown-pastel: #dbc4b0;
+  --color-gold-pastel: #f6e2a6;
+  --color-green-pastel: #c5e8c2;
+
+  --font-heading: "Barlow Semi Condensed", sans-serif;
+  --font-body: "Roboto", sans-serif;
+}
+
+/* Tus estilos extra opcionales */
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -18,10 +38,77 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  /* background: linear-gradient(
+  background: linear-gradient(
       to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
+      rgb(var(--background-start-rgb))
     )
-    rgb(var(--background-start-rgb)); */
+    rgb(var(--background-end-rgb));
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+.container {
+  @apply px-4 md:px-0 xl:px-0 2xl:px-8 mx-auto w-full;
+}
+
+.cart-grid {
+  @apply grid grid-cols-1 md:grid-cols-5 xl:grid-cols-12 gap-5;
+}
+
+.btn-primary {
+  @apply bg-primary hover:bg-primary-hover text-white border border-primary py-2 px-4 rounded font-body font-medium text-base  block md:flex items-center justify-center gap-2 whitespace-nowrap hover:cursor-pointer transition-all;
+}
+
+.btn-secondary {
+  @apply bg-white hover:bg-gray-100 text-primary border border-primary py-2 px-4 rounded font-body font-medium text-base  block md:flex items-center justify-center gap-2 whitespace-nowrap hover:cursor-pointer transition-all;
+}
+
+.btn-accent {
+  @apply bg-gold-pastel hover:bg-gray-100 text-primary border border-gold-pastel py-2 px-4 rounded font-body font-medium text-base  block md:flex items-center justify-center gap-2 whitespace-nowrap hover:cursor-pointer transition-all;
+}
+
+.btn-link {
+  @apply bg-transparent hover:bg-white/10 text-primary border border-transparent py-2 px-4 rounded font-body font-medium text-base  block md:flex items-center justify-center gap-2 whitespace-nowrap hover:cursor-pointer transition-all;
+}
+
+.btn-danger {
+  @apply bg-red-500 hover:bg-red-400 border border-red-500 text-white py-2 px-4 rounded font-body font-medium text-base  block md:flex items-center justify-center gap-2 whitespace-nowrap hover:cursor-pointer transition-all;
+}
+
+.btn-disabled {
+  @apply bg-gray-100 text-gray-400 border border-gray-300 py-2 px-4 rounded font-body font-medium text-base  block md:flex items-center justify-center gap-2 whitespace-nowrap hover:cursor-pointer transition-all cursor-not-allowed;
+}
+
+.alert-danger {
+  @apply bg-red-200 text-red-600 py-2 px-4 rounded font-body font-medium text-base  block md:flex items-center justify-center gap-2  hover:cursor-pointer transition-all leading-normal;
+}
+
+.alert-success {
+  @apply bg-green-200 text-green-600 py-2 px-4 rounded font-body font-medium text-base  block md:flex items-center justify-center gap-2 hover:cursor-pointer transition-all leading-normal;
 }

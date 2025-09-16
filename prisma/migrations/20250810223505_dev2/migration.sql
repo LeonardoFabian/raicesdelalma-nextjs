@@ -1,0 +1,6 @@
+-- AlterTable
+ALTER TABLE "public"."Product" ALTER COLUMN "price" SET DATA TYPE TEXT,
+ALTER COLUMN "discountPercentage" SET DEFAULT '0',
+ALTER COLUMN "discountPercentage" SET DATA TYPE TEXT,
+ALTER COLUMN "rating" SET DEFAULT '0',
+ALTER COLUMN "rating" SET DATA TYPE TEXT;

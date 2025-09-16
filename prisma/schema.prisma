@@ -1,0 +1,524 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  admin
+  user
+  vendor
+  salesperson
+  salesrep
+  affiliate
+  distributor
+  client
+}
+
+model Supplier {
+  id      String  @id @default(uuid())
+  name    String  @unique
+  contact String?
+  phone   String?
+  email   String?
+  notes   String?
+  userId  String
+
+  user      User        @relation(fields: [userId], references: [id])
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  Accessory Accessory[]
+  Purchase  Purchase[]
+}
+
+model Accessory {
+  id   String  @id @default(uuid())
+  name String
+  sku  String  @unique
+  type String? // p.ej. "Coffee", "Mug", "Flower", "Wrap", "Add-on"
+  unit String? // p.ej. "unit", "pack", "oz"
+
+  // Costos/precios base a nivel de inventario
+  defaultCost  Decimal? @db.Decimal(10, 2)
+  defaultPrice Decimal? @db.Decimal(10, 2)
+  stockQty     Int      @default(0) // stock actual disponible
+  minStock     Int      @default(0)
+
+  supplierId String?
+  supplier   Supplier? @relation(fields: [supplierId], references: [id])
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relaciones
+  productComponents ProductComponent[]
+  purchaseItems     PurchaseItem[]
+  optionItems       OptionItem[] // si una opción del configurador descuenta este accesorio
+}
+
+model Purchase {
+  id            String    @id @default(uuid())
+  supplierId    String?
+  supplier      Supplier? @relation(fields: [supplierId], references: [id])
+  date          DateTime  @default(now())
+  invoiceNumber String?
+  invoicePhoto  String? // URL (súbela a S3/Cloudinary y guarda el link)
+  notes         String?
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  items PurchaseItem[]
+}
+
+// Lógica: al crear PurchaseItem, incrementa Accessory.stockQty += quantity.
+// Puedes calcular lineTotal = unitCost * quantity desde el backend.
+
+model PurchaseItem {
+  id          String @id @default(uuid())
+  purchaseId  String
+  accessoryId String
+
+  quantity  Int
+  unitCost  Decimal @db.Decimal(10, 2) // costo unitario real de esa compra
+  lineTotal Decimal @db.Decimal(10, 2)
+
+  notes String?
+
+  accessory Accessory @relation(fields: [accessoryId], references: [id])
+  purchase  Purchase  @relation(fields: [purchaseId], references: [id])
+
+  @@index([accessoryId])
+  @@index([purchaseId])
+}
+
+model Category {
+  id       String    @id @default(uuid())
+  title    String    @unique
+  slug     String    @unique
+  userId   String
+  products Product[]
+  user     User      @relation(fields: [userId], references: [id])
+}
+
+enum FulfillmentMode {
+  PREMADE // descuentas ProductSize.stock
+  MAKE_TO_ORDER // descuentas Accessory.stockQty según BOM/opciones
+}
+
+model Product {
+  id                 String          @id @default(uuid())
+  title              String
+  slug               String          @unique
+  description        String?         @default("")
+  price              Decimal         @db.Decimal(10, 2)
+  discountPercentage Decimal?        @default(0) @db.Decimal(5, 2)
+  weightGrams        Int?
+  rating             Float?          @default(0)
+  createdAt          DateTime        @default(now())
+  updatedAt          DateTime        @updatedAt
+  isActive           Boolean         @default(false)
+  isConfigurable     Boolean         @default(false)
+  fulfillmentMode    FulfillmentMode @default(PREMADE)
+
+  categoryId String
+  userId     String
+
+  category Category @relation(fields: [categoryId], references: [id])
+  user     User     @relation(fields: [userId], references: [id])
+
+  productSizes       ProductSize[]
+  ProductComponent   ProductComponent[]
+  ProductOptionGroup ProductOptionGroup[]
+  ProductOptionItem  ProductOptionItem[]
+
+  // @@index([categoryId])
+  images    Media[]
+  OrderItem OrderItem[]
+}
+
+model Media {
+  Id  Int    @id @default(autoincrement())
+  url String
+
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+}
+
+model ProductComponent {
+  productId   String
+  accessoryId String
+
+  quantity      Decimal  @db.Decimal(10, 2) // cuánto consume el producto (p.ej. 3 unidades, 0.5 oz)
+  wastePct      Decimal  @default(0) @db.Decimal(5, 2) // merma opcional
+  // overrides opcionales
+  costOverride  Decimal? @db.Decimal(10, 2) // si quieres forzar un costo distinto
+  priceOverride Decimal? @db.Decimal(10, 2)
+
+  product   Product   @relation(fields: [productId], references: [id], onDelete: Cascade)
+  accessory Accessory @relation(fields: [accessoryId], references: [id], onDelete: Cascade)
+
+  @@id([productId, accessoryId])
+}
+
+// Con esto puedes costear automáticamente un producto: 
+// suma (quantity * (costOverride ?? accessory.defaultCost)) (y considera wastePct).
+
+// enum Size {
+//   XS
+//   S
+//   M
+//   L
+//   XL
+//   XXL
+//   XXXL
+// }
+
+// Cada grupo es un “tipo” (ej. Coffee Type, Mug, Flowers, Add-ons). 
+// Cada item pertenece a un grupo y puede estar ligado a un Accessory 
+// (para descontar stock y tomar costo) y/o tener recargo de precio.
+
+model OptionGroup {
+  id          String  @id @default(uuid())
+  title       String // p.ej. "Coffee Type", "Mug", "Flowers"
+  description String?
+  isRequired  Boolean @default(false)
+  minSelect   Int     @default(0)
+  maxSelect   Int     @default(1)
+  sortOrder   Int     @default(0)
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  items         OptionItem[]
+  // Si quieres usar ciertos grupos solo en algunos productos:
+  productGroups ProductOptionGroup[]
+}
+
+model OptionItem {
+  id          String     @id @default(uuid())
+  groupId     String
+  name        String
+  description String?
+  imageUrl    String?
+  // Vinculación con inventario para descontar stock y tomar costo
+  accessoryId String?
+  accessory   Accessory? @relation(fields: [accessoryId], references: [id])
+
+  // Precios/costos de la opción
+  extraPrice     Decimal? @db.Decimal(10, 2) // recargo al precio base
+  costOverride   Decimal? @db.Decimal(10, 2) // opcional para costo
+  stockDeductQty Decimal? @db.Decimal(10, 2) // cuánto descuenta del accesorio al elegirla
+
+  isActive  Boolean @default(true)
+  sortOrder Int     @default(0)
+
+  group OptionGroup @relation(fields: [groupId], references: [id])
+
+  // Para permitir que un producto use solo ciertos grupos (opcional)
+  productItems ProductOptionItem[]
+}
+
+model ProductOptionGroup {
+  // RELACIÓN opcional: qué grupos aplican a cada producto
+  productId String
+  groupId   String
+
+  product Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  group   OptionGroup @relation(fields: [groupId], references: [id], onDelete: Cascade)
+
+  @@id([productId, groupId])
+}
+
+model ProductOptionItem {
+  // Si quieres restringir items concretos por producto (opcional)
+  productId String
+  itemId    String
+
+  product Product    @relation(fields: [productId], references: [id], onDelete: Cascade)
+  item    OptionItem @relation(fields: [itemId], references: [id], onDelete: Cascade)
+
+  @@id([productId, itemId])
+}
+
+// Cálculo de precio en el configurador
+// precio_final = product.price (base) + Σ(extraPrice de cada OptionItem elegido)
+// Costo interno para margen: usa costOverride si existe, si no Accessory.defaultCost * stockDeductQty (o quantity que definas).
+
+model Size {
+  id     Int    @id @default(autoincrement())
+  label  String @unique
+  userId String
+
+  user         User          @relation(fields: [userId], references: [id])
+  productSizes ProductSize[]
+}
+
+// tabla pivote explicita 
+model ProductSize {
+  productId String
+  sizeId    Int
+
+  extraPrice Decimal? @db.Decimal(10, 2)
+  stock      Int      @default(0) // stock específico por talla (si aplica)
+  sku        String?  @unique
+
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  size    Size    @relation(fields: [sizeId], references: [id], onDelete: Cascade)
+
+  @@id([productId, sizeId]) // clave compuesta
+}
+
+// Auth.js
+
+model Account {
+  id                       String  @id @default(uuid())
+  userId                   String  @map("user_id")
+  type                     String
+  provider                 String
+  providerAccountId        String  @map("provider_account_id")
+  refresh_token            String? @db.Text
+  refresh_token_expires_in Int?
+  access_token             String? @db.Text
+  expires_at               Int?
+  token_type               String?
+  scope                    String?
+  id_token                 String? @db.Text
+  session_state            String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(uuid())
+  sessionToken String   @unique @map("session_token")
+  userId       String   @map("user_id")
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model User {
+  id            String    @id @default(uuid())
+  name          String
+  password      String
+  role          Role      @default(user)
+  isActive      Boolean   @default(true)
+  email         String    @unique
+  emailVerified DateTime? @map("email_verified")
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+
+  categories  Category[]
+  sizes       Size[]
+  products    Product[]
+  Supplier    Supplier[]
+  Accessory   Accessory[]
+  Purchase    Purchase[]
+  OptionGroup OptionGroup[]
+
+  address UserAddress?
+  Order   Order[]
+
+  @@map("users")
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+model Country {
+  id           String         @unique
+  name         String
+  UserAddress  UserAddress[]
+  OrderAddress OrderAddress[]
+}
+
+model UserAddress {
+  id         String  @id @default(uuid())
+  firstName  String
+  lastName   String
+  address    String
+  address2   String?
+  postalCode String
+  city       String
+  phone      String
+
+  country   Country @relation(fields: [countryId], references: [id])
+  countryId String
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @unique
+}
+
+// orders
+
+model Order {
+  id          String    @id @default(uuid())
+  subTotal    Decimal   @db.Decimal(10, 2)
+  shipping    Decimal   @db.Decimal(10, 2)
+  tax         Float
+  totalAmount Decimal   @db.Decimal(10, 2)
+  totalItems  Int
+  status      String    @default("pending") // Order status: pending, paid, shipped, delivered
+  currency    String    @default("USD")
+  createdAt   DateTime  @default(now()) // when the order was created
+  updatedAt   DateTime  @updatedAt // last updated timestamp
+  placedAt    DateTime? // when the order was confirmed
+  shippedAt   DateTime? // when the order was shipped
+  deliveredAt DateTime? // when the order was delivered
+  canceledAt  DateTime? // when the order was canceled
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+
+  OrderItems   OrderItem[]
+  OrderAddress OrderAddress?
+
+  transactionId String? // paypal transaction id, stripe transaction id, etc
+}
+
+model OrderItem {
+  id                String   @id @default(uuid())
+  quantity          Int
+  basePrice         Decimal  @db.Decimal(10, 2)
+  discount          Decimal  @db.Decimal(10, 2)
+  unitPrice         Decimal  @db.Decimal(10, 2)
+  size              String
+  extraPrice        Decimal? @db.Decimal(10, 2)
+  optionsExtraPrice Decimal? @db.Decimal(10, 2)
+  options           Json
+
+  order   Order  @relation(fields: [orderId], references: [id])
+  orderId String
+
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+}
+
+model OrderAddress {
+  id         String  @id @default(uuid())
+  firstName  String
+  lastName   String
+  address    String
+  address2   String?
+  postalCode String
+  city       String
+  phone      String
+
+  country   Country @relation(fields: [countryId], references: [id])
+  countryId String
+
+  order   Order  @relation(fields: [orderId], references: [id])
+  orderId String @unique
+}
+
+model GrossReceiptsLog {
+  id         String   @id @default(uuid())
+  period     String // p.ej. "2025-Q3" o "2025-09"
+  totalGross Decimal  @db.Decimal(10, 2)
+  taxRate    Decimal  @default(0.00576) @db.Decimal(5, 5) // Delaware Retail / Wholsale business tips
+  taxDue     Decimal  @db.Decimal(10, 2)
+  submitted  Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@unique([period])
+}
+
+enum BusinessType {
+  AFFILIATED_FINANCE_COMPANY
+  BANKS_AND_INSURANCE_COMPANIES
+  CIGARETTE_AND_OTHER_TOBACCO_PRODUCTS
+  CONTRACTORS_REAL_ESTATE_DEVELOPERS
+  HEALTH_CARE_FACILITIES
+  HOTEL_MOTEL_TOURIST_HOME
+  JUNK_DEALER_NON_RESIDENT
+  LESSORS_OF_TANGIBLE_PERSONAL_PROPERTY
+  MANUFACTURER_OF_VARIOUS_PRODUCTS
+  MOTOR_VEHICLE_DEALER
+  OCCUPATIONS_PROFESSIONAL_SERVICE
+  PUBLIC_UTILITIES
+  RETAIL_WHOLESALE
+  SHORT_TERM_RENTAL
+}
+
+model BusinessSettings {
+  id                        String       @id @default("default") // unique constant key
+  businessName              String       @default("Purple Butterfly Bouquets")
+  businessType              BusinessType @default(RETAIL_WHOLESALE)
+  state                     String       @default("DE") // Delaware
+  taxId                     String? // if apply to EIN or similar
+  salesTaxRate              Float        @default(0.00000) // 0.00% in Delaware 
+  grossReceiptsTaxRate      Float        @default(0.00576) // 0.576% in Delaware
+  salesTaxesApplyToShipping Boolean      @default(false)
+  shippingFlatCents         Int          @default(1000) // $10.00 or $6.99 in Cents
+  shippingFreeOverCents     Int          @default(10000)
+  currency                  String       @default("USD")
+
+  email   String? // contact email
+  phone   String? // contact form
+  website String? // if apply
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // relations
+  socialLinks   SocialLink[]
+  businessHours BusinessHour[]
+}
+
+model SocialLink {
+  id       String  @id @default(uuid())
+  platform String // e.g. "Instagram", "Facebook", "TikTok"
+  url      String
+  iconName String? // e.g. "FaInstagram", "FaFacebook"
+
+  settings   BusinessSettings @relation(fields: [settingsId], references: [id])
+  settingsId String
+}
+
+model BusinessHour {
+  id        String  @id @default(uuid())
+  dayOfWeek Int // 0 = Sunday, 6 = Saturday
+  opensAt   String // e.g. "09:00"
+  closesAt  String // e.g. "17:00"
+  closed    Boolean @default(false) // for holidays or closed days 
+
+  settings   BusinessSettings @relation(fields: [settingsId], references: [id])
+  settingsId String
+}
+
+// Cómo encaja con tus modelos actuales
+
+// No cambias Product ni Category. Solo agregas:
+
+// Inventario: Accessory + Supplier
+
+// Entradas de stock: Purchase + PurchaseItem
+
+// Receta: ProductComponent
+
+// Configurador: OptionGroup + OptionItem (+ tablas puente opcionales)

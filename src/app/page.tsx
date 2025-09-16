@@ -1,34 +1,55 @@
-import { BannerHero, H1 } from '@/src/components'
-import Link from "next/link"
-import { getProducts, ProductGrid, } from '@/src/products';
-import { Header } from '@/src/components/header/Header';
+//  dynamic revalidate for page, layout or route handler
+export const dynamic = "force-dynamic";
+export const revalidate = 60; // 60 | 0
 
+import { BannerHero, H1, SideMenu } from "@/components";
+import { Header } from "@/components/layout/Header";
+import { ProductGrid } from "@/components";
+import { Footer } from "@/components";
+import { getFeaturedProducts } from "@/actions";
 
+export default async function Home() {
+  const { featuredProducts } = await getFeaturedProducts({ take: 5 });
 
-const Main = async (): Promise<JSX.Element> => {
+  //    products.forEach( product => product.slug = `product/${product.slug}`);
 
-  const products = await getProducts({ limit: 30, offset: 0 });
+  //    const slug = `product/${ product.slug }`
+
+  //    const products = productsResponse.map( product => ({
+  //         id: product.id,
+  //         title: product.title,
+  //         image: product.image,
+  //         price: product.price,
+  //         rating: product.rating || 0,
+  //         slug: `product/${ product.slug }`
+  //     }))
+  //   const products = await getProducts({ limit: 30, offset: 0 });
 
   return (
-      <>
-          <Header />
+    <>
+      <Header />
+      <SideMenu />
 
-          <main className="flex min-h-screen flex-col items-center justify-between ">
-              <BannerHero title="Coffee Bouquets that speak your heart" subtitle="A unique gift experience that combines the aroma of premium coffee with the elegance of floral presentation. Perfect for any occasion." cta={<Link href="/shop" className="bg-primary hover:bg-accent text-white font-heading font-semibold rounded-lg px-8 py-4 transition-all">Shop Now</Link>} />
+      <main className="flex min-h-screen flex-col items-center justify-between ">
+        <BannerHero
+          title="Coffee Bouquets that speak your heart"
+          subtitle="A unique gift experience that combines the aroma of premium coffee with the elegance of floral presentation. Perfect for any occasion."
+          ctaPath="/shop"
+          ctaText="Shop Now"
+        />
 
-              <div className="px-4 lg:px-24 py-5">
-                  <div className="latest-products text-center py-12 flex flex-col gap-6">
-                      <H1>Latest Products</H1>
-                      {/* { JSON.stringify( products ) } */}
-                      <div className="flex flex-col ">
-                          <ProductGrid products={ products } />
+        <div className="container">
+          <div className="latest-products text-center py-12 flex flex-col gap-6">
+            <H1>Featured Bouquets</H1>
+            {/* { JSON.stringify( products ) } */}
+            <div className="flex flex-col ">
+              <ProductGrid products={featuredProducts} />
+            </div>
+          </div>
+        </div>
+      </main>
 
-                      </div>
-                </div>
-              </div>
-          </main>
-      </>
-  )
+      <Footer />
+    </>
+  );
 }
-
-export default Main;

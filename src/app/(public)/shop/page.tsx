@@ -1,71 +1,103 @@
-import { H1, PageHeader } from "@/src/components"
-import { getProducts, Product, ProductGrid, ProductsResponse } from "@/src/products";
-import type { Metadata } from "next"
+//  dynamic revalidate for page, layout or route handler
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
+// import { JSX } from "react";
+import type { Metadata } from "next";
+// import { cookies } from "next/headers";
+// import { useRouter } from "next/navigation";
+import prisma from "@/lib/prisma";
+import { H1, Title, ProductGrid, Pagination } from "@/components";
+// import { getProducts } from "@/products";
+// import {
+//   getProducts,
+//   getProductsByCategory,
+// } from "@/products/actions/product-actions";
+import { CategoriesTabBar } from "@/categories";
+// import * as productHelpers from "@/products/helpers/products";
+import { getPaginatedProductsWithImages } from "@/actions";
+import { Product as ProductUI } from "@/interfaces";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
-    title: "Shop Coffee Bouquets, Tea & Flowers | Purple Butterfly",
-    description: "Explore our handcrafted coffee bouquets, tea gifts, and floral arrangements — perfect for every occasion. Delivered with heart from Purple Butterfly.",
-    openGraph: {
+  title: "Shop Coffee Bouquets, Tea & Flowers | Purple Butterfly",
+  description:
+    "Explore our handcrafted coffee bouquets, tea gifts, and floral arrangements — perfect for every occasion. Delivered with heart from Purple Butterfly.",
+  openGraph: {
     title: "Shop Coffee Bouquets, Tea & Flowers",
-    description: "Unique gifts for every soul — shop coffee, tea, and floral arrangements made with love.",
+    description:
+      "Unique gifts for every soul — shop coffee, tea, and floral arrangements made with love.",
     url: "https://www.purplebutterflybouquets.com/shop",
     type: "website",
   },
   twitter: {
     title: "Explore Our Products | Purple Butterfly",
-    description: "Browse our personalized coffee, tea, and flower gifts — made to sweeten the soul.",
+    description:
+      "Browse our personalized coffee, tea, and flower gifts — made to sweeten the soul.",
     card: "summary_large_image",
   },
+};
+
+interface Props {
+  searchParams: Promise<{ page?: string }>;
 }
 
+// export default function ShopPage() {
+export default async function ShopPage({ searchParams }: Props) {
+  // console.log({ searchParams });
 
-const ShopPage = async (): Promise<JSX.Element> => {
+  const { page } = await searchParams;
+  const pageParam = page ? parseInt(page) : 1;
 
-    const products = await getProducts({ limit: 30, offset: 0 });
+  const categories = await prisma.category.findMany({
+    orderBy: { title: "asc" },
+  });
 
-    const schema = {
-        "@context": "https://schema.org",
-        "@type": "ItemList",
-        itemListElement: [
-          {
-            "@type": "Product",
-            name: "Coffee & Rose Bouquet",
-            image: "https://www.purplebutterflybouquets.com/images/coffee-rose.jpg",
-            description: "A luxurious bouquet of roses and specialty coffee pods.",
-            brand: "Purple Butterfly Bouquets",
-            offers: {
-              "@type": "Offer",
-              priceCurrency: "USD",
-              price: "45.00",
-              availability: "https://schema.org/InStock"
-            }
-          },
-          {
-            "@type": "Product",
-            name: "Tea & Lavender Set",
-            image: "https://www.purplebutterflybouquets.com/images/tea-lavender.jpg",
-            description: "Relaxing tea blends paired with dried lavender.",
-            brand: "Purple Butterfly Bouquets",
-            offers: {
-              "@type": "Offer",
-              priceCurrency: "USD",
-              price: "35.00",
-              availability: "https://schema.org/InStock"
-            }
-          }
-        ]
-    }
+  const { products, totalPages, currentPage, count } =
+    await getPaginatedProductsWithImages({ page: pageParam });
 
-    return (
-        <>
-            <PageHeader title="Shop" />
-            <script 
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-            />
+  if (products.length === 0) {
+    redirect("/shop");
+  }
 
-            {/* <Script
+  // console.log(products);
+
+  // TODO: add product schema
+
+  // let itemListElement: [
+  //   { [key: string]: string | number | boolean | undefined | object }
+  // ] = [{}];
+  // products.forEach((product) => {
+  //   itemListElement.push({
+  //     "@type": "Product",
+  //     name: product.title,
+  //     // image: product.images[0],
+  //     description: product?.description,
+  //     brand: "Purple Butterfly Bouquets",
+  //     offers: {
+  //       "@type": "Offer",
+  //       priceCurrency: "USD",
+  //       price: product.price,
+  //       availability: "https://schema.org/InStock",
+  //     },
+  //   });
+  // });
+
+  // const schema = {
+  //   "@context": "https://schema.org",
+  //   "@type": "ItemList",
+  //   itemListElement: itemListElement,
+  // };
+
+  return (
+    <>
+      <Title title="Shop" />
+      {/* <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      /> */}
+
+      {/* <Script
               id="jsonld-products"
               type="application/ld+json"
               strategy="afterInteractive"
@@ -73,16 +105,20 @@ const ShopPage = async (): Promise<JSX.Element> => {
               {JSON.stringify(schema)}
             </Script> */}
 
+      <div className="ppbb-shop-products-page container text-left py-12 flex flex-col gap-16">
+        <div className="flex flex-col gap-4 items-center justify-center">
+          <H1>Bouquets for every occasion</H1>
+          {categories && (
+            <CategoriesTabBar categories={categories} currentCategoryId={"0"} />
+          )}
+        </div>
+        {/* { JSON.stringify( products ) } */}
 
-            <div className="latest-products text-left w-full py-12 px-4 md:px-12 flex flex-col gap-6">
-                  <H1>Products for you</H1>
-                  {/* { JSON.stringify( products ) } */}
-                  <div className="flex flex-col ">
-                      <ProductGrid products={ products } />
-                  </div>
-              </div>
-        </>
-    )
+        <div className="flex flex-col gap-16">
+          {products && <ProductGrid products={products} />}
+          {products.length > 0 && <Pagination totalPages={totalPages} />}
+        </div>
+      </div>
+    </>
+  );
 }
-
-export default ShopPage;

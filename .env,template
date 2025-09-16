@@ -1,0 +1,53 @@
+# Environment variables declared in this file are automatically made available to Prisma.
+# See the documentation for more detail: https://pris.ly/d/prisma-schema#accessing-environment-variables-from-the-schema
+
+# Prisma supports the native connection string format for PostgreSQL, MySQL, SQLite, SQL Server, MongoDB and CockroachDB.
+# See the documentation for all the connection string options: https://pris.ly/d/connection-strings
+
+# The following `prisma+postgres` URL is similar to the URL produced by running a local Prisma Postgres 
+# server with the `prisma dev` CLI command, when not choosing any non-default ports or settings. The API key, unlike the 
+# one found in a remote Prisma Postgres URL, does not contain any sensitive information.
+
+DATABASE_URL="postgresql://user:pass@localhost:5432/database"
+
+DB_USER=
+DB_NAME=
+DB_PASSWORD=
+
+ADMIN_USER=example@email.com
+ADMIN_PASS=
+
+# Only for NextAuth (Auth.js) authentication
+# ---
+
+# To deploy to vercel (don't use in Development)
+# NEXTAUTH_URL=https://example.com
+
+# $ openssl rand -base64 32
+# For generate one go to https://generate-secret.vercel.app/32
+NEXTAUTH_SECRET=
+
+# NextAuth (Auth.js) Google provider options
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+
+# NextAuth (Auth.js) Github provider options
+GITHUB_ID=
+GITHUB_SECRET=
+
+# PayPal
+# https://developer.paypal.com/dashboard/applications
+# yourSandboxAccount@email.com
+# yourSandboxAccountPassword
+NEXT_PUBLIC_PAYPAL_CLIENT_ID=
+PAYPAL_SECRET_KEY=
+
+# POST
+PAYPAL_OAUTH_URL=https://api-m.sandbox.paypal.com/v1/oauth2/token
+#GET
+PAYPAL_ORDERS_URL=https://api.sandbox.paypal.com/v2/checkout/orders
+
+# cloudinary (images storage)
+
+# https://console.cloudinary.com/
+CLOUDINARY_URL=

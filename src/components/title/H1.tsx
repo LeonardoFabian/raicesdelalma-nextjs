@@ -1,11 +1,15 @@
-import { Galada } from "next/font/google"
-
-const galada = Galada({ weight: '400', subsets: ['latin'] });
+import { fontHeading } from "@/config/fonts";
 
 interface Props {
-    children: React.ReactNode
+  children: React.ReactNode;
 }
 
-export const H1 = ({ children } : Props ) => {
-    return <h1 className={`${galada.className} font-heading text-2xl md:text-4xl text-text-primary`}>{ children }</h1>
-}
+export const H1 = ({ children }: Props) => {
+  return (
+    <h1
+      className={`${fontHeading.className} font-heading text-2xl md:text-4xl text-text-primary`}
+    >
+      {children}
+    </h1>
+  );
+};

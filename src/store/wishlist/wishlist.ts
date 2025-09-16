@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Product } from '@/src/products';
+import { Product as ProductUI } from '@/interfaces';
+// import { Product } from '@prisma/client';
 
 /*
     State shape
@@ -19,7 +20,7 @@ import { Product } from '@/src/products';
     }
 */
 interface FavoriteProductsState {
-    favorites: { [key: string]: Product },
+    favorites: { [key: string]: ProductUI },
 }
 
 // const getInitialState = (): FavoriteProductsState => {
@@ -34,7 +35,7 @@ const initialState: FavoriteProductsState = {
     favorites: {},
     
     // ...getInitialState(),
-    // '1': { id: 1, title: 'Product 1', thumbnail: 'https://dummyjson.com/image/i/products/1/thumbnail.jpg', price: 100, rating: 4.9, link: 'https://dummyjson.com/products/1' },
+    // '1': { id: 1, title: 'Product 1', image: 'https://dummyjson.com/image/i/products/1/thumbnail.jpg', price: 100, rating: 4.9, link: 'https://dummyjson.com/products/1' },
 }
 
 const productsSlice = createSlice({
@@ -42,11 +43,11 @@ const productsSlice = createSlice({
   initialState,
   reducers: {
 
-    setFavoriteProducts( state, action: PayloadAction<{ [key: string]: Product }>) {
+    setFavoriteProducts( state, action: PayloadAction<{ [key: string]: ProductUI }>) {
         state.favorites = action.payload;
     },
 
-    toggleFavorite( state, action: PayloadAction<Product> ) {
+    toggleFavorite( state, action: PayloadAction<ProductUI> ) {
         const product = action.payload;
         const { id } = product;
 

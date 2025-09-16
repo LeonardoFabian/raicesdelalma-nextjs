@@ -5,6 +5,6 @@ export interface Cart {
 
 export const getCount = async (): Promise<Cart> => {
     const data = await fetch('/api/cart').then( res => res.json() );
-    console.log({ data });
+    // console.log({ data });
     return data;
 }

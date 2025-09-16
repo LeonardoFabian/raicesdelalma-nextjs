@@ -55,7 +55,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       openGraph: {
         title: product?.title ?? "Product Not Found",
         description: product?.description ?? "Single product page",
-        images: [`/uploads/${product?.images[0]}`],
+        images: [{ url: product?.images[0].url ?? "" }],
         url: `https://www.purplebutterflybouquets.com/product/${slug}`,
         type: "website",
       },
@@ -63,6 +63,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         title: product?.title ?? "Product Not Found",
         description: product?.description ?? "Single product page",
         card: "summary_large_image",
+        images: product?.images[0].url ?? "",
       },
     };
   } catch (error) {

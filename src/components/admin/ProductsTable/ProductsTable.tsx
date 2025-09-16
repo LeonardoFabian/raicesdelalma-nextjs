@@ -45,7 +45,7 @@ export const ProductsTable = ({ headings, products = [] }: Props) => {
                 </TableData>
                 <TableData>
                   <Link
-                    href={`/product/${product.slug}`}
+                    href={`/admin/product/${product.slug}`}
                     className="font-bold hover:underline text-text-primary"
                   >
                     {product.title}

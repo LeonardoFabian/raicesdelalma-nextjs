@@ -439,7 +439,7 @@ export const ProductForm = ({ product, sizes, categories }: Props) => {
               {...register("images", { required: false })}
               multiple
               className="p-2 border border-gray-300 rounded-md bg-gray-100"
-              accept="image/png, image/jpeg, image/avif, image/webp"
+              accept="image/png, image/jpeg, image/avif, image/webp, image/jfif"
             />
           </div>
 

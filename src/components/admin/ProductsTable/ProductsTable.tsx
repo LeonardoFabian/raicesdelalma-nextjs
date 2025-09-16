@@ -1,7 +1,6 @@
 import { Product } from "@/interfaces";
 import { TableHeading } from "./TableHeading/TableHeading";
 import { TableData } from "./TableData/TableData";
-import Image from "next/image";
 import Link from "next/link";
 import { currencyFormat, toCents } from "@/utils";
 import clsx from "clsx";

@@ -114,6 +114,11 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
+1. Create a prisma postgresql database (name, etc)
+2. Copy the DATABASE_URL and paste in the .env file
+3. Execute the command ```npx prisma migrate deploy```
+4. Execute ```npm run seed```
+
 ### Atajos de la extension de Nextjs para generar componentes
 
 * Generar un layout `lrc`
@@ -126,7 +131,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ```
 
-Open Prisma Studio: ```npx prisma studio```
+Open Prisma Studio: `npx prisma studio`
 
 Crea el archivo .env para configurar la DATABASE_URL: `npx prisma init`
 

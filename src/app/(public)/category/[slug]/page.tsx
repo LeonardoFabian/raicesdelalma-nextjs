@@ -48,11 +48,6 @@ export default async function CategoryPage({ params, searchParams }: Props) {
 
   const categories = await getCategories();
 
-  // const products = await prisma.product.findMany({
-  //   where: { isActive: true, categoryId: category?.id },
-  //   orderBy: { createdAt: "desc" },
-  // });
-
   const { products, totalPages, currentPage, count } =
     await getPaginatedProductsWithImages({ page: pageParam, category });
 

@@ -1,8 +1,5 @@
-import { H1, Title } from "@/components";
-import { Product as ProductUI } from "@/interfaces";
-import { CartItem } from "@/shopping-cart";
+import { Title } from "@/components";
 import { Product } from "@prisma/client";
-import { Metadata } from "next";
 import { cookies } from "next/headers";
 import prisma from "@/lib/prisma";
 import { IoCartOutline } from "react-icons/io5";

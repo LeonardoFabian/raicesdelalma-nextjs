@@ -1,12 +1,6 @@
 "use client";
 
 import { Loading, Title } from "@/components";
-import { Product as ProductUI } from "@/interfaces";
-import { CartItem } from "@/shopping-cart";
-import { Product } from "@prisma/client";
-import { Metadata } from "next";
-import { cookies } from "next/headers";
-import prisma from "@/lib/prisma";
 import Link from "next/link";
 import { redirect, useRouter } from "next/navigation";
 import { ProductsInCart } from "./ui/ProductsInCart";

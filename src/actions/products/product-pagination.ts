@@ -79,7 +79,7 @@ export const getPaginatedProductsWithImages = async ({ page = 1, take = 3, categ
                         url: image.url
                     }) ),
                     productSizes: product.productSizes.map( productSize => {
-                        const {size, extraPrice, ...restProductSize} = productSize;
+                        const {extraPrice, ...restProductSize} = productSize;
 
                         return ({
                         ...restProductSize,

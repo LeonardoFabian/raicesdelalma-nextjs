@@ -46,3 +46,4 @@ export * from "./size/get-sizes";
 // Category
 export * from "./category/get-categories";
 export * from "./category/get-category-by-slug";
+export * from "./category/get-category-by-id";

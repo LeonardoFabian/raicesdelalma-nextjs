@@ -326,8 +326,8 @@ export const initialData: SeedData = {
 
   users: [    
     {
-      email: process.env.ADMIN_USER ?? 'admin@purplebutterflybouquets.com',
-      password: process.env.ADMIN_PASS ?? 'admin123',
+      email: process.env.ADMIN_USER ?? 'purplebutterflybouquets@gmail.com',
+      password: process.env.ADMIN_PASS ?? 'Paubra2526',
       role: 'admin',
       name: 'Alma Puello',
     },    

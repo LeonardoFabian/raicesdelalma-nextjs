@@ -7,6 +7,7 @@ import { authenticate } from "@/actions";
 import { useFormState } from "react-dom";
 import { IoAlertCircleOutline } from "react-icons/io5";
 import clsx from "clsx";
+import { toast } from "react-toastify";
 
 export const LoginForm = () => {
   const router = useRouter();
@@ -21,9 +22,23 @@ export const LoginForm = () => {
   //   console.log({ state });
 
   useEffect(() => {
-    if (errorMessage === "Success") {
-      // router.replace(callbackUrl);
-      window.location.replace("/");
+    if (errorMessage) {
+      if (errorMessage === "Success") {
+        // router.replace(callbackUrl);
+        toast.success("Login successful.");
+        window.location.replace("/");
+      } else if (errorMessage === "Invalid credentials.") {
+        console.log(errorMessage);
+        toast.error("Invalid credentials.");
+      } else if (errorMessage === "Something went wrong.") {
+        console.log(errorMessage);
+        toast.error("Something went wrong.");
+      } else if (errorMessage === "UnknownError") {
+        console.log(errorMessage);
+        toast.error("Unknown error.");
+      } else {
+        console.log(errorMessage);
+      }
     }
   }, [errorMessage]);
 
@@ -55,7 +70,7 @@ export const LoginForm = () => {
       </button> */}
 
       <LoginButton isPending={isPending} />
-
+      {/* 
       {errorMessage && (
         <div
           className="flex items-center p-2 space-x-1 bg-red-200 mt-2 rounded"
@@ -79,7 +94,7 @@ export const LoginForm = () => {
             </p>
           </>
         </div>
-      )}
+      )} */}
 
       {/* divisor l ine */}
       <div className="flex items-center my-5">

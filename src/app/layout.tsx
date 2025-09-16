@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { fontBody, fontHeading } from "@/config/fonts";
 import Providers from "./providers/Providers";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -16,7 +18,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${fontBody.variable} ${fontHeading.variable}`}>
-        <Providers>{children}</Providers>
+        <Providers>
+          {children}
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
+        </Providers>
       </body>
     </html>
   );

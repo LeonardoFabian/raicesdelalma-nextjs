@@ -28,6 +28,8 @@ const productSchema = z.object({
         }),
     isConfigurable: z.union([z.string(), z.boolean()])
         .transform((value) => (typeof value === 'string' ? value === 'true' : value)),
+    isActive: z.union([z.string(), z.boolean()])
+        .transform((value) => (typeof value === 'string' ? value === 'true' : value)),
     fulfillmentMode: z.enum(['PREMADE', 'MAKE_TO_ORDER']).default('PREMADE'),
     // sizes: z.array(z.number()).min(1),
     // isActive: z.boolean().default(true),
@@ -128,6 +130,7 @@ export const createOrUpdateProduct = async (formData: FormData) => {
                     discountPercentage: restProduct.discountPercentage,
                     categoryId: restProduct.categoryId,           
                     isConfigurable: restProduct.isConfigurable,     
+                    isActive: restProduct.isActive,
                     fulfillmentMode: restProduct.fulfillmentMode,   
                     userId: userId,
                 }

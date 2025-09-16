@@ -14,6 +14,7 @@ import {
 } from "@/actions";
 import { toast } from "react-toastify";
 import { ProductImage } from "./product-image/ProductImage";
+import { BackButton } from "@/components";
 
 interface Props {
   product: Partial<ProductUI> & { images?: Media[] };
@@ -35,7 +36,7 @@ interface FormInputs {
   productSizes: { sizeId: number; extraPrice: string }[];
   fulfillmentMode: string;
   isConfigurable: boolean;
-  // isActive: boolean;
+  isActive: boolean;
 
   // TODO: images
   images?: FileList;
@@ -149,6 +150,7 @@ export const ProductForm = ({ product, sizes, categories }: Props) => {
     // console.log({ data });
 
     const isConfigurable = data.isConfigurable ? true : false;
+    const isActive = data.isActive ? true : false;
 
     // javaScript FormData object
     const formData = new FormData();
@@ -171,7 +173,7 @@ export const ProductForm = ({ product, sizes, categories }: Props) => {
     // formData.append("productSizes", restData.productSizes.toString());
     formData.append("isConfigurable", String(isConfigurable));
     formData.append("fulfillmentMode", restData.fulfillmentMode);
-    // formData.append("isActive", restData.isActive.toString());
+    formData.append("isActive", String(isActive));
 
     // console.log(images);
 
@@ -363,6 +365,20 @@ export const ProductForm = ({ product, sizes, categories }: Props) => {
               TO ORDER)
             </span>
           </div>
+
+          <div className="flex flex-col mb-2">
+            <label>
+              <input
+                type="checkbox"
+                className="mr-2"
+                {...register("isActive")}
+              />
+              Is Active
+            </label>
+            <span className="text-xs text-text-secondary">
+              If checked, the product will be available for sale.
+            </span>
+          </div>
         </div>
 
         {/* right */}
@@ -461,7 +477,12 @@ export const ProductForm = ({ product, sizes, categories }: Props) => {
         {/* end right */}
       </div>
 
-      <button className="btn-primary mt-4">Save</button>
+      <div className="flex items-center justify-start gap-2 mt-4">
+        {/* <BackButton /> */}
+        <button type="submit" className="btn-primary ">
+          Save
+        </button>
+      </div>
 
       {/* <UpdateProduct
         productId={product.id}

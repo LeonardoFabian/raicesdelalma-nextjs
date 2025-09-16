@@ -13,6 +13,7 @@ import { LogoutButton } from "@/components/auth/LogoutButton";
 import { IUser } from "@/interfaces";
 import { ToggleSidebarButton } from "./toggle-sidebar-button/ToggleSidebarButton";
 import { AccountButton } from "@/components/layout/account/AccountButton";
+import { BackButton } from "@/components/layout/button/BackButton";
 
 interface Props {
   user: IUser;
@@ -53,6 +54,7 @@ export const AdminNavbar = ({ user }: Props) => {
     <div className="sticky z-10 top-0 h-14 px-6 border-b border-gray-300 bg-white hover:cursor-pointer lg:py-2.5 flex items-center">
       <div className="w-full flex items-center justify-between space-x-4">
         <ToggleSidebarButton />
+        <BackButton />
 
         <h5 hidden className="text-xl text-gray-600 font-medium lg:block">
           Titulo de la seccion

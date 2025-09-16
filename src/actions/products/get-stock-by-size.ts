@@ -1,13 +1,13 @@
 'use server'
 
-import { sleep } from "@/utils";
+import prisma from "@/lib/prisma";
 
 export const getStockBySize = async ( productId: string, sizeId: number ) => {
     try {
 
         // await sleep(3);
 
-        const stock = await prisma?.productSize.groupBy({
+        const stock = await prisma.productSize.groupBy({
             by: ['sizeId'],
             where: { productId, sizeId },
             _sum: { stock: true }

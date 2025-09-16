@@ -77,6 +77,10 @@ body {
   @apply px-4 md:px-0 xl:px-0 2xl:px-8 mx-auto w-full;
 }
 
+.container-fluid {
+  @apply px-0 md:px-0 xl:px-0 2xl:px-8 mx-auto w-full;
+}
+
 .cart-grid {
   @apply grid grid-cols-1 md:grid-cols-5 xl:grid-cols-12 gap-5;
 }

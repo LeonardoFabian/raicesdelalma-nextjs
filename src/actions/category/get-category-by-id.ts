@@ -11,7 +11,7 @@ export const getCategoryById = async (id: string) => {
         });
         
         if (!category) {
-            return null;
+            return undefined;
         }
 
         return category;

@@ -95,6 +95,12 @@ export const getPaginatedProductsWithImages = async ({ page = 1, take = 3, categ
         }
         
     } catch (error) {
-        throw new Error(`Error fetching paginated products: ${error}`);
+        // throw new Error(`Error fetching paginated products: ${error}`);
+        return {
+            products: [],
+            currentPage: 1,
+            totalPages: 1,
+            count: 0
+        }
     }
 }

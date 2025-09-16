@@ -9,6 +9,7 @@ import {
   Star,
   QuantitySelector,
   ProductSlideshow,
+  PageTitle,
 } from "@/components";
 import { Metadata } from "next";
 import Image from "next/image";
@@ -21,9 +22,15 @@ import { notFound } from "next/navigation";
 import { SizeSelector } from "@/components/product/size-selector/SizeSelector";
 import { fontBody } from "@/config/fonts";
 import { ProductMobileSlideshow } from "@/components/product/slideshow/ProductMobileSlideshow";
-import { getProductBySlug, getSettings } from "@/actions";
+import {
+  getCategoryById,
+  getPaginatedProductsWithImages,
+  getProductBySlug,
+  getSettings,
+} from "@/actions";
 import { AddToCartOptions } from "./ui/AddToCartOptions";
 import { calcDiscountCents, currencyFormat, toCents } from "@/utils";
+import { RelatedProducts } from "./ui/RelatedProducts";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -94,19 +101,17 @@ export default async function SingleProductPage({ params }: Props) {
 
   // console.log({ product });
 
-  const category = await prisma.category.findFirst({
-    where: { id: product?.categoryId },
+  const category = await getCategoryById(product?.categoryId);
+
+  const { products: relatedProducts } = await getPaginatedProductsWithImages({
+    page: 1,
+    take: 5,
+    category: category,
   });
 
-  // console.log({ category });
-
-  if (!product) {
-    return notFound();
-  }
-
   return (
-    <div className="product-page flex flex-col gap-12 py-0  md:py-12 px-0 md:px-8 lg:px-12 xl:px-16 2xl:px-20 mx-auto w-full">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-24">
+    <div className="product-page flex flex-col gap-12 py-0  md:py-12 px-0 md:px-8 lg:px-12 xl:px-28 mx-auto w-full">
+      <div className="container-fluid grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-24">
         <div className="col-span-1 md:col-span-2 relative w-full">
           <ProductMobileSlideshow
             title={product.title}
@@ -162,6 +167,12 @@ export default async function SingleProductPage({ params }: Props) {
           </p>
         </div>
       </div>
+      {relatedProducts && (
+        <div className="container flex flex-col gap-2">
+          <PageTitle title="Related Products" />
+          <RelatedProducts products={relatedProducts} />
+        </div>
+      )}
     </div>
   );
 }

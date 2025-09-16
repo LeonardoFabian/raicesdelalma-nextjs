@@ -7,7 +7,7 @@ import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import { PageTitle } from "@/components";
 
-export default function ProfilePage() {
+export default function SettingsPage() {
   const { data: session } = useSession();
 
   if (!session?.user) {
@@ -19,20 +19,14 @@ export default function ProfilePage() {
   return (
     <>
       <div className="flex flex-col gap-4 w-full px-0 md:px-6">
-        <PageTitle title="Profile" subtitle="Manage your Profile">
+        <PageTitle title="Settings" subtitle="Manage your business settings">
           {/* <AddNewProductButton /> */}
           {/* <DeleteInactiveProducts /> */}
         </PageTitle>
 
-        <div className="flex flex-col gap-4">
-          <div className="flex flex-col gap-1 w-full bg-white text-text-secondary p-4 rounded-lg">
-            <Avatar
-              user={session.user}
-              template="profile"
-              className="text-text-primary "
-            />
-          </div>
-        </div>
+        {/* <ProductGrid products={ products } /> */}
+
+        <div className="flex flex-col gap-4">Settings here</div>
       </div>
     </>
   );

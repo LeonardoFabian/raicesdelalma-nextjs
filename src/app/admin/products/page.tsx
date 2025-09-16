@@ -48,6 +48,8 @@ export default async function AdminProductsPage({ searchParams }: Props) {
   const { products, totalPages, currentPage, count } =
     await getPaginatedProductsWithImages({ take: 4, page: pageParam });
 
+  console.log("admin products: ", products);
+
   // const productsArray = products.map( product => ({
   //     id: product.id,
   //     image: product.image,

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { fontBody, fontHeading } from "@/config/fonts";
 import Providers from "./providers/Providers";
 import { ToastContainer } from "react-toastify";
+import { GoogleAnalytics, CookieConsent } from "@/components";
 import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
 
@@ -32,6 +33,8 @@ export default function RootLayout({
             pauseOnHover
             theme="light"
           />
+          <CookieConsent />
+          <GoogleAnalytics />
         </Providers>
       </body>
     </html>

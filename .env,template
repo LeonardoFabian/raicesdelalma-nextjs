@@ -51,3 +51,6 @@ PAYPAL_ORDERS_URL=https://api.sandbox.paypal.com/v2/checkout/orders
 
 # https://console.cloudinary.com/
 CLOUDINARY_URL=
+
+# Google Analytics
+NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=

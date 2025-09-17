@@ -55,3 +55,11 @@ export * from './admin/layout/navbar/Navbar';
 export * from './admin/layout/page-title/PageTitle';
 export { Sidebar } from './admin/sidebar/Sidebar';
 export { ProductsTable } from './admin/ProductsTable/ProductsTable';
+
+// Analytics
+
+export * from './layout/analytics/Analytics';
+
+// Cookies
+
+export * from './layout/cookies/CookieConsent';

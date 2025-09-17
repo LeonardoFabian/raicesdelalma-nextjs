@@ -1,12 +1,10 @@
-import {
-  ActiveLink,
-  ActiveLinkProps,
-} from "@/components/active-link/ActiveLink";
+import { ActiveLinkProps } from "@/components/active-link/ActiveLink";
 import { Logo } from "@/components/layout/Logo";
 import { fontHeading } from "@/config/fonts";
 import { Button } from "../button/Button";
 import { IoLogoInstagram, IoLogoFacebook } from "react-icons/io5";
 import Link from "next/link";
+import { FooterLink } from "./ui/FooterLink";
 
 export const Footer = () => {
   const navItems: ActiveLinkProps[] = [
@@ -48,12 +46,16 @@ export const Footer = () => {
       path: "/legal/ads-policy",
       label: "Ads Policy",
     },
+    {
+      path: "/legal/terms-and-conditions",
+      label: "Terms and Conditions",
+    },
   ];
 
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-primary text-white py-4">
+    <footer className="bg-primary-dark text-white py-4">
       <div className="container py-8 flex flex-col md:flex-row gap-8 items-start justify-between">
         <div className="w-full justify-center flex flex-col md:justify-start md:gap-4">
           <div className="flex items-center justify-center md:justify-start gap-2">
@@ -75,11 +77,10 @@ export const Footer = () => {
             </h5>
             <div className="flex flex-col gap-1">
               {navItems.map((navItem) => (
-                <ActiveLink
+                <FooterLink
                   key={navItem.path}
                   path={navItem.path}
                   label={navItem.label}
-                  className="hover:text-gold-pastel"
                 />
               ))}
             </div>
@@ -90,11 +91,10 @@ export const Footer = () => {
             </h5>
             <div className="flex flex-col gap-1">
               {legalNavItems.map((navItem) => (
-                <ActiveLink
+                <FooterLink
                   key={navItem.path}
                   path={navItem.path}
                   label={navItem.label}
-                  className="hover:text-gold-pastel"
                 />
               ))}
             </div>
@@ -110,7 +110,7 @@ export const Footer = () => {
             <p className="hover:text-gold-pastel text-center md:text-left">
               Subscribe to our newsletter
             </p>
-            <form className="w-full flex items-center justify-between gap-2">
+            <form className="w-full flex flex-col lg:flex-row items-center justify-between gap-2">
               <input
                 type="email"
                 placeholder="Enter your email"

@@ -35,6 +35,45 @@ const config: Config = {
         heading: ["'Barlow Semi Condensed'", "sans-serif"],
         body: ["'Roboto'", "sans-serif"],
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            a: {
+              color: "#a134c4",
+            },
+            h1: {
+              fontSize: "1.5rem",
+              color: "#2e2a35"
+            },
+            h2: {
+              fontSize: "1.25rem",
+              color: "#2e2a35"
+            },
+            h3: {
+              fontSize: "1.125rem",
+              color: "#2e2a35"
+            },
+            h4: {
+              fontSize: "1rem",
+              color: "#2e2a35"
+            },
+            h5: {
+              fontSize: "0.875rem",
+              color: "#2e2a35"
+            },
+            h6: {
+              fontSize: "0.75rem",
+              color: "#2e2a35"
+            },
+            p: {
+              fontSize: "1rem",
+              color: "#565959",
+              marginTop: "1em",
+              marginBottom: "1em",
+            }
+          },
+        },
+      }
     },
   },
   plugins: [typography],

@@ -2,6 +2,7 @@ import { PageTitle } from "@/components";
 import { getAllLegalSlugs, getLegalContent } from "@/lib/get-legal-content";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import styles from "./legal.module.css";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -25,9 +26,12 @@ export default async function LegalPage({ params }: Props) {
     const { title, content } = await getLegalContent(slug);
 
     return (
-      <main className="max-w-3xl mx-auto px-4 py-10 prose">
+      <main className="max-w-3xl mx-auto px-4 py-10">
         <PageTitle title={title} />
-        <div dangerouslySetInnerHTML={{ __html: content }} />
+        <div
+          dangerouslySetInnerHTML={{ __html: content }}
+          className={`prose dark:prose-invert ${styles.markdown}`}
+        />
       </main>
     );
   } catch (error) {

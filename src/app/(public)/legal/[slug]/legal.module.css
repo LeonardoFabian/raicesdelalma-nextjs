@@ -1,0 +1,54 @@
+.markdown {
+  font-family: var(--font-body);
+  line-height: 1.8;
+  color: var(--color-text-primary);
+}
+
+.markdown h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.markdown h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.markdown h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.markdown p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  /* margin-top: 1em; */
+}
+
+.markdown a {
+  color: var(--color-link);
+}
+
+.markdown ul {
+  margin-left: 2rem;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  list-style-type: disc;
+}
+
+.markdown ol {
+  margin-left: 2rem;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  list-style-type: decimal;
+}
+
+.markdown li {
+  margin-bottom: 0.5em;
+}

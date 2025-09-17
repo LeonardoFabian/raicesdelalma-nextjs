@@ -29,9 +29,9 @@ export const CookieConsent = () => {
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 bg-yellow-pastel border-t p-4 shadow">
+    <div className="fixed bottom-0 left-0 right-0 z-50 bg-yellow-pastel border-t border-t-gold-pastel p-4 shadow">
       <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-        <p className="text-sm text-text-secondary">
+        <p className="text-base text-text-primary">
           We use cookies to analyze traffic and improve your experience. By
           clicking "Accept", you consent to our use of Google Analytics.
         </p>

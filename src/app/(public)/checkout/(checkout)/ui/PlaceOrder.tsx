@@ -85,14 +85,14 @@ export const PlaceOrder = () => {
           <p className="text-sm">
             By clicking "Place Order", you agree to our{" "}
             <Link
-              href={"/terms"}
+              href={"/legal/terms-and-conditions"}
               className="underline hover:text-primary-hover"
             >
               Terms and Conditions
             </Link>{" "}
             and our{" "}
             <Link
-              href={"/privacy"}
+              href={"/legal/privacy-policy"}
               className="underline hover:text-primary-hover"
             >
               Privacy Policy

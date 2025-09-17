@@ -33,16 +33,20 @@ export const Footer = () => {
   ];
   const legalNavItems: ActiveLinkProps[] = [
     {
-      path: "/privacy-policy",
+      path: "/legal/privacy-policy",
       label: "Privacy Policy",
     },
     {
-      path: "/refund-policy",
+      path: "/legal/refund-policy",
       label: "Refund Policy",
     },
     {
-      path: "/shipping-policy",
+      path: "/legal/shipping-policy",
       label: "Shipping Policy",
+    },
+    {
+      path: "/legal/ads-policy",
+      label: "Ads Policy",
     },
   ];
 

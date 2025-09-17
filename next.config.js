@@ -38,6 +38,14 @@ const nextConfig = {
       },
     ],
   },
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.md$/,
+      resourceQuery: /raw/, // solo aplica a imports con ?raw
+      use: "raw-loader",
+    });
+    return config;
+  },
 };
 
 module.exports = nextConfig;

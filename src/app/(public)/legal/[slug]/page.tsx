@@ -26,11 +26,11 @@ export default async function LegalPage({ params }: Props) {
     const { title, content } = await getLegalContent(slug);
 
     return (
-      <main className="max-w-3xl mx-auto px-4 py-10">
+      <main className="px-4 md:px-0 xl:px-0 2xl:px-8 mx-auto w-full max-w-3xl py-10">
         <PageTitle title={title} />
         <div
           dangerouslySetInnerHTML={{ __html: content }}
-          className={`prose dark:prose-invert ${styles.markdown}`}
+          className={`prose dark:prose-invert overflow-x-auto ${styles.markdown}`}
         />
       </main>
     );

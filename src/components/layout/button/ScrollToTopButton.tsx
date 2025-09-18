@@ -33,7 +33,7 @@ export const ScrollToTopButton = () => {
     <button
       onClick={scrollTotop}
       aria-label="Scroll to top"
-      className="fixed bottom-6 right-6 z-50 p-3 flex items-center justify-center w-12 h-12 text-white bg-primary rounded-full hover:bg-primary-hover shadow-2xl transition-opacity duration-300"
+      className="fixed bottom-6 right-6 z-50 p-3 flex items-center justify-center w-12 h-12 cursor-pointer text-white bg-primary rounded-full hover:bg-primary-hover shadow-2xl transition-opacity duration-300"
     >
       <MdArrowUpward size={24} className="animate-bounce" />
     </button>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { QuantitySelector, AddToWishlist } from "@/components";
+import { QuantitySelector, AddToWishlist, ShareMenu } from "@/components";
 import { SizeSelector } from "@/components/product/size-selector/SizeSelector";
 import { Product } from "@/interfaces";
 import type { ISize } from "@/interfaces";
@@ -14,6 +14,7 @@ import { IoCloseOutline } from "react-icons/io5";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import { IProductSize } from "@/interfaces/size.interface";
+import { PRODUCT_BASE_URL } from "@/constants/urls";
 
 interface Props {
   product: Product;
@@ -29,6 +30,8 @@ type Option = {
 export const AddToCartOptions = ({ product, settings }: Props) => {
   const { data: session } = useSession();
   const addItemToCart = useCartStore((state) => state.addItemToCart);
+
+  const productShareUrl = `${PRODUCT_BASE_URL}/${product.slug}`;
 
   const [unitPrice, setUnitPrice] = useState(product.price);
   const [size, setSize] = useState<IProductSize>();
@@ -290,6 +293,7 @@ export const AddToCartOptions = ({ product, settings }: Props) => {
             Add to Cart
           </span>
         </button>
+        <ShareMenu title={product.title} url={productShareUrl} />
         <AddToWishlist product={product} />
       </div>
 

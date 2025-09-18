@@ -17,6 +17,9 @@ DB_PASSWORD=
 ADMIN_USER=example@email.com
 ADMIN_PASS=
 
+# domain URL
+NEXT_PUBLIC_BASE_URL=https://www.yourdomain.com
+
 # Only for NextAuth (Auth.js) authentication
 # ---
 

@@ -7,11 +7,12 @@ import { Product as ProductUI } from "@/interfaces";
 // import { Product } from "@prisma/client";
 import { AddToWishlist } from "./AddToWishlist";
 // import { MdOutlineShoppingBag, MdIosShare } from "react-icons/md";
-import { Share } from "./Share";
+import { ShareMenu } from "../layout/menus/ShareMenu";
 import { AddToCart } from "./AddToCart";
 // import { addToShoppingCartCookie } from "@/shopping-cart/actions/actions";
 import { Rating } from "./Rating";
 import { ProductImage } from "./product-image/ProductImage";
+import { PRODUCT_BASE_URL } from "@/constants/urls";
 // import { useRouter } from "next/navigation";
 
 interface Props {
@@ -31,6 +32,8 @@ export const ProductCard = ({ product }: Props) => {
   //   addToShoppingCartCookie(id);
   //   router.refresh();
   // };
+
+  const productShareUrl = `${PRODUCT_BASE_URL}/${product.slug}`;
 
   return (
     <div className="mx-auto right-0 mt-2 w-full  bg-white flex flex-col justify-between rounded-lg shadow-sm fade-in">
@@ -71,7 +74,7 @@ export const ProductCard = ({ product }: Props) => {
         <div className="mt-auto">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <Share product={product} size={30} />
+              <ShareMenu title={product.title} url={productShareUrl} />
             </div>
             {/* <AddToCart product={product} /> */}
           </div>

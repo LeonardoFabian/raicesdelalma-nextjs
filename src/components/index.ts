@@ -20,7 +20,7 @@ export { LogoutButton } from './auth/LogoutButton';
 export { AddToWishlist } from './product/AddToWishlist';
 export { AddToCart } from './product/AddToCart';
 export { QuantitySelector } from './product/QuantitySelector';
-export { Share } from './product/Share';
+export { ShareMenu } from './layout/menus/ShareMenu';
 export { FavoriteProducts } from './products/FavoriteProducts';
 // export { DeleteInactiveProducts } from './products/DeleteInactiveProducts';
 import { SizeSelector } from './product/size-selector/SizeSelector';

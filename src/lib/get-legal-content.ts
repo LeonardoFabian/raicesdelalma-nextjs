@@ -1,48 +1,18 @@
-// import fs from "fs";
-// import path from "path";
 import matter from 'gray-matter';
-import { remark } from 'remark';
-import html from 'remark-html';
-// @ts-expect-error no types available
-import remarkSlug from 'remark-slug';
-
-
-// const legalDir = path.join(process.cwd(), 'content/legal');
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import remarkRehype from 'remark-rehype';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeStringify from 'rehype-stringify';
 
 const legalFiles: Record<string, () => Promise<any>> = {
-    'ads-policy': () => import('@/app/(public)/legal/_content/ads-policy.md?raw'),
+  'ads-policy': () => import('@/app/(public)/legal/_content/ads-policy.md?raw'),
   'privacy-policy': () => import('@/app/(public)/legal/_content/privacy-policy.md?raw'),
   'refund-policy': () => import('@/app/(public)/legal/_content/refund-policy.md?raw'),
   'shipping-policy': () => import('@/app/(public)/legal/_content/shipping-policy.md?raw'),
   'terms-and-conditions': () => import('@/app/(public)/legal/_content/terms-and-conditions.md?raw'),
 };
-
-// export const getLegalContent = async (slug: string) => {
-//     const filePath = path.join(legalDir, `${slug}.md`);
-
-//     if (!fs.existsSync(filePath)) {
-//         throw new Error(`Legal page not found for slug: ${slug}`);
-//     }
-
-//     const fileContents = fs.readFileSync(filePath, 'utf8');
-//     const { content, data } = matter(fileContents);
-
-//     const processedContent = await remark().use(html).process(content);
-//     const contentHtml = processedContent.toString();
-
-//     return {
-//         title: data.title || slug,
-//         content: contentHtml
-//     };
-// }
-
-// export const getAllLegalSlugs = (): string[] => {
-//     const files = fs.readdirSync(legalDir);
-
-//     return files
-//         .filter((file) => file.endsWith('.md'))
-//         .map((file) => file.replace(/\.md$/, ''));
-// }
 
 export const getAllLegalSlugs = (): string[] => {
   return Object.keys(legalFiles);
@@ -58,10 +28,16 @@ export const getLegalContent = async (slug: string) => {
   const fileContents = await load();
   const { content, data } = matter(fileContents.default || fileContents);
 
-  const processedContent = await remark()
-    .use(remarkSlug)  
-    .use(html)
+  const processedContent = await unified()
+    .use(remarkParse)                  // parsea markdown
+    .use(remarkRehype)                 // convierte a HTML AST
+    .use(rehypeSlug)                   // añade ids a headings
+    .use(rehypeAutolinkHeadings, {
+      behavior: 'wrap',               // envuelve el heading con un link
+    })
+    .use(rehypeStringify)             // convierte a string HTML
     .process(content);
+
   const contentHtml = processedContent.toString();
 
   return {

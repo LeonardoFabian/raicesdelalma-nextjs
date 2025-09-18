@@ -66,11 +66,13 @@ export const Header = () => {
       path: "/favorites",
       icon: <MdOutlineFavoriteBorder className="w-6 h-6" />,
       badge: <FavoriteProductsCount />,
+      title: "Favorites",
     },
     {
       path: +getTotalItemsInCart === 0 && loaded ? "/empty" : "/cart",
       icon: <MdOutlineShoppingBag className="w-6 h-6" />,
       badge: <NotificationBadge value={getTotalItemsInCart} />,
+      title: "Cart",
     },
   ];
 
@@ -80,7 +82,9 @@ export const Header = () => {
         <span className="hidden md:flex items-start">
           <ul className="flex items-center mt-4 space-x-6">
             {navItems.map((navItem) => (
-              <ActiveLink key={navItem.path} {...navItem} />
+              <li key={navItem.path}>
+                <ActiveLink {...navItem} />
+              </li>
             ))}
           </ul>
         </span>
@@ -95,12 +99,14 @@ export const Header = () => {
 
         <ul className="flex items-center justify-end md:mt-2 space-x-3 md:space-x-6">
           {accountLinks.map((accountLink) => (
-            <ActiveLink key={accountLink.path} {...accountLink} />
+            <li key={accountLink.path}>
+              <ActiveLink {...accountLink} />
+            </li>
           ))}
 
-          <div className="hidden md:flex">
+          <li className="hidden md:flex">
             <AccountButton className="text-primary" />
-          </div>
+          </li>
         </ul>
 
         {/* <button

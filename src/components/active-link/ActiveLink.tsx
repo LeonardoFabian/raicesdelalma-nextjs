@@ -7,6 +7,7 @@ import React from "react";
 export interface ActiveLinkProps {
   path: string;
   label?: string;
+  title?: string;
   icon?: React.ReactNode;
   badge?: React.ReactNode;
   children?: React.ReactNode;
@@ -16,6 +17,7 @@ export interface ActiveLinkProps {
 export const ActiveLink = ({
   path,
   label,
+  title,
   icon,
   badge,
   children,
@@ -29,7 +31,7 @@ export const ActiveLink = ({
       className={`px-2 py-2 flex items-center font-body space-x-2 rounded-md  group transition-all duration-300 hover:cursor-pointer ${
         pathName === path ? className : ""
       } ${pathName !== "/" ? `hover:${className}` : "hover:text-primary"}`}
-      title={label}
+      title={title ?? label}
     >
       {children ? (
         children

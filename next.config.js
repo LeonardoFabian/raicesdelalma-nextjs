@@ -8,16 +8,17 @@ const nextConfig = {
           {
             key: "Content-Security-Policy",
             value: `
-            default-src 'self';
-            script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.paypal.com https://*.paypal.com https://*.googletagmanager.com https://*.google-analytics.com;
-            style-src 'self' 'unsafe-inline';
-            img-src * data: blob:;
-            connect-src *;
-            frame-src https://www.paypal.com https://*.paypal.com;
-            object-src 'none';
-            base-uri 'self';
-            frame-ancestors 'none';
-          `
+              default-src 'self';
+              font-src 'self' data:;
+              script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.paypal.com https://*.paypal.com https://*.googletagmanager.com https://*.google-analytics.com;
+              style-src 'self' 'unsafe-inline';
+              img-src * data: blob:;
+              connect-src *;
+              frame-src https://www.paypal.com https://*.paypal.com;
+              object-src 'none';
+              base-uri 'self';
+              frame-ancestors 'none';
+            `
               .replace(/\s{2,}/g, " ")
               .trim(),
           },
@@ -31,7 +32,8 @@ const nextConfig = {
           },
           {
             key: "Cross-Origin-Embedder-Policy",
-            value: "require-corp",
+            value: "unsafe-none",
+            // value: "require-corp",
           },
           {
             key: "Strict-Transport-Security",

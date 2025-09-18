@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Navbar, Footer, SideMenu } from "@/components";
+import { ScrollToTopButton } from "@/components";
 
 export const metadata: Metadata = {
   title: {
@@ -21,6 +22,7 @@ export default function PublicLayout({
       <SideMenu />
       <main className="flex flex-col bg-white min-h-screen">{children}</main>
       <Footer />
+      <ScrollToTopButton />
     </>
   );
 }

@@ -12,6 +12,7 @@ export * from './layout/not-found/PageNotFound';
 export { ActiveLink } from './active-link/ActiveLink';
 export { Button } from './layout/button/Button';
 export * from './layout/button/BackButton';
+export * from './layout/button/ScrollToTopButton';
 export { Logo } from './layout/Logo';
 export { LoginButton } from './auth/LoginButton';
 export { LogoutButton } from './auth/LogoutButton';

@@ -27,7 +27,6 @@
   "files": [
     "src/types/types.d.ts",
     "src/types/custom.d.ts",
-    "src/types/global.d.ts",
-    "src/types/declarations.d.ts"
+    "src/types/global.d.ts"
   ]
 }

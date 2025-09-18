@@ -3,6 +3,7 @@
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
+// @ts-expect-error no types available
 import remarkSlug from 'remark-slug';
 
 

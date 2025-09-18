@@ -97,7 +97,7 @@ export const ShareMenu = ({ title, url }: Props) => {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 z-50 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200">
+        <div className="absolute left-0 bottom-10 z-50 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200">
           <div className="py-1">
             {shareLinks.map(({ name, icon, link }) => (
               <Link

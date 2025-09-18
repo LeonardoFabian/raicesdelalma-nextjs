@@ -105,7 +105,7 @@ export const ShareMenu = ({ title, url }: Props) => {
                 href={link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center px-4 py-2 text-sm text-text-secondary hover:bg-gray-100"
+                className="flex items-center gap-4 px-4 py-2 text-sm text-text-secondary hover:bg-gray-100"
               >
                 {icon}
                 <span>{name}</span>
@@ -114,7 +114,7 @@ export const ShareMenu = ({ title, url }: Props) => {
             <button
               type="button"
               onClick={handleCopy}
-              className="w-full flex items-center text-left px-4 py-2 text-sm text-text-secondary hover:bg-gray-100"
+              className="w-full flex items-center gap-4 text-left px-4 py-2 text-sm text-text-secondary hover:bg-gray-100"
             >
               <BsLink45Deg size={24} className="text-text-primary" />
               <span>Copy link</span>

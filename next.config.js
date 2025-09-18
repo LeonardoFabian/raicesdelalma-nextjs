@@ -3,25 +3,28 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: "/(.*)", // Aplica a todas las rutas
+        source: "/(.*)",
         headers: [
-          // Política de Seguridad de Contenidos (CSP)
           {
             key: "Content-Security-Policy",
-            value:
-              "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src * data: blob:; object-src 'none'; frame-ancestors 'none'; base-uri 'self';",
+            value: `
+            default-src 'self';
+            script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.paypal.com https://*.paypal.com https://*.googletagmanager.com https://*.google-analytics.com;
+            style-src 'self' 'unsafe-inline';
+            img-src * data: blob:;
+            connect-src *;
+            frame-src https://www.paypal.com https://*.paypal.com;
+            object-src 'none';
+            base-uri 'self';
+            frame-ancestors 'none';
+          `
+              .replace(/\s{2,}/g, " ")
+              .trim(),
           },
-          // Trusted Types
-          {
-            key: "Content-Security-Policy",
-            value: "require-trusted-types-for 'script';",
-          },
-          // Protección contra clickjacking
           {
             key: "X-Frame-Options",
             value: "DENY",
           },
-          // COOP + COEP
           {
             key: "Cross-Origin-Opener-Policy",
             value: "same-origin",
@@ -30,23 +33,19 @@ const nextConfig = {
             key: "Cross-Origin-Embedder-Policy",
             value: "require-corp",
           },
-          // HSTS con preload
           {
             key: "Strict-Transport-Security",
             value: "max-age=63072000; includeSubDomains; preload",
           },
-          // Política Referrer más estricta
           {
             key: "Referrer-Policy",
             value: "strict-origin-when-cross-origin",
           },
-          // Política de Permisos
           {
             key: "Permissions-Policy",
             value:
               "camera=(), microphone=(), geolocation=(), interest-cohort=()",
           },
-          // Protección contra sniffing de contenido
           {
             key: "X-Content-Type-Options",
             value: "nosniff",

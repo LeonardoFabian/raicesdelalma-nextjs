@@ -10,7 +10,7 @@ A los fines de esta Política de privacidad, a menos que se indique lo contrario
 
 Esta Política de privacidad no se aplica al tratamiento de información personal por parte de terceros o información personal recopilada en el contexto de su empleo con nosotros.
 
-Para conocer nuestros datos de contacto, consulte la sección [Contáctenos](https://www.purplebutterflybouquets.com/contact) a continuación.
+Para conocer nuestros datos de contacto, consulte la sección [Contáctenos](#contact-us) a continuación.
 
 Índice
 
@@ -203,12 +203,6 @@ Nos reservamos el derecho de modificar esta Política de privacidad en cualquier
 Si tiene alguna pregunta o tiene problemas para acceder a esta Política de privacidad, comuníquese con nosotros:
 
 Por correo electrónico: [purplebutterflybouquets@gmail.com](mailto:purplebutterflybouquets@gmail.com)
-
-## Notice to california residents
-
-## Notice to CO, CT, UT, VA residents
-
-## Notice to nevada residents
 
 ## Cookie policy
 

@@ -3,6 +3,7 @@
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
+import remarkSlug from 'remark-slug';
 
 
 // const legalDir = path.join(process.cwd(), 'content/legal');
@@ -56,7 +57,10 @@ export const getLegalContent = async (slug: string) => {
   const fileContents = await load();
   const { content, data } = matter(fileContents.default || fileContents);
 
-  const processedContent = await remark().use(html).process(content);
+  const processedContent = await remark()
+    .use(remarkSlug)  
+    .use(html)
+    .process(content);
   const contentHtml = processedContent.toString();
 
   return {

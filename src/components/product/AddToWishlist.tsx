@@ -1,43 +1,51 @@
 "use client";
 
-import { useEffect } from "react";
-import { MdOutlineFavorite, MdOutlineFavoriteBorder } from "react-icons/md";
-import { useAppDispatch, useAppSelector } from "@/store/index-old";
-import { toggleFavorite } from "@/store/wishlist/wishlist";
-import { Product as ProductUI } from "@/interfaces";
-import { Product } from "@prisma/client";
+import { MdOutlineFavoriteBorder } from "react-icons/md";
+import { useWishlistStore } from "@/store";
+import { addProductToWishlist, removeProductFromWishlist } from "@/actions";
+import clsx from "clsx";
 
 interface Props {
-  product: ProductUI;
-  size?: number;
+  productId: string;
 }
 
-export const AddToWishlist = ({ product, size }: Props) => {
-  const { id } = product;
+export const AddToWishlist = ({ productId }: Props) => {
+  const wishlist = useWishlistStore((state) => state.wishlist);
+  const toggleStoreWishlistItem = useWishlistStore((state) => state.toggle);
+  const isWishlisted = wishlist.includes(productId);
 
-  const isOnTheWishlist = useAppSelector(
-    (state) => !!state.wishlist.favorites[id]
-  );
-  const dispatch = useAppDispatch();
+  // const isOnTheWishlist = useAppSelector(
+  //   (state) => !!state.wishlist.favorites[id]
+  // );
+  // const dispatch = useAppDispatch();
 
-  const onToggle = () => {
+  const handleClick = async () => {
     // console.log(`Toggle favorite product ${ id }`);
-    dispatch(toggleFavorite(product));
+    // dispatch(toggleFavorite(product));
+    if (isWishlisted) {
+      await removeProductFromWishlist(productId);
+    } else {
+      await addProductToWishlist(productId);
+    }
+
+    toggleStoreWishlistItem(productId);
   };
 
   return (
     <>
       <button
         type="button"
-        className={`p-1 rounded-full transition-all duration-300 cursor-pointer ${
-          isOnTheWishlist
-            ? " bg-primary text-white"
-            : " bg-black/20 text-gray-100 hover:text-primary"
-        }`}
-        title={isOnTheWishlist ? "Remove from wishlist" : "Add to wishlist"}
-        onClick={onToggle}
+        className={clsx(
+          "p-1 rounded-full transition-all duration-300 cursor-pointer bg-black/20 text-gray-100 hover:text-white hover:bg-black/30",
+          {
+            "text-text-primary bg-white hover:bg-white hover:text-text-primary":
+              isWishlisted,
+          }
+        )}
+        aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
+        onClick={handleClick}
       >
-        <MdOutlineFavoriteBorder size={size ?? 35} />
+        <MdOutlineFavoriteBorder size={20} />
       </button>
     </>
   );

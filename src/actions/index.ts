@@ -47,3 +47,8 @@ export * from "./size/get-sizes";
 export * from "./category/get-categories";
 export * from "./category/get-category-by-slug";
 export * from "./category/get-category-by-id";
+
+// Wishlist
+export * from "./wishlist/add-product-to-wishlist";
+export * from "./wishlist/remove-product-from-wishlist";
+export * from "./wishlist/get-wishlist-by-user";

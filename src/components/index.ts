@@ -21,7 +21,6 @@ export { AddToWishlist } from './product/AddToWishlist';
 export { AddToCart } from './product/AddToCart';
 export { QuantitySelector } from './product/QuantitySelector';
 export { ShareMenu } from './layout/menus/ShareMenu';
-export { FavoriteProducts } from './products/FavoriteProducts';
 // export { DeleteInactiveProducts } from './products/DeleteInactiveProducts';
 import { SizeSelector } from './product/size-selector/SizeSelector';
 import { UpdateProduct } from './product/UpdateProduct';
@@ -64,3 +63,6 @@ export * from './layout/analytics/Analytics';
 // Cookies
 
 export * from './layout/cookies/CookieConsent';
+
+// store
+export * from './store/HydrateZustandWishlist';

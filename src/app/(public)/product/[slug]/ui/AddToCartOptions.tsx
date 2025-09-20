@@ -294,7 +294,7 @@ export const AddToCartOptions = ({ product, settings }: Props) => {
           </span>
         </button>
         <ShareMenu title={product.title} url={productShareUrl} />
-        <AddToWishlist product={product} />
+        <AddToWishlist productId={product.id} />
       </div>
 
       {isModalOpen && (

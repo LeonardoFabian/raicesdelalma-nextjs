@@ -116,8 +116,13 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 1. Create a prisma postgresql database (name, etc)
 2. Copy the DATABASE_URL and paste in the .env file
-3. Execute the command ```npx prisma migrate deploy```
-4. Execute ```npm run seed```
+3. Execute the command `npx prisma migrate deploy`
+4. Execute `npm run seed`
+
+5. For updates, execute ```git add .```
+6. ```git commit -m "your commit message here"```
+7. ```git push -u origin main```
+8. Go to vercel project deployments tab and check for posible errors to fix
 
 ### Atajos de la extension de Nextjs para generar componentes
 
@@ -145,7 +150,7 @@ Crear un directorio para la libreria de Prisma: `mkdir lib && touch lib/prisma.t
 
 NOTA: Si tienes una base de datos previamente creada, conectar tu base de datos añadiendo los modelos de Prisma a tu schema, reflejando tu schema actual de base de datos en tu schema.prisma `npx prisma db pull` y luego `npx prisma generate` y si hiciste cambios al modelo en tu schema.prisma ejecuta `npx prisma migrate dev`
 
-Si quieres borrar todos los datos, con la aplicacion sin ejecutar, y docker levantado, ejecuta el comando desde el root del proyecto: `npx prisma db push` para pasar el schema a la base de datos sin pasar por las migraciones, lueg ejecuta `npx prisma generate` y luego levanta el proyecto `npm run dev` y de desde postman o el navegador llama al endpoint que ejecuta los seeders `localhost:3000/api/seed`
+Si quieres borrar todos los datos, con la aplicacion sin ejecutar, y docker levantado, ejecuta el comando desde el root del proyecto: `npx prisma db push` para pasar el schema a la base de datos sin pasar por las migraciones, lueg ejecuta `npx prisma generate` y luego levanta el proyecto `npm run dev` y luego ejecuta ```npm run seed`` o tambien puedes desde postman o el navegador llamar al endpoint que ejecuta los seeders `localhost:3000/api/seed`
 
 ### En caso de error
 

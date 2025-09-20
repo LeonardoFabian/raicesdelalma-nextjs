@@ -67,26 +67,26 @@ export const getPaginatedProductsWithImages = async ({ page = 1, take = 3, categ
         return {
             products: products.map( product => {
 
-                const {price, discountPercentage, fulfillmentMode, ...restProduct} = product;
+                const {price, discountPercentage, fulfillmentMode, images, productSizes, ...restProduct} = product;
 
                 return ({
                     ...restProduct,
                     price: Number(price),
                     discountPercentage: Number(discountPercentage),
                     fulfillmentMode: fulfillmentMode.toString(),
-                    images: product.images.map( image => ({
+                    images: images.map( image => ({
                         id: image.Id,
                         url: image.url
                     }) ),
-                    productSizes: product.productSizes.map( productSize => {
+                    productSizes: productSizes.map( productSize => {
                         const {extraPrice, ...restProductSize} = productSize;
 
                         return ({
-                        ...restProductSize,
-                        label: productSize.size.label,
-                        extraPrice: Number(productSize.extraPrice),
-                    })
-                    } ),
+                            ...restProductSize,
+                            label: productSize.size.label,
+                            extraPrice: Number(productSize.extraPrice),
+                        })
+                    }),
                 })
             }),
             currentPage: page,

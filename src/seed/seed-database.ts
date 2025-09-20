@@ -13,6 +13,7 @@ const d = (v: string | number) => new Prisma.Decimal(v)
 // ------------------------------
 async function cleanDatabase() {
     // Limpieza en orden seguro (hijos -> padres)
+    await prisma.wishlist.deleteMany();
     await prisma.businessHour.deleteMany();
     await prisma.socialLink.deleteMany();
     await prisma.businessSettings.deleteMany();

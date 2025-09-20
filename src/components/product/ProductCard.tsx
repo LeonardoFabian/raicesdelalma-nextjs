@@ -54,7 +54,7 @@ export const ProductCard = ({ product }: Props) => {
           />
         </Link>
         <span className="absolute bottom-1 right-2">
-          <AddToWishlist product={product} size={20} />
+          <AddToWishlist productId={product.id} />
         </span>
       </div>
       <div className="flex flex-col gap-3 justify-between pt-2 pb-3 px-2.5 h-40">

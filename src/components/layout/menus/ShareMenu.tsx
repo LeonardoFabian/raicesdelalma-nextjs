@@ -90,7 +90,7 @@ export const ShareMenu = ({ title, url }: Props) => {
       <button
         type="button"
         className={`rounded-full p-2 transition text-text-primary hover:bg-gray-200 cursor-pointer`}
-        aria-label="Share"
+        title="Share"
         onClick={() => setIsOpen((prev) => !prev)}
       >
         <BsSend size={24} />

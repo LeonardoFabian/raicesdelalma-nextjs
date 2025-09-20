@@ -5,6 +5,7 @@ import { useWishlistStore } from "@/store";
 import { addProductToWishlist, removeProductFromWishlist } from "@/actions";
 import clsx from "clsx";
 import { useSession } from "next-auth/react";
+import { toast } from "react-toastify";
 
 interface Props {
   productId: string;
@@ -31,8 +32,10 @@ export const AddToWishlist = ({ productId }: Props) => {
     // dispatch(toggleFavorite(product));
     if (isWishlisted) {
       await removeProductFromWishlist(productId);
+      toast.info("Removed from your wishlist");
     } else {
       await addProductToWishlist(productId);
+      toast.success("Added to your wishlist");
     }
 
     toggleStoreWishlistItem(productId);
@@ -45,10 +48,10 @@ export const AddToWishlist = ({ productId }: Props) => {
         className={clsx(
           "p-1 rounded-full transition-all duration-300 cursor-pointer bg-black/20 text-gray-100  hover:bg-black/50",
           {
-            "text-primary bg-white": isWishlisted,
+            "text-primary bg-white hover:bg-white": isWishlisted,
           }
         )}
-        aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
+        title={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
         onClick={handleClick}
       >
         <MdOutlineFavoriteBorder size={24} />

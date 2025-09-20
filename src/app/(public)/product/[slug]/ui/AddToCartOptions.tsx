@@ -15,6 +15,7 @@ import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import { IProductSize } from "@/interfaces/size.interface";
 import { PRODUCT_BASE_URL } from "@/constants/urls";
+import { toast } from "react-toastify";
 
 interface Props {
   product: Product;
@@ -194,6 +195,8 @@ export const AddToCartOptions = ({ product, settings }: Props) => {
     };
 
     addItemToCart(lineId);
+
+    toast.success("Added to cart");
 
     // console.log({ lineId });
 

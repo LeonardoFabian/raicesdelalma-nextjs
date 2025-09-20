@@ -73,18 +73,12 @@ export default async function FavoritesPage({ searchParams }: Props) {
             {products.length > 0 && <Pagination totalPages={totalPages} />}
           </div>
         ) : (
-          <NoFavorites />
+          <div className="flex flex-col h-[50vh] items-center justify-center text-primary">
+            <MdOutlineFavoriteBorder size={100} />
+            <span>No Favorites Yet</span>
+          </div>
         )}
       </div>
     </>
   );
 }
-
-export const NoFavorites = () => {
-  return (
-    <div className="flex flex-col h-[50vh] items-center justify-center text-primary">
-      <MdOutlineFavoriteBorder size={100} />
-      <span>No Favorites Yet</span>
-    </div>
-  );
-};

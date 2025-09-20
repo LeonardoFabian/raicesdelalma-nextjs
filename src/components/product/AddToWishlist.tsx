@@ -43,16 +43,15 @@ export const AddToWishlist = ({ productId }: Props) => {
       <button
         type="button"
         className={clsx(
-          "p-1 rounded-full transition-all duration-300 cursor-pointer bg-black/20 text-gray-100 hover:text-white hover:bg-black/30",
+          "p-1 rounded-full transition-all duration-300 cursor-pointer bg-black/20 text-gray-100  hover:bg-black/50",
           {
-            "text-text-primary bg-white hover:bg-white hover:text-text-primary":
-              isWishlisted,
+            "text-primary bg-white": isWishlisted,
           }
         )}
         aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
         onClick={handleClick}
       >
-        <MdOutlineFavoriteBorder size={20} />
+        <MdOutlineFavoriteBorder size={24} />
       </button>
     </>
   );

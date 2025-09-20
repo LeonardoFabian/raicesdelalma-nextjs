@@ -293,6 +293,9 @@ export const AddToCartOptions = ({ product, settings }: Props) => {
             Add to Cart
           </span>
         </button>
+      </div>
+
+      <div className="flex items-center justify-start gap-3 mt-2">
         <ShareMenu title={product.title} url={productShareUrl} />
         <AddToWishlist productId={product.id} />
       </div>

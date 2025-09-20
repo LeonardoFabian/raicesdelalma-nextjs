@@ -12,14 +12,14 @@ interface Props {
 
 export const AddToWishlist = ({ productId }: Props) => {
   const { data: session } = useSession();
+  const wishlist = useWishlistStore((state) => state.wishlist);
+  const toggleStoreWishlistItem = useWishlistStore((state) => state.toggle);
+
+  const isWishlisted = wishlist.includes(productId);
 
   if (!session?.user) {
     return null;
   }
-
-  const wishlist = useWishlistStore((state) => state.wishlist);
-  const toggleStoreWishlistItem = useWishlistStore((state) => state.toggle);
-  const isWishlisted = wishlist.includes(productId);
 
   // const isOnTheWishlist = useAppSelector(
   //   (state) => !!state.wishlist.favorites[id]

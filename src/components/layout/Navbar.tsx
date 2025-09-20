@@ -88,7 +88,7 @@ export const Navbar = () => {
     {
       path: "/favorites",
       icon: <MdOutlineFavoriteBorder className="w-6 h-6" />,
-      badge: <NotificationBadge value={Object.keys(wishlist).length} />,
+      badge: <NotificationBadge value={wishlist.length} />,
       title: "Favorites",
     },
     {

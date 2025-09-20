@@ -16,11 +16,14 @@ import { AccountButton, NotificationBadge } from "@/components";
 import { MdOutlineFavoriteBorder, MdOutlineShoppingBag } from "react-icons/md";
 import { FavoriteProductsCount } from "@/components/auth/getFavoriteProductsCount";
 import { IoSearchOutline } from "react-icons/io5";
-import { useCartStore } from "@/store";
+import { useCartStore, useWishlistStore } from "@/store";
 import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
 
 export const Navbar = () => {
   const [loaded, setLoaded] = useState(false);
+  const { data: session } = useSession();
+
   // const [open, setOpen] = useState(false);
 
   // const cartCount = useAppSelector((state) => state.counter.count);
@@ -28,11 +31,14 @@ export const Navbar = () => {
   //   (state) => Object.values(state.wishlist.favorites).length
   // );
 
+  const user = session?.user;
+
   useEffect(() => {
     setLoaded(true);
   }, []);
 
   const getTotalItemsInCart = useCartStore((state) => state.getTotalItems());
+  const wishlist = useWishlistStore((state) => state.wishlist);
 
   // const handleMenuButtonClick = () => {
   //   setOpen(!open);
@@ -82,13 +88,15 @@ export const Navbar = () => {
     {
       path: "/favorites",
       icon: <MdOutlineFavoriteBorder className="w-6 h-6" />,
-      badge: <FavoriteProductsCount />,
+      badge: <NotificationBadge value={Object.keys(wishlist).length} />,
+      title: "Favorites",
     },
     {
       path: +getTotalItemsInCart === 0 && loaded ? "/empty" : "/cart",
       icon: <MdOutlineShoppingBag className="w-6 h-6" />,
       // badge: <NotificationBadge value={getShoppingCartTotalItems()} />,
       badge: <NotificationBadge value={+getTotalItemsInCart} />,
+      title: "Cart",
     },
   ];
 
@@ -110,9 +118,11 @@ export const Navbar = () => {
         </ul>
 
         <ul className="flex items-center space-x-1">
-          {accountLinks.map((accountLink) => (
-            <ActiveLink key={accountLink.path} {...accountLink} />
-          ))}
+          {user &&
+            user.id &&
+            accountLinks.map((accountLink) => (
+              <ActiveLink key={accountLink.path} {...accountLink} />
+            ))}
 
           <div className="hidden md:flex">
             <AccountButton />

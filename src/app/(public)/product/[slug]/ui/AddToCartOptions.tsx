@@ -151,7 +151,11 @@ export const AddToCartOptions = ({ product, settings }: Props) => {
 
     setIsSubmitting(true);
 
-    if (!size) return;
+    if (!size) {
+      toast.error("Please select a product size");
+      setIsSubmitting(false);
+      return;
+    }
 
     const discountCents = calcDiscountCents(
       product.price,

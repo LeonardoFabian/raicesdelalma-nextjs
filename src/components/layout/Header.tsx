@@ -17,8 +17,10 @@ import { useCartStore, useWishlistStore } from "@/store";
 import { useSession } from "next-auth/react";
 
 export const Header = () => {
-  const [loaded, setLoaded] = useState(false);
   const { data: session } = useSession();
+  const getTotalItemsInCart = useCartStore((state) => state.getTotalItems());
+  const wishlist = useWishlistStore((state) => state.wishlist);
+  const [loaded, setLoaded] = useState(false);
   // const [open, setOpen] = useState(false);
   // const cartCount = useAppSelector((state) => state.counter.count);
   // const wishlistCount = useAppSelector(
@@ -29,11 +31,11 @@ export const Header = () => {
   //   setOpen(!open);
   // };
 
-  const user = session?.user;
-
   useEffect(() => {
     setLoaded(true);
   }, []);
+
+  if (!loaded) return null;
 
   // const cookieStore = await cookies();
   // const cart = JSON.parse(cookieStore.get("ppbbCart")?.value ?? "{}") as {
@@ -47,9 +49,6 @@ export const Header = () => {
   //   });
   //   return items.toString();
   // };
-
-  const getTotalItemsInCart = useCartStore((state) => state.getTotalItems());
-  const wishlist = useWishlistStore((state) => state.wishlist);
 
   const navItems: ActiveLinkProps[] = [
     {
@@ -104,8 +103,7 @@ export const Header = () => {
         </span>
 
         <ul className="flex items-center justify-end md:mt-2 space-x-3 md:space-x-6">
-          {user &&
-            user.id &&
+          {session?.user &&
             accountLinks.map((accountLink) => (
               <li key={accountLink.path}>
                 <ActiveLink {...accountLink} />

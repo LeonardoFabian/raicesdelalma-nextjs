@@ -21,8 +21,10 @@ import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 
 export const Navbar = () => {
-  const [loaded, setLoaded] = useState(false);
   const { data: session } = useSession();
+  const getTotalItemsInCart = useCartStore((state) => state.getTotalItems());
+  const wishlist = useWishlistStore((state) => state.wishlist);
+  const [loaded, setLoaded] = useState(false);
 
   // const [open, setOpen] = useState(false);
 
@@ -31,14 +33,11 @@ export const Navbar = () => {
   //   (state) => Object.values(state.wishlist.favorites).length
   // );
 
-  const user = session?.user;
-
   useEffect(() => {
     setLoaded(true);
   }, []);
 
-  const getTotalItemsInCart = useCartStore((state) => state.getTotalItems());
-  const wishlist = useWishlistStore((state) => state.wishlist);
+  if (!loaded) return null;
 
   // const handleMenuButtonClick = () => {
   //   setOpen(!open);
@@ -118,8 +117,7 @@ export const Navbar = () => {
         </ul>
 
         <ul className="flex items-center space-x-1">
-          {user &&
-            user.id &&
+          {session?.user &&
             accountLinks.map((accountLink) => (
               <ActiveLink key={accountLink.path} {...accountLink} />
             ))}

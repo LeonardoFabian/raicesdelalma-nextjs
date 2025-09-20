@@ -13,10 +13,12 @@ import { MdOutlineFavoriteBorder, MdOutlineShoppingBag } from "react-icons/md";
 
 // import { cookies } from "next/headers";
 import { FavoriteProductsCount } from "@/components/auth/getFavoriteProductsCount";
-import { useCartStore } from "@/store";
+import { useCartStore, useWishlistStore } from "@/store";
+import { useSession } from "next-auth/react";
 
 export const Header = () => {
   const [loaded, setLoaded] = useState(false);
+  const { data: session } = useSession();
   // const [open, setOpen] = useState(false);
   // const cartCount = useAppSelector((state) => state.counter.count);
   // const wishlistCount = useAppSelector(
@@ -26,6 +28,8 @@ export const Header = () => {
   // const handleClick = () => {
   //   setOpen(!open);
   // };
+
+  const user = session?.user;
 
   useEffect(() => {
     setLoaded(true);
@@ -45,6 +49,7 @@ export const Header = () => {
   // };
 
   const getTotalItemsInCart = useCartStore((state) => state.getTotalItems());
+  const wishlist = useWishlistStore((state) => state.wishlist);
 
   const navItems: ActiveLinkProps[] = [
     {
@@ -65,7 +70,8 @@ export const Header = () => {
     {
       path: "/favorites",
       icon: <MdOutlineFavoriteBorder className="w-6 h-6" />,
-      badge: <FavoriteProductsCount />,
+      badge: <NotificationBadge value={Object.keys(wishlist).length} />,
+      // badge: <FavoriteProductsCount />,
       title: "Favorites",
     },
     {
@@ -98,11 +104,13 @@ export const Header = () => {
         </span>
 
         <ul className="flex items-center justify-end md:mt-2 space-x-3 md:space-x-6">
-          {accountLinks.map((accountLink) => (
-            <li key={accountLink.path}>
-              <ActiveLink {...accountLink} />
-            </li>
-          ))}
+          {user &&
+            user.id &&
+            accountLinks.map((accountLink) => (
+              <li key={accountLink.path}>
+                <ActiveLink {...accountLink} />
+              </li>
+            ))}
 
           <li className="hidden md:flex">
             <AccountButton className="text-primary" />

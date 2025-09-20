@@ -4,12 +4,19 @@ import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { useWishlistStore } from "@/store";
 import { addProductToWishlist, removeProductFromWishlist } from "@/actions";
 import clsx from "clsx";
+import { useSession } from "next-auth/react";
 
 interface Props {
   productId: string;
 }
 
 export const AddToWishlist = ({ productId }: Props) => {
+  const { data: session } = useSession();
+
+  if (!session?.user) {
+    return null;
+  }
+
   const wishlist = useWishlistStore((state) => state.wishlist);
   const toggleStoreWishlistItem = useWishlistStore((state) => state.toggle);
   const isWishlisted = wishlist.includes(productId);

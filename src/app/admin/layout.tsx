@@ -41,7 +41,7 @@ export default async function AdminLayout({
               image={session.user?.image}
             />  */}
             <AdminNavbar user={user} />
-            <div className="container px-6">
+            <div className="pbb-admin-main-content">
               {/* {JSON.stringify(session.user)} */}
               {children}
             </div>

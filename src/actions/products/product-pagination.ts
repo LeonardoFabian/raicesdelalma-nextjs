@@ -1,5 +1,6 @@
 'use server'
 
+import { Product } from "@/interfaces";
 import prisma from "@/lib/prisma";
 import { Category } from '@prisma/client';
 
@@ -9,7 +10,14 @@ interface Pagination {
     category?: Category;
 }
 
-export const getPaginatedProductsWithImages = async ({ page = 1, take = 3, category }: Pagination) => {
+interface PaginatedProductsResponse {
+    products: Product[];
+    currentPage: number;
+    totalPages: number;
+    count: number;
+}
+
+export const getPaginatedProductsWithImages = async ({ page = 1, take = 3, category }: Pagination): Promise<PaginatedProductsResponse> => {
 
     if ( isNaN( Number(page) ) ) page = 1;
     if ( page < 1 ) page = 1;

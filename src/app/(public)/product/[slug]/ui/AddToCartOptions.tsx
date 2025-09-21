@@ -157,13 +157,14 @@ export const AddToCartOptions = ({ product, settings }: Props) => {
       return;
     }
 
-    if (!canAddToCart) {
-      toast.error(
-        "Please customize your order and select all required options"
-      );
-      setIsSubmitting(false);
-      return;
-    }
+    // TODO toast message when options is required and not selected
+    // if (!canAddToCart) {
+    //   toast.error(
+    //     "Please customize your order and select all required options"
+    //   );
+    //   setIsSubmitting(false);
+    //   return;
+    // }
 
     const discountCents = calcDiscountCents(
       product.price,

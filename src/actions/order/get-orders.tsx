@@ -65,8 +65,10 @@ export const getOrders = async ({ page = 1, take = 12 }: OrdersPagination) => {
     console.log(error);
 
     return {
-      ok: false,
-      message: "Something went wrong fetching orders",
+      orders: [],
+      count: 0,
+      totalPages: 0,
+      currentPage: 1,
     };
   }
 };

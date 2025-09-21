@@ -12,6 +12,10 @@ import {
 } from "react-icons/md";
 import { TbCashRegister } from "react-icons/tb";
 import { PiResize } from "react-icons/pi";
+import { LiaUsersCogSolid } from "react-icons/lia";
+import { FaDolly, FaRegChartBar } from "react-icons/fa";
+import { TbReceiptTax } from "react-icons/tb";
+import { SlSettings } from "react-icons/sl";
 import Link from "next/link";
 
 export default async function AdminPage() {
@@ -162,34 +166,124 @@ export default async function AdminPage() {
         </div>
         {/* End of stats grid */}
 
-        <h3 className="text-text-primary font-medium">Quick Actions</h3>
+        <h3 className="text-text-primary font-medium">Other Quick Actions</h3>
 
         {/* Recent orders table */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
           {/* card */}
-          <div className="flex items-start gap-3 bg-white p-3 rounded-lg shadow">
-            <span className="h-12 w-12 min-w-12 flex items-center justify-center bg-primary/10 rounded-lg">
-              <MdOutlineDiscount className="w-8 h-8 text-primary" />
-            </span>
-            <div className="flex flex-col gap-3 text-sm font-body">
-              <p className="text-text-primary font-medium">Manage Categories</p>
-              <p className="text-text-secondary">
-                Create, update, and organize your product categories.
-              </p>
+          <Link href="/admin/settings">
+            <div className="flex items-start gap-3 bg-white p-3 rounded-lg shadow cursor-pointer hover:shadow-lg transition-shadow">
+              <span className="h-12 w-12 min-w-12 flex items-center justify-center bg-primary/10 rounded-lg">
+                <SlSettings className="w-8 h-8 text-primary" />
+              </span>
+              <div className="flex flex-col gap-3 text-sm font-body">
+                <p className="text-text-primary font-medium">
+                  Manage Store Settings
+                </p>
+                <p className="text-text-secondary">
+                  Configure store settings, payment methods, and shipping
+                  options.
+                </p>
+              </div>
             </div>
-          </div>
+          </Link>
+
           {/* card */}
-          <div className="flex items-start gap-3 bg-white p-3 rounded-lg shadow">
-            <span className="h-12 w-12 min-w-12 flex items-center justify-center bg-primary/10 rounded-lg">
-              <PiResize className="w-8 h-8 text-primary" />
-            </span>
-            <div className="flex flex-col gap-3 text-sm font-body">
-              <p className="text-text-primary font-medium">Manage Sizes</p>
-              <p className="text-text-secondary">
-                Create, update, and organize your product sizes.
-              </p>
+          <Link href="#">
+            <div className="flex items-start gap-3 bg-white p-3 rounded-lg shadow cursor-pointer hover:shadow-lg transition-shadow">
+              <span className="h-12 w-12 min-w-12 flex items-center justify-center bg-primary/10 rounded-lg">
+                <MdOutlineDiscount className="w-8 h-8 text-primary" />
+              </span>
+              <div className="flex flex-col gap-3 text-sm font-body">
+                <p className="text-text-primary font-medium">
+                  Manage Categories
+                </p>
+                <p className="text-text-secondary">
+                  Create, update, and organize your product categories.
+                </p>
+              </div>
             </div>
-          </div>
+          </Link>
+
+          {/* card */}
+          <Link href="#">
+            <div className="flex items-start gap-3 bg-white p-3 rounded-lg shadow cursor-pointer hover:shadow-lg transition-shadow">
+              <span className="h-12 w-12 min-w-12 flex items-center justify-center bg-primary/10 rounded-lg">
+                <PiResize className="w-8 h-8 text-primary" />
+              </span>
+              <div className="flex flex-col gap-3 text-sm font-body">
+                <p className="text-text-primary font-medium">Manage Sizes</p>
+                <p className="text-text-secondary">
+                  Create, update, and organize your product sizes.
+                </p>
+              </div>
+            </div>
+          </Link>
+
+          {/* card */}
+          <Link href="/admin/users">
+            <div className="flex items-start gap-3 bg-white p-3 rounded-lg shadow cursor-pointer hover:shadow-lg transition-shadow">
+              <span className="h-12 w-12 min-w-12 flex items-center justify-center bg-primary/10 rounded-lg">
+                <LiaUsersCogSolid className="w-8 h-8 text-primary" />
+              </span>
+              <div className="flex flex-col gap-3 text-sm font-body">
+                <p className="text-text-primary font-medium">
+                  Manage Users and Roles
+                </p>
+                <p className="text-text-secondary">
+                  List and manage users, assign roles, and set permissions.
+                </p>
+              </div>
+            </div>
+          </Link>
+
+          {/* card */}
+          <Link href="#">
+            <div className="flex items-start gap-3 bg-white p-3 rounded-lg shadow cursor-pointer hover:shadow-lg transition-shadow">
+              <span className="h-12 w-12 min-w-12 flex items-center justify-center bg-primary/10 rounded-lg">
+                <FaDolly className="w-8 h-8 text-primary" />
+              </span>
+              <div className="flex flex-col gap-3 text-sm font-body">
+                <p className="text-text-primary font-medium">
+                  Manage Suppliers
+                </p>
+                <p className="text-text-secondary">
+                  Create and manage suppliers for your products.
+                </p>
+              </div>
+            </div>
+          </Link>
+
+          {/* card */}
+          <Link href="#">
+            <div className="flex items-start gap-3 bg-white p-3 rounded-lg shadow cursor-pointer hover:shadow-lg transition-shadow">
+              <span className="h-12 w-12 min-w-12 flex items-center justify-center bg-primary/10 rounded-lg">
+                <TbReceiptTax className="w-8 h-8 text-primary" />
+              </span>
+              <div className="flex flex-col gap-3 text-sm font-body">
+                <p className="text-text-primary font-medium">Manage Taxes</p>
+                <p className="text-text-secondary">
+                  List and generate tax reports for your store.
+                </p>
+              </div>
+            </div>
+          </Link>
+
+          {/* card */}
+          <Link href="#">
+            <div className="flex items-start gap-3 bg-white p-3 rounded-lg shadow cursor-pointer hover:shadow-lg transition-shadow">
+              <span className="h-12 w-12 min-w-12 flex items-center justify-center bg-primary/10 rounded-lg">
+                <FaRegChartBar className="w-8 h-8 text-primary" />
+              </span>
+              <div className="flex flex-col gap-3 text-sm font-body">
+                <p className="text-text-primary font-medium">Manage Reports</p>
+                <p className="text-text-secondary">
+                  View sales, inventory, and customer reports to track store
+                  performance.
+                </p>
+              </div>
+            </div>
+          </Link>
         </div>
         {/* End of recent orders table */}
       </div>

@@ -21,6 +21,11 @@ import { User } from "@prisma/client";
 import { useUIStore } from "@/store";
 import clsx from "clsx";
 import { IoCloseOutline } from "react-icons/io5";
+import { FaDolly, FaRegChartBar } from "react-icons/fa";
+import { SlSettings } from "react-icons/sl";
+
+import { LiaUsersCogSolid } from "react-icons/lia";
+
 import { IUser } from "@/interfaces";
 
 interface Props {
@@ -38,7 +43,7 @@ interface MenuItemsProps {
 const menuItems: MenuItemsProps[] = [
   {
     path: "/admin",
-    label: "Admin",
+    label: "Dashboard",
     description: "View your dashboard",
     icon: <MdOutlineDashboard className="w-6 h-6" />,
     includeChildren: false,
@@ -59,19 +64,19 @@ const menuItems: MenuItemsProps[] = [
     path: "/admin/users",
     label: "Users",
     description: "Manage users and roles",
-    icon: <MdOutlinePersonSearch className="w-6 h-6" />,
+    icon: <LiaUsersCogSolid className="w-6 h-6" />,
   },
   {
     path: "/admin/reports",
     label: "Reports",
     description: "View your reports",
-    icon: <MdInsertChartOutlined className="w-6 h-6" />,
+    icon: <FaRegChartBar className="w-6 h-6" />,
   },
   {
     path: "/admin/settings",
     label: "Settings",
     description: "Manage settings",
-    icon: <MdOutlineSettings className="w-6 h-6" />,
+    icon: <SlSettings className="w-6 h-6" />,
   },
 ];
 

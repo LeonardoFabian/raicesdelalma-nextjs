@@ -21,6 +21,9 @@ import {
   MdOutlineShoppingBag,
   MdOutlineStore,
 } from "react-icons/md";
+import { FaDolly, FaRegChartBar } from "react-icons/fa";
+import { SlSettings } from "react-icons/sl";
+import { LiaUsersCogSolid } from "react-icons/lia";
 
 const accountNavItems: ActiveLinkProps[] = [
   {
@@ -38,7 +41,7 @@ const accountNavItems: ActiveLinkProps[] = [
 const adminMenuItems: ActiveLinkProps[] = [
   {
     path: "/admin",
-    label: "Admin",
+    label: "Dashboard",
     icon: <MdOutlineDashboard className="w-6 h-6" />,
   },
   {
@@ -54,17 +57,17 @@ const adminMenuItems: ActiveLinkProps[] = [
   {
     path: "/admin/users",
     label: "Users",
-    icon: <IoPeopleOutline className="w-6 h-6" />,
+    icon: <LiaUsersCogSolid className="w-6 h-6" />,
   },
   {
     path: "/admin/reports",
     label: "Reports",
-    icon: <MdInsertChartOutlined className="w-6 h-6" />,
+    icon: <FaRegChartBar className="w-6 h-6" />,
   },
   {
     path: "/admin/settings",
     label: "Settings",
-    icon: <MdOutlineSettings className="w-6 h-6" />,
+    icon: <SlSettings className="w-6 h-6" />,
   },
 ];
 

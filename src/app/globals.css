@@ -121,14 +121,22 @@ body {
   @apply w-full md:w-auto inline-flex md:flex items-center justify-center gap-2 whitespace-nowrap py-2 px-4 rounded font-body font-medium text-base bg-gray-200 text-gray-400 border border-gray-200 transition-all cursor-not-allowed;
 }
 
+.alert svg {
+  @apply w-6 h-6 min-w-6;
+}
+
 .alert-danger {
-  @apply bg-red-100 text-red-600 py-2 px-4 rounded font-body font-medium text-base  block md:flex items-center justify-center gap-2  hover:cursor-pointer transition-all leading-normal;
+  @apply bg-red-100 text-red-600 py-2 px-4 rounded font-body font-medium text-sm  flex items-start justify-start gap-2  hover:cursor-pointer transition-all leading-normal;
 }
 
 .alert-warning {
-  @apply bg-yellow-100 text-yellow-600 py-2 px-4 rounded font-body font-medium text-base  block md:flex items-center justify-center gap-2 hover:cursor-pointer transition-all leading-normal;
+  @apply bg-yellow-100 text-yellow-600 py-2 px-4 rounded font-body font-medium text-sm  flex items-start justify-start gap-2 hover:cursor-pointer transition-all leading-normal;
 }
 
 .alert-success {
-  @apply bg-green-100 text-green-600 py-2 px-4 rounded font-body font-medium text-base  block md:flex items-center justify-center gap-2 hover:cursor-pointer transition-all leading-normal;
+  @apply bg-green-100 text-green-600 py-2 px-4 rounded font-body font-medium text-sm  flex items-start justify-start gap-2 hover:cursor-pointer transition-all leading-normal;
+}
+
+.alert-default {
+  @apply bg-gray-100 text-gray-600 py-2 px-4 rounded font-body font-medium text-sm  flex items-start justify-start gap-2 hover:cursor-pointer transition-all leading-normal;
 }

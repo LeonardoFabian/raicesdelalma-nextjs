@@ -1,6 +1,7 @@
+export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
-import { H1, Title } from "@/components";
+import { H1, Pagination, Title } from "@/components";
 import { Product as ProductUI } from "@/interfaces";
 import { CartItem } from "@/shopping-cart";
 import { Product } from "@prisma/client";
@@ -12,6 +13,8 @@ import Link from "next/link";
 import { getOrdersBySessionUser } from "@/actions";
 import { redirect } from "next/navigation";
 import clsx from "clsx";
+import { OrdersTable } from "./ui/OrdersTable";
+import { MdInfoOutline } from "react-icons/md";
 
 // export const metadata: Metadata = {
 //   title: "Your Shopping Cart | Purple Butterfly",
@@ -32,8 +35,16 @@ import clsx from "clsx";
 //   },
 // };
 
-export default async function UserOrdersPage() {
-  const { ok, orders } = await getOrdersBySessionUser();
+interface Props {
+  searchParams: Promise<{ page?: string }>;
+}
+
+export default async function UserOrdersPage({ searchParams }: Props) {
+  const { page } = await searchParams;
+  const pageParam = page ? parseInt(page) : 1;
+
+  const { ok, orders, totalPages, currentPage, count } =
+    await getOrdersBySessionUser({ page: pageParam, take: 12 });
 
   if (!ok) {
     redirect("/auth/login");
@@ -48,84 +59,27 @@ export default async function UserOrdersPage() {
       /> */}
       <div className="ppbb-orders-page text-left w-full py-6 md:py-12  flex flex-col gap-16 ">
         <div className="container">
-          <table className="min-w-full">
-            <thead className="bg-white border-b border-b-gray-300">
-              <tr>
-                <th
-                  scope="col"
-                  className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                >
-                  Order #
-                </th>
-                <th
-                  scope="col"
-                  className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                >
-                  Name
-                </th>
-                <th
-                  scope="col"
-                  className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                >
-                  Status
-                </th>
-                <th
-                  scope="col"
-                  className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                >
-                  Options
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {orders && orders.length > 0
-                ? orders.map((order) => (
-                    <tr
-                      key={order.id}
-                      className="bg-white border-b border-b-gray-300 transition duration-300 ease-in-out hover:bg-gray-100"
-                    >
-                      <td className="px-6 py-4 whitespace-nowrap text-sm md:text-base font-medium text-text-primary">
-                        {order.id.split("-").at(-1)}
-                      </td>
-                      <td className="text-sm md:text-base  text-text-primary  px-6 py-4 whitespace-nowrap">
-                        {order.OrderAddress?.firstName}{" "}
-                        {order.OrderAddress?.lastName}
-                      </td>
-                      <td className="flex items-center text-sm md:text-base text-text-primary  px-6 py-4 whitespace-nowrap">
-                        <IoCardOutline
-                          className={clsx({
-                            "text-green-800":
-                              order.status === "paid" ||
-                              order.status === "shipped" ||
-                              order.status === "delivered",
-                            "text-red-800": order.status === "pending",
-                          })}
-                        />
-                        <span
-                          className={clsx("capitalize", {
-                            "mx-2 text-green-800":
-                              order.status === "paid" ||
-                              order.status === "shipped" ||
-                              order.status === "delivered",
-                            "mx-2 text-red-800": order.status === "pending",
-                          })}
-                        >
-                          {order.status}
-                        </span>
-                      </td>
-                      <td className="text-sm md:text-base text-text-primary  px-6 ">
-                        <Link
-                          href={`/orders/${order.id}`}
-                          className="hover:underline"
-                        >
-                          View Order
-                        </Link>
-                      </td>
-                    </tr>
-                  ))
-                : null}
-            </tbody>
-          </table>
+          {orders && orders.length > 0 ? (
+            <OrdersTable orders={orders} />
+          ) : (
+            <span className="alert alert-default">
+              <MdInfoOutline size={24} />
+
+              <span className="flex flex-col gap-1">
+                <strong>You haven't placed any orders yet!</strong>
+                <span>
+                  It looks like you haven't made any purchases yet. If you're
+                  ready to buy something, browse our
+                  <Link href="/shop">Shop</Link> and start adding items to your
+                  cart. We're here to help you every step of the way!
+                </span>
+              </span>
+            </span>
+          )}
+
+          {orders && orders.length > 0 && (
+            <Pagination totalPages={totalPages} />
+          )}
         </div>
       </div>
     </>

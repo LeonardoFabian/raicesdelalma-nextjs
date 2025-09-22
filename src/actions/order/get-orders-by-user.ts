@@ -3,7 +3,16 @@
 import { auth } from "@/auth.config";
 import prisma from "@/lib/prisma";
 
-export const getOrdersBySessionUser = async () => {
+interface Pagination {
+    page?: number;
+    take?: number;
+}
+
+export const getOrdersBySessionUser = async ({ page = 1, take = 12 }: Pagination ) => {
+
+    if (isNaN(Number(page))) page = 1;
+    if (page < 1) page = 1;
+
     const session = await auth();
     if (!session?.user) {
         return {
@@ -19,19 +28,40 @@ export const getOrdersBySessionUser = async () => {
             },
             include: {
                 OrderAddress: true,
-            }
+            },
+            take: take,
+            skip: (page - 1) * take
         });
+
+        const count = orders.length;
+        const totalPages = Math.ceil(count / take);
 
         return {
             ok: true,
-            orders: orders
+            orders: orders.map(order => {
+                const {subTotal, totalAmount, shipping, ...restOrder } = order;
+
+                return {
+                    ...restOrder,
+                    subTotal: Number(subTotal),
+                    totalAmount: Number(totalAmount),
+                    shipping: Number(shipping)
+                }
+            }),
+            count: count,
+            currentPage: page,
+            totalPages: totalPages
         }
     } catch (error) {
         console.log(error);
 
         return {
             ok: false,
-            message: 'Something went wrong fetching orders'
+            message: 'Something went wrong fetching orders',
+            orders: [],
+            count: 0,
+            currentPage: 1,
+            totalPages: 1
         }
     }
 }

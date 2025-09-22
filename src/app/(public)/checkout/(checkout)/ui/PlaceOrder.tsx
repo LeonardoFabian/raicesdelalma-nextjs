@@ -50,6 +50,25 @@ export const PlaceOrder = () => {
       return;
     }
 
+    // 🧠 Send event to Google Tag Manager
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "purchase",
+      ecommerce: {
+        transaction_id: resp.order!.id,
+        value: resp.order!.totalAmount, // total en USD
+        currency: "USD",
+        items: cart.map((product) => ({
+          item_id: product.productId,
+          item_name: product.title,
+          quantity: product.quantity,
+          price: product.basePriceCents, // asegúrate de tenerlo en el objeto
+          discount: product.discountCents ?? 0,
+          item_variant: product.selectedSize?.label,
+        })),
+      },
+    });
+
     // all ok?
     clearCart();
 

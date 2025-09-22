@@ -72,7 +72,7 @@ export const UserDataForm = ({ user }: Props) => {
           </div>
         </div>
 
-        <span className="alert-warning">
+        <span className="alert alert-warning">
           <IoWarningOutline size={24} />
           <span>
             <strong>Warning:</strong> Changing your email will require you to

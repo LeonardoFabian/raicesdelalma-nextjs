@@ -52,7 +52,7 @@ export default async function AdminAccountPage() {
                   href="/admin/account/change-photo"
                   className="btn-primary"
                 >
-                  Upload New Picture
+                  Change Profile Picture
                 </Link>
               </div>
             </div>

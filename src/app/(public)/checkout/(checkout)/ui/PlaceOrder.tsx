@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { OrderSummary } from "@/app/(public)/cart/ui/OrderSummary";
 import { useAddressStore, useCartStore } from "@/store";
 import { Loading } from "@/components";
-import { sleep, toCents } from "@/utils";
+import { currencyFormat, sleep, toCents } from "@/utils";
 import Link from "next/link";
 import clsx from "clsx";
 import { CartOption } from "@/lib/pricing";
@@ -62,8 +62,8 @@ export const PlaceOrder = () => {
           item_id: product.productId,
           item_name: product.title,
           quantity: product.quantity,
-          price: product.basePriceCents, // asegúrate de tenerlo en el objeto
-          discount: product.discountCents ?? 0,
+          price: currencyFormat(product.basePriceCents), // asegúrate de tenerlo en el objeto
+          discount: currencyFormat(product.discountCents ?? 0),
           item_variant: product.selectedSize?.label,
         })),
       },

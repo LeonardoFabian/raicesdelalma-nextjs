@@ -93,6 +93,10 @@ body {
   @apply w-full md:w-auto inline-flex md:flex items-center justify-center gap-2 whitespace-nowrap py-2 px-4 rounded font-body font-medium text-base bg-primary text-white border border-primary hover:bg-primary-hover hover:border-primary-hover hover:cursor-pointer transition-all;
 }
 
+.btn-primary-disabled {
+  @apply w-full md:w-auto inline-flex md:flex items-center justify-center gap-2 whitespace-nowrap py-2 px-4 rounded font-body font-medium text-base bg-purple-100 text-purple-200 border border-purple-100 cursor-not-allowed transition-all;
+}
+
 .btn-secondary {
   @apply w-full md:w-auto inline-flex md:flex items-center justify-center gap-2 whitespace-nowrap py-2 px-4 rounded font-body font-medium text-base bg-white text-primary border border-primary hover:bg-gray-100 hover:border-primary-hover hover:text-primary-hover hover:cursor-pointer transition-all;
 }
@@ -107,6 +111,10 @@ body {
 
 .btn-danger {
   @apply w-full md:w-auto inline-flex md:flex items-center justify-center gap-2 whitespace-nowrap py-2 px-4 rounded font-body font-medium text-base bg-red-500 text-white border border-red-500 hover:bg-red-600 hover:border-red-600 hover:cursor-pointer transition-all;
+}
+
+.btn-danger-disabled {
+  @apply w-full md:w-auto inline-flex md:flex items-center justify-center gap-2 whitespace-nowrap py-2 px-4 rounded font-body font-medium text-base bg-red-100 text-red-200 border border-red-100 cursor-not-allowed transition-all;
 }
 
 .btn-disabled {

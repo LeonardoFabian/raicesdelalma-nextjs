@@ -6,6 +6,7 @@ import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import { IoWarningOutline } from "react-icons/io5";
 
 interface Props {
   user: IUser;
@@ -72,8 +73,11 @@ export const UserDataForm = ({ user }: Props) => {
         </div>
 
         <span className="alert-warning">
-          <strong>Warning:</strong> Changing your email will require you to log
-          in again with the new email.
+          <IoWarningOutline size={24} />
+          <span>
+            <strong>Warning:</strong> Changing your email will require you to
+            log in again with the new email.
+          </span>
         </span>
 
         <div className="flex items-center justify-start gap-2 mt-4">

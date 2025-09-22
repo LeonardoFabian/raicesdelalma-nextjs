@@ -2,12 +2,19 @@
 
 import type { Address } from "@/interfaces";
 import prisma from "@/lib/prisma";
+import { revalidatePath } from "next/cache";
 
 export const setUserAddress = async (address: Address, userId: string) => {
     try {
         const newAddress = await createOrReplaceAddress(address, userId);
+
+        // revalidatePath('/checkout/address');
+        revalidatePath('/admin/account');
+        revalidatePath('/profile');
+
         return {
             ok: true,
+            message: 'Address created successfully',
             address: newAddress
         }
     } catch (error) {
@@ -42,7 +49,7 @@ const createOrReplaceAddress = async (address: Address, userId: string) => {
         if (!storedAddress) {
             const newAddress = await prisma.userAddress.create({
                 data: addressToStore
-            })
+            });
 
             return newAddress;
         }

@@ -1,3 +1,6 @@
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 import React, { use } from "react";
 import Image from "next/image";
 import { Avatar } from "@/components/admin";
@@ -7,13 +10,18 @@ import { PageTitle } from "@/components";
 import { auth } from "@/auth.config";
 import Link from "next/link";
 import { UserDataForm } from "./ui/UserDataForm";
+import { getCountries, getUserAddress } from "@/actions";
+import { AddressForm } from "./ui/AddressForm";
 
 export default async function AdminAccountPage() {
+  const countries = await getCountries();
   const session = await auth();
 
-  if (!session?.user) {
+  if (!session?.user || !session.user.id) {
     redirect("/auth/login");
   }
+
+  const userAddress = (await getUserAddress(session.user.id)) ?? undefined;
 
   return (
     <>
@@ -50,15 +58,37 @@ export default async function AdminAccountPage() {
             </div>
 
             {/* Right */}
-            <div className="fade-in col-span-1 lg:col-span-2 flex flex-col items-start justify-start gap-8 w-full bg-white text-text-secondary p-8 rounded-lg shadow">
-              <div className="flex items-center gap-2">
-                <h2 className="font-body font-medium text-text-primary">
-                  User Information
-                </h2>
+            <div className="w-full col-span-1 lg:col-span-2 flex flex-col gap-4">
+              <div className="fade-in col-span-1 lg:col-span-2 flex flex-col items-start justify-start gap-4 w-full bg-white text-text-secondary p-8 rounded-lg shadow">
+                <div className="flex items-center gap-2">
+                  <h2 className="font-body font-medium text-text-primary">
+                    User Information
+                  </h2>
+                </div>
+
+                <div className="flex flex-col gap-4 w-full">
+                  <UserDataForm user={session.user} />
+                </div>
               </div>
 
-              <div className="flex flex-col gap-4 w-full">
-                <UserDataForm user={session.user} />
+              {/* User Address */}
+              <div className="fade-in col-span-1 lg:col-span-2 flex flex-col items-start justify-start gap-4 w-full bg-white text-text-secondary p-8 rounded-lg shadow">
+                <div className="flex flex-col items-start gap-1">
+                  <h2 className="font-body font-medium text-text-primary">
+                    User Address
+                  </h2>
+                  <p className="text-sm text-text-secondary">
+                    Add, edit or remove your default address for orders and
+                    deliveries
+                  </p>
+                </div>
+
+                <div className="flex flex-col gap-4 w-full">
+                  <AddressForm
+                    countries={countries}
+                    userAddress={userAddress}
+                  />
+                </div>
               </div>
             </div>
           </div>

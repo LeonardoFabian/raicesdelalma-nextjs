@@ -5,6 +5,7 @@ import { getWishlistByUser } from "@/actions";
 import { H1, Pagination, Title } from "@/components";
 import { ProductGrid } from "@/components";
 import { Metadata } from "next";
+import Head from "next/head";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 
 export const metadata: Metadata = {
@@ -55,6 +56,9 @@ export default async function FavoritesPage({ searchParams }: Props) {
 
   return (
     <>
+      <Head>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
       <Title title="Favorites" />
       <script
         type="application/ld+json"

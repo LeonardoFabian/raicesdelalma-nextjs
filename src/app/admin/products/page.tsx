@@ -8,6 +8,7 @@ import { redirect } from "next/navigation";
 import { auth } from "@/auth.config";
 import { AddNewProductButton } from "./ui/AddNewProductButton";
 import { getPaginatedProductsWithImages } from "@/actions";
+import Head from "next/head";
 
 interface Props {
   searchParams: Promise<{ page?: string }>;
@@ -61,6 +62,9 @@ export default async function AdminProductsPage({ searchParams }: Props) {
 
   return (
     <>
+      <Head>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
       {/* { JSON.stringify( products ) } */}
       <div className="pbb-admin-products-page flex flex-col gap-4 w-full px-4 md:px-6">
         <PageTitle title="Products" subtitle="Manage your Products">

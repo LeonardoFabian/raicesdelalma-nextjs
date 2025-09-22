@@ -3,6 +3,7 @@ import { AddressForm } from "./ui/AddressForm";
 import { OrderSummary } from "../../cart/ui/OrderSummary";
 import { getCountries, getUserAddress } from "@/actions";
 import { auth } from "@/auth.config";
+import Head from "next/head";
 
 // export const metadata: Metadata = {
 //   title: "Your Shopping Cart | Purple Butterfly",
@@ -44,6 +45,9 @@ export default async function ShippingAddressPage() {
 
   return (
     <>
+      <Head>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
       <Title title="Shipping Address" />
       {/* <script
         type="application/ld+json"

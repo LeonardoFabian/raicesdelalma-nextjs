@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 import prisma from "@/lib/prisma";
 import { IoCartOutline } from "react-icons/io5";
 import Link from "next/link";
+import Head from "next/head";
 
 // export const metadata: Metadata = {
 //   title: "Your Shopping Cart | Purple Butterfly",
@@ -71,6 +72,9 @@ export default async function EmptyPage() {
 
   return (
     <>
+      <Head>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
       <Title title="Empty Cart" />
       {/* <script
         type="application/ld+json"

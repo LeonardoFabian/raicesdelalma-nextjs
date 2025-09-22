@@ -9,6 +9,7 @@ import Link from "next/link";
 import { OrderSummary } from "../../cart/ui/OrderSummary";
 import { ProductsInCart } from "./ui/ProductsInCart";
 import { PlaceOrder } from "./ui/PlaceOrder";
+import Head from "next/head";
 
 // export const metadata: Metadata = {
 //   title: "Your Shopping Cart | Purple Butterfly",
@@ -76,6 +77,9 @@ export default async function CheckoutPage() {
 
   return (
     <>
+      <Head>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
       <Title title="Checkout" />
       {/* <script
         type="application/ld+json"

@@ -12,6 +12,7 @@ import Link from "next/link";
 import { UserDataForm } from "./ui/UserDataForm";
 import { getCountries, getUserAddress } from "@/actions";
 import { AddressForm } from "./ui/AddressForm";
+import Head from "next/head";
 
 export default async function AdminAccountPage() {
   const countries = await getCountries();
@@ -25,6 +26,9 @@ export default async function AdminAccountPage() {
 
   return (
     <>
+      <Head>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
       <div className="pbb-admin-account-page flex flex-col gap-4 w-full px-4 md:px-6">
         <PageTitle
           title="Manage Account"

@@ -8,6 +8,7 @@ import { OrderSummary } from "./ui/OrderSummary";
 import { useCartStore } from "@/store";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
+import Head from "next/head";
 
 // export const metadata: Metadata = {
 //   title: "Your Shopping Cart | Purple Butterfly",
@@ -97,6 +98,9 @@ export default function CartPage() {
 
   return (
     <>
+      <Head>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
       <Title title="Shopping Cart" />
       {/* <script
         type="application/ld+json"

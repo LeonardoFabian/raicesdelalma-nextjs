@@ -4,6 +4,7 @@ export const revalidate = 0;
 
 import { getCategories, getProductBySlug, getSizes } from "@/actions";
 import { PageTitle, ProductForm } from "@/components";
+import Head from "next/head";
 import { redirect } from "next/navigation";
 
 interface Props {
@@ -32,16 +33,21 @@ export default async function AdminProductPage({ params }: Props) {
   const title = slug === "new" ? "New Product" : "Edit Product";
 
   return (
-    <div className="pbb-admin-product-page flex flex-col gap-4 w-full px-4 md:px-6">
-      <PageTitle title={title} subtitle="Manage your product information" />
+    <>
+      <Head>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
+      <div className="pbb-admin-product-page flex flex-col gap-4 w-full px-4 md:px-6">
+        <PageTitle title={title} subtitle="Manage your product information" />
 
-      <div className="flex flex-col gap-4">
-        <ProductForm
-          product={product ?? {}}
-          sizes={sizes}
-          categories={categories}
-        />
+        <div className="flex flex-col gap-4">
+          <ProductForm
+            product={product ?? {}}
+            sizes={sizes}
+            categories={categories}
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
 }

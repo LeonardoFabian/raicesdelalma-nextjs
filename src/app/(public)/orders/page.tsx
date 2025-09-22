@@ -15,6 +15,7 @@ import { redirect } from "next/navigation";
 import clsx from "clsx";
 import { OrdersTable } from "./ui/OrdersTable";
 import { MdInfoOutline } from "react-icons/md";
+import Head from "next/head";
 
 // export const metadata: Metadata = {
 //   title: "Your Shopping Cart | Purple Butterfly",
@@ -52,6 +53,9 @@ export default async function UserOrdersPage({ searchParams }: Props) {
 
   return (
     <>
+      <Head>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
       <Title title="Orders" />
       {/* <script
         type="application/ld+json"

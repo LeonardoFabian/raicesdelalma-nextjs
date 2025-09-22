@@ -14,6 +14,7 @@ import { redirect } from "next/navigation";
 import clsx from "clsx";
 import { Pagination } from "@/components";
 import { UsersTable } from "./ui/UsersTable";
+import Head from "next/head";
 
 // export const metadata: Metadata = {
 //   title: "Your Shopping Cart | Purple Butterfly",
@@ -56,6 +57,9 @@ export default async function AdminUsersPage({ searchParams }: Props) {
 
   return (
     <>
+      <Head>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
       <div className="pbb-admin-users-page flex flex-col gap-4 w-full px-4 md:px-6">
         <PageTitle
           title="Users"

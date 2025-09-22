@@ -4,6 +4,7 @@ import { getOrderById } from "@/actions";
 import { redirect } from "next/navigation";
 import { currencyFormat, toCents } from "@/utils";
 import Image from "next/image";
+import Head from "next/head";
 
 // export const metadata: Metadata = {
 //   title: "Your Shopping Cart | Purple Butterfly",
@@ -54,6 +55,9 @@ export default async function OrderPage({ params }: Props) {
 
   return (
     <>
+      <Head>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
       <Title title={`Order #${id.split("-").at(-1)}`} />
       {/* <script
         type="application/ld+json"

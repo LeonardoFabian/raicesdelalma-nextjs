@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Title } from "@/components";
+import Head from "next/head";
 
 export const metadata: Metadata = {
   title:
@@ -46,6 +47,9 @@ export default function CustomizePage() {
 
   return (
     <>
+      <Head>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
       <Title title="Customize Your Gift" />
       <script
         type="application/ld+json"

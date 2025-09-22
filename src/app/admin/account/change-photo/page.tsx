@@ -2,6 +2,7 @@ import { PageTitle } from "@/components";
 import { ChangePhotoForm } from "./ui/ChangePhotoForm";
 import { auth } from "@/auth.config";
 import { redirect } from "next/navigation";
+import Head from "next/head";
 
 export default async function AdminChangePhotoPage() {
   const session = await auth();
@@ -11,18 +12,23 @@ export default async function AdminChangePhotoPage() {
   }
 
   return (
-    <div className="pbb-admin-change-photo-page flex flex-col gap-4 w-full px-4 md:px-6">
-      <PageTitle
-        title="Upload New Picture"
-        subtitle="Change your profile picture"
-      />
-
-      <div className="flex flex-col gap-4">
-        <ChangePhotoForm
-          userId={session.user.id}
-          imageUrl={session.user.image ?? ""}
+    <>
+      <Head>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
+      <div className="pbb-admin-change-photo-page flex flex-col gap-4 w-full px-4 md:px-6">
+        <PageTitle
+          title="Upload New Picture"
+          subtitle="Change your profile picture"
         />
+
+        <div className="flex flex-col gap-4">
+          <ChangePhotoForm
+            userId={session.user.id}
+            imageUrl={session.user.image ?? ""}
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
 }

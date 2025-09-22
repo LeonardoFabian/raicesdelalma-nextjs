@@ -13,6 +13,7 @@ import {
 } from "@/actions";
 import { MdInfoOutline } from "react-icons/md";
 import { OrdersTable } from "../orders/ui/OrdersTable";
+import Head from "next/head";
 
 export default async function PublicProfilePage() {
   //   const { data: session } = useSession();
@@ -37,6 +38,9 @@ export default async function PublicProfilePage() {
 
   return (
     <>
+      <Head>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
       <Title title="Profile" />
 
       <div className="pbb-profile-page text-left w-full py-6 md:py-12  flex flex-col gap-16 ">

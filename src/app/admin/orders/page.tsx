@@ -14,6 +14,7 @@ import { redirect } from "next/navigation";
 import clsx from "clsx";
 import { Pagination } from "@/components";
 import { OrdersTable } from "./ui/OrdersTable";
+import Head from "next/head";
 
 // export const metadata: Metadata = {
 //   title: "Your Shopping Cart | Purple Butterfly",
@@ -56,6 +57,9 @@ export default async function AdminOrdersPage({ searchParams }: Props) {
 
   return (
     <>
+      <Head>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
       <div className="pbb-admin-orders-page flex flex-col gap-4 w-full px-4 md:px-66">
         <PageTitle title="Orders" subtitle="Manage orders and order status" />
 

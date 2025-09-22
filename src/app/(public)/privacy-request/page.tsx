@@ -1,4 +1,5 @@
 import { PageTitle } from "@/components";
+import Head from "next/head";
 // import { getAllLegalSlugs, getLegalContent } from "@/lib/get-legal-content";
 // import { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -21,9 +22,14 @@ import { notFound } from "next/navigation";
 
 export default async function PrivacyRequestPage() {
   return (
-    <main className="max-w-3xl mx-auto px-4 py-10">
-      <PageTitle title="Privacy Request" />
-      <div>En construcción</div>
-    </main>
+    <>
+      <Head>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
+      <main className="max-w-3xl mx-auto px-4 py-10">
+        <PageTitle title="Privacy Request" />
+        <div>En construcción</div>
+      </main>
+    </>
   );
 }

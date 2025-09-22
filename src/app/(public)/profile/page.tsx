@@ -25,11 +25,7 @@ export default async function PublicProfilePage() {
       <div className="pbb-profile-page text-left w-full py-6 md:py-12  flex flex-col gap-16 ">
         <div className="container flex flex-col gap-16">
           <div className="flex flex-col gap-1 w-full bg-white text-text-secondary px-4 py-8 rounded-lg">
-            <Avatar
-              user={user}
-              template="profile"
-              className="text-text-primary "
-            />
+            <Avatar user={user} />
           </div>
 
           <section className="pbb-user-latest-orders">

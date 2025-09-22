@@ -26,6 +26,9 @@ export * from "./order/change-order-status";
 // Users
 export * from "./users/get-users";
 export * from "./users/change-user-role";
+export * from "./users/add-or-update-profile-picture";
+export * from "./users/delete-profile-picture";
+export * from "./users/update-user-info";
 
 // Payments 
 export * from "./payments/set-transaction-id";

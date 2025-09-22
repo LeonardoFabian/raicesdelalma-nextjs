@@ -62,7 +62,7 @@ export default async function AdminProductsPage({ searchParams }: Props) {
   return (
     <>
       {/* { JSON.stringify( products ) } */}
-      <div className="flex flex-col gap-4 w-full px-0 md:px-6">
+      <div className="pbb-admin-products-page flex flex-col gap-4 w-full px-4 md:px-6">
         <PageTitle title="Products" subtitle="Manage your Products">
           <AddNewProductButton />
           {/* <DeleteInactiveProducts /> */}

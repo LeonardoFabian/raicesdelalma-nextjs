@@ -56,7 +56,7 @@ export default async function AdminUsersPage({ searchParams }: Props) {
 
   return (
     <>
-      <div className="ppbb-admin-users-page text-left w-full  flex flex-col gap-12 px-0 md:px-6">
+      <div className="pbb-admin-users-page flex flex-col gap-4 w-full px-4 md:px-6">
         <PageTitle
           title="Users"
           subtitle="Manage application Users and Roles"

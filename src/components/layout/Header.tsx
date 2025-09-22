@@ -111,7 +111,7 @@ export const Header = () => {
             ))}
 
           <li className="hidden md:flex">
-            <AccountButton className="text-primary" />
+            <AccountButton />
           </li>
         </ul>
 

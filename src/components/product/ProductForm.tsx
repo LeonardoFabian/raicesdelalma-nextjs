@@ -205,41 +205,6 @@ export const ProductForm = ({ product, sizes, categories }: Props) => {
     router.replace(`/admin/product/${updatedProduct?.slug}`);
   };
 
-  // const [title, setTitle] = useState(product.title);
-  // const [slug, setSlug] = useState(product.slug);
-  // const [description, setDescription] = useState(product.description || "");
-  // const [categoryId, setCategoryId] = useState(product.categoryId || "0");
-  // const [price, setPrice] = useState(product.price);
-  // const [discountPercentage, setDiscountPercentage] = useState(
-  //   product.discountPercentage
-  // );
-  // const [image, setImage] = useState(
-  //   product.images[0] || "/uploads/default.jfif"
-  // );
-
-  //   const router = useRouter();
-
-  // const handleUpdateProduct = async ( id: string, data: Product ) => {
-  //     // console.log({ id, product });
-  //     const updatedProduct = await productHelpers.updateProduct({ id, body: product });
-  //     console.log({ updatedProduct });
-  //     router.refresh();
-  // }
-
-  // TODO: get all the categories from the database
-
-  // const updatedProduct: ProductUI = {
-  //   title,
-  //   slug,
-  //   description,
-  //   categoryId,
-  //   image,
-  //   price,
-  //   discountPercentage,
-  //   updatedAt: new Date().toISOString(),
-  //   //   isActive: false
-  // };
-
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="w-full mx-auto">
       <div className="block lg:flex items-start justify-between gap-8">

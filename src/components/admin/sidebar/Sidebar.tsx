@@ -130,17 +130,21 @@ export const Sidebar = ({ user }: Props) => {
             </Link>
             <IoCloseOutline onClick={closeSidebarMenu} className="w-8 h-8" />
           </div>
-          <div id="profile" className="px-6 py-6">
-            <p className="text-sm font-medium  text-accent text-center">
+          <div
+            id="profile"
+            className="flex flex-col items-center justify-center gap-3"
+          >
+            
+            <div className="flex flex-col items-center justify-center gap-2 py-3 text-white">
+              <p className="text-sm font-medium  text-accent text-center">
               Welcome back,
             </p>
-            <Avatar
-              user={user}
-              menuItems={[]}
-              size={54}
-              className="text-white"
-              template="card"
-            />
+              <div className="flex flex-col items-center justify-center gap-0">
+                <p className="font-body font-semibold">{user.name}</p>
+                <p className="font-body text-sm">{user.role}</p>
+              </div>
+              <Avatar user={user} size={54} />
+            </div>
           </div>
           <div id="nav" className="w-full px-6">
             {menuItems.map((menuItem) => (

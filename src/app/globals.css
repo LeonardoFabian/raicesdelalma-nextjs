@@ -114,9 +114,13 @@ body {
 }
 
 .alert-danger {
-  @apply bg-red-200 text-red-600 py-2 px-4 rounded font-body font-medium text-base  block md:flex items-center justify-center gap-2  hover:cursor-pointer transition-all leading-normal;
+  @apply bg-red-100 text-red-600 py-2 px-4 rounded font-body font-medium text-base  block md:flex items-center justify-center gap-2  hover:cursor-pointer transition-all leading-normal;
+}
+
+.alert-warning {
+  @apply bg-yellow-100 text-yellow-600 py-2 px-4 rounded font-body font-medium text-base  block md:flex items-center justify-center gap-2 hover:cursor-pointer transition-all leading-normal;
 }
 
 .alert-success {
-  @apply bg-green-200 text-green-600 py-2 px-4 rounded font-body font-medium text-base  block md:flex items-center justify-center gap-2 hover:cursor-pointer transition-all leading-normal;
+  @apply bg-green-100 text-green-600 py-2 px-4 rounded font-body font-medium text-base  block md:flex items-center justify-center gap-2 hover:cursor-pointer transition-all leading-normal;
 }

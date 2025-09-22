@@ -16,6 +16,7 @@ import { LiaUsersCogSolid } from "react-icons/lia";
 import { FaDolly, FaRegChartBar } from "react-icons/fa";
 import { TbReceiptTax } from "react-icons/tb";
 import { SlSettings } from "react-icons/sl";
+import { LuUserRoundCog } from "react-icons/lu";
 import Link from "next/link";
 
 export default async function AdminPage() {
@@ -38,7 +39,7 @@ export default async function AdminPage() {
   const { count: totalOrders } = await getOrders({ take: 100, page: 1 });
 
   return (
-    <div className="flex flex-col gap-4 w-full px-0 md:px-6">
+    <div className="pbb-admin-dashboard-page flex flex-col gap-4 w-full px-4 md:px-6">
       <PageTitle
         title="Dashboard"
         subtitle="Manage key e-commerce operations, including product inventory, categories, orders, and store policies."
@@ -104,7 +105,7 @@ export default async function AdminPage() {
                     href="/admin/product/new"
                     className="bg-primary text-white flex items-center gap-1 px-2 py-1 rounded-lg"
                   >
-                    Record New
+                    Register New
                   </Link>
                   <Link
                     href="/admin/products"
@@ -182,7 +183,21 @@ export default async function AdminPage() {
                 </p>
                 <p className="text-text-secondary">
                   Configure store settings, payment methods, and shipping
-                  options.
+                </p>
+              </div>
+            </div>
+          </Link>
+
+          {/* card */}
+          <Link href="/admin/account">
+            <div className="flex items-start gap-3 bg-white p-3 rounded-lg shadow cursor-pointer hover:shadow-lg transition-shadow">
+              <span className="h-12 w-12 min-w-12 flex items-center justify-center bg-primary/10 rounded-lg">
+                <LuUserRoundCog className="w-8 h-8 text-primary" />
+              </span>
+              <div className="flex flex-col gap-3 text-sm font-body">
+                <p className="text-text-primary font-medium">Manage Account</p>
+                <p className="text-text-secondary">
+                  Manage your profile, change password, and manage security
                 </p>
               </div>
             </div>
@@ -270,7 +285,7 @@ export default async function AdminPage() {
           </Link>
 
           {/* card */}
-          <Link href="#">
+          <Link href="/admin/reports">
             <div className="flex items-start gap-3 bg-white p-3 rounded-lg shadow cursor-pointer hover:shadow-lg transition-shadow">
               <span className="h-12 w-12 min-w-12 flex items-center justify-center bg-primary/10 rounded-lg">
                 <FaRegChartBar className="w-8 h-8 text-primary" />

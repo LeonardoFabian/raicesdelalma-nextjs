@@ -66,3 +66,6 @@ export * from './layout/cookies/CookieConsent';
 
 // store
 export * from './store/HydrateZustandWishlist';
+
+// user
+export * from './user/ProfilePicture';

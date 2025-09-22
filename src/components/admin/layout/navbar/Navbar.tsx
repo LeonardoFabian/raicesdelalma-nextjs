@@ -15,6 +15,8 @@ import { ToggleSidebarButton } from "./toggle-sidebar-button/ToggleSidebarButton
 import { AccountButton } from "@/components/layout/account/AccountButton";
 import { BackButton } from "@/components/layout/button/BackButton";
 
+// TODO: Review if this file is still needed or can be deleted
+
 interface Props {
   user: IUser;
   // name?: string | null | undefined;
@@ -29,8 +31,8 @@ const accountNavItems: ActiveLinkProps[] = [
     icon: <MdOutlineDashboard className="w-6 h-6" />,
   },
   {
-    path: "/admin/profile",
-    label: "Profile",
+    path: "/admin/account",
+    label: "Account",
     icon: <MdOutlinePerson className="w-6 h-6" />,
   },
   {
@@ -53,8 +55,10 @@ export const AdminNavbar = ({ user }: Props) => {
   return (
     <div className="sticky z-10 top-0 h-14 px-6 border-b border-gray-300 bg-white hover:cursor-pointer lg:py-2.5 flex items-center">
       <div className="w-full flex items-center justify-between space-x-4">
-        <ToggleSidebarButton />
-        <BackButton />
+        <div className="flex items-center justify-start space-x-4">
+          <ToggleSidebarButton />
+          <BackButton />
+        </div>
 
         <h5 hidden className="text-xl text-gray-600 font-medium lg:block">
           Titulo de la seccion
@@ -92,7 +96,7 @@ export const AdminNavbar = ({ user }: Props) => {
             <MdOutlineNotifications size={24} />
           </button>
 
-          <AccountButton className="text-text-primary" />
+          <AccountButton />
 
           {/* <Avatar
             user={user}

@@ -32,7 +32,7 @@ export default async function AdminProductPage({ params }: Props) {
   const title = slug === "new" ? "New Product" : "Edit Product";
 
   return (
-    <div className="flex flex-col gap-4 w-full px-0 md:px-6">
+    <div className="pbb-admin-product-page flex flex-col gap-4 w-full px-4 md:px-6">
       <PageTitle title={title} subtitle="Manage your product information" />
 
       <div className="flex flex-col gap-4">

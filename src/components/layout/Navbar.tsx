@@ -123,7 +123,7 @@ export const Navbar = () => {
             ))}
 
           <div className="hidden md:flex">
-            <AccountButton />
+            <AccountButton className="flex items-center gap-2 text-white bg-transparent hover:bg-white/10 cursor-pointer py-2 px-4 rounded-lg focus:outline-none focus:ring-none font-body font-semibold whitespace-nowrap" />
           </div>
           <MenuMobile navItems={navItems} />
         </ul>

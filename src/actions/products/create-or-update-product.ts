@@ -85,111 +85,111 @@ export const createOrUpdateProduct = async (formData: FormData) => {
     try {
         const prismaTx = await prisma.$transaction( async (tx) => {
 
-        let product: Product;
+            let product: Product;
 
-        if (id) {
-            // update product
-            product = await tx.product.update({
-                where: { id, userId },
-                data: {
-                    ...restProduct,
-                    productSizes: {
-                        update: productSizes.map((size) => ({
-                            where: {
-                                productId_sizeId: {
-                                    productId: id,
-                                    sizeId: size.sizeId
+            if (id) {
+                // update product
+                product = await tx.product.update({
+                    where: { id, userId },
+                    data: {
+                        ...restProduct,
+                        productSizes: {
+                            update: productSizes.map((size) => ({
+                                where: {
+                                    productId_sizeId: {
+                                        productId: id,
+                                        sizeId: size.sizeId
+                                    }
+                                },
+                                data: {
+                                    extraPrice: size.extraPrice ? new Decimal(size.extraPrice) : null,
+                                    stock: size.stock,
+                                    sku: `SKU-${size.sizeId}-${Date.now()}`,
                                 }
-                            },
-                            data: {
-                                extraPrice: size.extraPrice ? new Decimal(size.extraPrice) : null,
-                                stock: size.stock,
-                                sku: `SKU-${size.sizeId}-${Date.now()}`,
-                            }
-                        })),
-                        // deleteMany: {}, // delete previous sizes
-                        // create: productSizeData
-                        // set: restProduct.productSizes as ProductSize[]
+                            })),
+                            // deleteMany: {}, // delete previous sizes
+                            // create: productSizeData
+                            // set: restProduct.productSizes as ProductSize[]
+                        }
                     }
-                }
-            })
+                })
 
-            // console.log({ updatedProduct: product });
+                // console.log({ updatedProduct: product });
 
-            // return {
-            //     product
-            // }
-        } else {
-            // create product
-            product = await tx.product.create({
-                data: {
-                    title: restProduct.title,
-                    slug: restProduct.slug,
-                    description: restProduct.description ?? "",
-                    price: new Decimal(restProduct.price),
-                    discountPercentage: restProduct.discountPercentage,
-                    categoryId: restProduct.categoryId,           
-                    isConfigurable: restProduct.isConfigurable,     
-                    isActive: restProduct.isActive,
-                    fulfillmentMode: restProduct.fulfillmentMode,   
-                    userId: userId,
-                }
-            });
+                // return {
+                //     product
+                // }
+            } else {
+                // create product
+                product = await tx.product.create({
+                    data: {
+                        title: restProduct.title,
+                        slug: restProduct.slug,
+                        description: restProduct.description ?? "",
+                        price: new Decimal(restProduct.price),
+                        discountPercentage: restProduct.discountPercentage,
+                        categoryId: restProduct.categoryId,           
+                        isConfigurable: restProduct.isConfigurable,     
+                        isActive: restProduct.isActive,
+                        fulfillmentMode: restProduct.fulfillmentMode,   
+                        userId: userId,
+                    }
+                });
 
-            const createdProductSizes = await tx.productSize.createMany({
-                data: productSizeData.map((size) => ({
-                    productId: product.id,
-                    sizeId: size.sizeId,
-                    extraPrice: size.extraPrice ? new Decimal(size.extraPrice) : null,
-                    stock: size.stock,
-                    sku: size.sku,
-                }))
-            })
+                const createdProductSizes = await tx.productSize.createMany({
+                    data: productSizeData.map((size) => ({
+                        productId: product.id,
+                        sizeId: size.sizeId,
+                        extraPrice: size.extraPrice ? new Decimal(size.extraPrice) : null,
+                        stock: size.stock,
+                        sku: size.sku,
+                    }))
+                })
 
-            // console.log({ createdProduct: product, createdProductSizes });
+                // console.log({ createdProduct: product, createdProductSizes });
 
-            // return {
-            //     product,
-            //     createdProductSizes
-            // }
-        }
-
-        // load and save images
-        if (formData.getAll('images')) {
-            // console.log(formData.getAll('images'));
-            // File {
-            //     size: 106349,
-            //     type: 'image/png',
-            //     name: 'domo-MT2020-azul.png',
-            //     lastModified: 1757958815863
-            // },
-
-            // get images urls
-            const images = await uploadImagesToCloudinary(formData.getAll('images') as File[]);
-            // console.log(images);
-
-            if (!images) {
-                throw new Error('Something went wrong uploading images');
+                // return {
+                //     product,
+                //     createdProductSizes
+                // }
             }
 
-            await prisma.media.createMany({
-                data: images.map((image) => ({
-                    url: image!,
-                    productId: product.id
-                }))
-            });
-        }
+            // load and save images
+            if (formData.getAll('images')) {
+                // console.log(formData.getAll('images'));
+                // File {
+                //     size: 106349,
+                //     type: 'image/png',
+                //     name: 'domo-MT2020-azul.png',
+                //     lastModified: 1757958815863
+                // },
+
+                // get images urls
+                const images = await uploadImagesToCloudinary(formData.getAll('images') as File[]);
+                // console.log(images);
+
+                if (!images) {
+                    throw new Error('Something went wrong uploading images');
+                }
+
+                await prisma.media.createMany({
+                    data: images.map((image) => ({
+                        url: image!,
+                        productId: product.id
+                    }))
+                });
+            }
+
+            return {
+                product
+            }
+        });
+
+        revalidatePath('/admin/products');
+        revalidatePath(`/admin/product/${prismaTx.product.slug}`);
+        revalidatePath(`/product/${prismaTx.product.slug}`);
 
         return {
-            product
-        }
-    });
-
-    revalidatePath('/admin/products');
-    revalidatePath(`/admin/product/${prismaTx.product.slug}`);
-    revalidatePath(`/product/${prismaTx.product.slug}`);
-
-    return {
             ok: true,
             product: prismaTx.product
         }
@@ -209,7 +209,7 @@ export const createOrUpdateProduct = async (formData: FormData) => {
     }
 }
 
-const uploadImagesToCloudinary = async ( images: File[]) => {
+export const uploadImagesToCloudinary = async ( images: File[]) => {
 
     try {
         const uploadPromises = images.map( async (image) => {

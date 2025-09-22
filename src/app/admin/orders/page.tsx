@@ -56,7 +56,7 @@ export default async function AdminOrdersPage({ searchParams }: Props) {
 
   return (
     <>
-      <div className="ppbb-admin-orders-page text-left w-full  flex flex-col gap-12 px-0 md:px-6">
+      <div className="pbb-admin-orders-page flex flex-col gap-4 w-full px-4 md:px-66">
         <PageTitle title="Orders" subtitle="Manage orders and order status" />
 
         <div className="container flex flex-col gap-4">

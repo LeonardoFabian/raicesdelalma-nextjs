@@ -27,14 +27,14 @@ export const AccountButton = ({ className }: Props) => {
         className={
           className
             ? className
-            : "flex items-center gap-2 text-text-primary bg-transparent hover:bg-white/10 cursor-pointer py-2 px-4 rounded-lg focus:outline-none focus:ring-none font-body font-semibold whitespace-nowrap"
+            : "flex items-center gap-2 text-text-primary bg-transparent hover:bg-white/10 cursor-pointer py-2 px-0 md:px-4 rounded-lg focus:outline-none focus:ring-none font-body font-semibold whitespace-nowrap"
         }
       >
         <Avatar
           user={session?.user}
           // menuItems={accountNavItems}
         />
-        {session?.user?.name}
+        <span className="hidden md:inline-block">{session?.user?.name}</span>
       </button>
     );
   } else {

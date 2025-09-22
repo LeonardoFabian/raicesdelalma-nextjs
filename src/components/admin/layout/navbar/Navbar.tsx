@@ -53,7 +53,7 @@ export const AdminNavbar = ({ user }: Props) => {
   // console.log({ user });
 
   return (
-    <div className="sticky z-10 top-0 h-14 px-6 border-b border-gray-300 bg-white hover:cursor-pointer lg:py-2.5 flex items-center">
+    <div className="sticky z-10 top-0 h-14 px-4 border-b border-gray-300 bg-white hover:cursor-pointer lg:py-2.5 flex items-center">
       <div className="w-full flex items-center justify-between space-x-4">
         <div className="flex items-center justify-start space-x-4">
           <ToggleSidebarButton />

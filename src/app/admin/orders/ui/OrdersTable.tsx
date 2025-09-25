@@ -112,7 +112,14 @@ export const OrdersTable = ({ orders }: Props) => {
                     >
                       View Order
                     </Link>
-                    {order.giftMessage && <Link href="#">Message QR</Link>}
+                    {order.giftMessage && (
+                      <Link
+                        href="#"
+                        className="text-link font-semibold hover:underline"
+                      >
+                        Message QR
+                      </Link>
+                    )}
                   </div>
                 </td>
               </tr>

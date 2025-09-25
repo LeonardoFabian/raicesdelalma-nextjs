@@ -13,3 +13,4 @@ export type { Address } from './address.interface';
 export * from './order.interface';
 export * from './paypal.interface';
 export * from './business-settings.interface';
+export * from './gift-message.interface';

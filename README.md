@@ -119,10 +119,20 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 3. Execute the command `npx prisma migrate deploy`
 4. Execute `npm run seed`
 
-5. For updates, execute ```git add .```
-6. ```git commit -m "your commit message here"```
-7. ```git push -u origin main```
+#### Update code in vercel
+5. For updates, execute `git add .`
+6. `git commit -m "your commit message here"`
+7. `git push -u origin main`
 8. Go to vercel project deployments tab and check for posible errors to fix
+
+#### Update database schema in vercel
+1. Comment the vercel prisma postgresql DATABASE_URL in your .env file
+2. Uncomment the local DATABASE_URL in your .env file
+3. Open Docker Desktop
+4. In your project, execute the command ```npx prisma migrate dev --name your_migration_name```
+5. Uncomment the vercel prisma postgresql DATABASE_URL in .env
+6. Comment your local DATABASE_URL in .env
+7. Execute the command ```npx prisma migrate deploy```
 
 ### Atajos de la extension de Nextjs para generar componentes
 

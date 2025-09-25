@@ -1,7 +1,7 @@
 'use server';
 
 import { auth } from "@/auth.config";
-import type { Address, ISize } from "@/interfaces";
+import type { Address, IGiftMessage, ISize } from "@/interfaces";
 import type { CartOption, SelectedSize } from "@/lib/pricing";
 import prisma from "@/lib/prisma";
 import { calcDiscountCents, calcTaxCents, currencyFormat, toCents } from "@/utils";
@@ -14,7 +14,7 @@ interface ProductsToOrder {
     options: CartOption[];
 }
 
-export const placeOrder = async (products: ProductsToOrder[], address: Address) => {
+export const placeOrder = async (products: ProductsToOrder[], address: Address, giftMessage: IGiftMessage) => {
     const session = await auth();
     const userId = session?.user.id;
 
@@ -346,18 +346,31 @@ export const placeOrder = async (products: ProductsToOrder[], address: Address) 
 
 
             // create the order shipping address 
-            const { country, ...restAddress } = address;
+            const { country, userId: orderUserId, ...restAddress } = address;
             const orderAddress = await tx.orderAddress.create({
                 data: {
                     ...restAddress,
                     countryId: country,
                     orderId: order.id
                 }
-            })
+            });
+
+            let orderGiftMessage;
+            if (giftMessage?.message) {
+                orderGiftMessage = await tx.giftMessage.create({
+                    data: {
+                        sender: giftMessage.sender,
+                        recipient: giftMessage.recipient,
+                        message: giftMessage.message,
+                        orderId: order.id
+                    }
+                });
+            }
 
             return {
                 order: order,
                 orderAddress: orderAddress,
+                orderGiftMessage: orderGiftMessage,
                 updatedProducts: updatedProducts
             }
         });

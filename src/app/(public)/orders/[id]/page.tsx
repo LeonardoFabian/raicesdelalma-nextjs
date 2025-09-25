@@ -1,4 +1,4 @@
-import { OrderStatus, PayPalButton, Title } from "@/components";
+import { OrderStatus, PayPalButton, ProductImage, Title } from "@/components";
 import Link from "next/link";
 import { getOrderById } from "@/actions";
 import { redirect } from "next/navigation";
@@ -41,6 +41,7 @@ export default async function OrderPage({ params }: Props) {
   // console.log(order);
 
   const address = order?.OrderAddress;
+  const giftMessage = order?.giftMessage;
 
   // TODO: verify
 
@@ -92,8 +93,8 @@ export default async function OrderPage({ params }: Props) {
                         className="hover:cursor-pointer"
                       >
                         <div className="h-24 w-24 relative bg-gray-100 flex items-center justify-center">
-                          <Image
-                            src={`/uploads/${item.product.images[0].url}`}
+                          <ProductImage
+                            src={item.product.images[0].url}
                             alt={item.product.title}
                             width={72}
                             height={72}
@@ -190,6 +191,37 @@ export default async function OrderPage({ params }: Props) {
                 ))}
               </div>
             )}
+
+            {giftMessage && (
+              <div className="flex flex-col gap-5 py-5">
+                <h3 className="font-bold text-sm">Your Gift Message</h3>
+                <div className="w-full flex flex-col gap-3 p-4 bg-yellow-pastel rounded-lg">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-1 lg:gap-3">
+                    <span className="font-bold text-text-primary col-span-1">
+                      From:
+                    </span>
+                    <p className="col-span-1 lg:col-span-11">
+                      {giftMessage.sender}
+                    </p>
+
+                    <span className="font-bold text-text-primary col-span-1">
+                      To:
+                    </span>
+                    <p className="col-span-1 lg:col-span-11">
+                      {giftMessage.recipient}
+                    </p>
+
+                    <span className="font-bold text-text-primary col-span-1">
+                      Message:
+                    </span>
+                    <p className="col-span-1 lg:col-span-11">
+                      {giftMessage.message}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+
             {/* <div className="flex items-center justify-start gap-4 pt-4">
               <Link href="/cart" className="btn-secondary">
                 Edit Cart

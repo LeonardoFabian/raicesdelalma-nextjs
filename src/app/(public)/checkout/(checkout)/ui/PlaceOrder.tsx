@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { OrderSummary } from "@/app/(public)/cart/ui/OrderSummary";
-import { useAddressStore, useCartStore } from "@/store";
+import { useAddressStore, useCartStore, useGiftMessageStore } from "@/store";
 import { Loading } from "@/components";
 import { currencyFormat, sleep, toCents } from "@/utils";
 import Link from "next/link";
@@ -18,6 +18,7 @@ export const PlaceOrder = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const address = useAddressStore((state) => state.address);
+  const giftMessage = useGiftMessageStore((state) => state.message);
   const cart = useCartStore((state) => state.cart);
   const clearCart = useCartStore((state) => state.clear);
 
@@ -41,7 +42,7 @@ export const PlaceOrder = () => {
 
     // console.log({ address, productsToOrder });
     // server action: placeOrder
-    const resp = await placeOrder(productsToOrder, address);
+    const resp = await placeOrder(productsToOrder, address, giftMessage);
     // console.log({ resp });
 
     if (!resp.ok) {

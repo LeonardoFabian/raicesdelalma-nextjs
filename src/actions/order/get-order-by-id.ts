@@ -46,6 +46,15 @@ export const getOrderById = async (id: string) => {
                             }
                         }
                     }
+                },
+                giftMessage: {
+                    select: {
+                        id: true,
+                        sender: true,
+                        recipient: true,
+                        message: true,
+                        views: true,
+                    }
                 }
             }
         });

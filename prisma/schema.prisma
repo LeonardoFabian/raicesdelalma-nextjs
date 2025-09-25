@@ -400,6 +400,7 @@ model Order {
   OrderAddress OrderAddress?
 
   transactionId String? // paypal transaction id, stripe transaction id, etc
+  giftMessage   GiftMessage?
 }
 
 model OrderItem {
@@ -523,6 +524,26 @@ model Wishlist {
   createdAt DateTime @default(now())
 
   @@unique([userId, productId])
+}
+
+model GiftMessage {
+  id        String            @id @default(uuid())
+  orderId   String            @unique
+  sender    String
+  recipient String
+  message   String
+  mediaUrl  String?
+  createdAt DateTime          @default(now())
+  views     GiftMessageView[]
+  order     Order             @relation(fields: [orderId], references: [id])
+}
+
+model GiftMessageView {
+  id       String   @id @default(uuid())
+  giftId   String
+  viewedAt DateTime @default(now())
+
+  gift GiftMessage @relation(fields: [giftId], references: [id])
 }
 
 // Cómo encaja con tus modelos actuales

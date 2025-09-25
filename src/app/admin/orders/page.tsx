@@ -60,7 +60,7 @@ export default async function AdminOrdersPage({ searchParams }: Props) {
       <Head>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
-      <div className="pbb-admin-orders-page flex flex-col gap-4 w-full px-4 md:px-66">
+      <div className="pbb-admin-orders-page flex flex-col gap-4 w-full px-4 md:px-6">
         <PageTitle title="Orders" subtitle="Manage orders and order status" />
 
         <div className="container flex flex-col gap-4">

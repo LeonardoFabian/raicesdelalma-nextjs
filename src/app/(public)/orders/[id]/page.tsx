@@ -194,7 +194,7 @@ export default async function OrderPage({ params }: Props) {
 
             {giftMessage && (
               <div className="flex flex-col gap-5 py-5">
-                <h3 className="font-bold text-sm">Your Gift Message</h3>
+                <h3 className="font-bold text-sm">Gift Message</h3>
                 <div className="w-full flex flex-col gap-3 p-4 bg-yellow-pastel rounded-lg">
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-1 lg:gap-3">
                     <span className="font-bold text-text-primary col-span-1">

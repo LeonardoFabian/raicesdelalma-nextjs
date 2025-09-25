@@ -111,14 +111,14 @@ export const OrdersTable = ({ orders }: Props) => {
                   <div className="flex items-center justify-end gap-4">
                     <Link
                       href={`/orders/${order.id}`}
-                      className="text-link font-semibold hover:underline"
+                      className="text-link font-semibold hover:underline whitespace-nowrap"
                     >
                       View Order
                     </Link>
                     {order.giftMessage && session?.user.role === "admin" && (
                       <Link
                         href="#"
-                        className="text-link font-semibold hover:underline"
+                        className="text-link font-semibold hover:underline whitespace-nowrap"
                       >
                         Generate QR
                       </Link>

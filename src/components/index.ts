@@ -69,3 +69,6 @@ export * from './store/HydrateZustandWishlist';
 
 // user
 export * from './user/ProfilePicture';
+
+// modal
+export * from './layout/modal/Modal';

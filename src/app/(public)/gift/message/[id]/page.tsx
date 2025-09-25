@@ -1,5 +1,7 @@
+import { getGiftMessageById } from "@/actions";
 import { Title } from "@/components";
 import Head from "next/head";
+import { GiftMessage } from "../../../checkout/(checkout)/ui/GiftMessage";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -7,6 +9,10 @@ interface Props {
 
 export default async function GiftMessagePage({ params }: Props) {
   const { id } = await params;
+
+  const giftMessage = await getGiftMessageById(id);
+
+  if (!giftMessage) return null;
 
   return (
     <>
@@ -21,10 +27,14 @@ export default async function GiftMessagePage({ params }: Props) {
             <h1 className="fond-heading text-text-primary text-2xl font-semibold">
               Gift Message
             </h1>
-            <p className="font-heading text-text-primary">Dear John Doe</p>
             <p className="font-heading text-text-primary">
-              This is a gift message from Purple Butterfly Bouquets. Thank you
-              for your purchase!
+              Dear {giftMessage.recipient},
+            </p>
+            <p className="font-heading text-text-primary">
+              {giftMessage.message}
+            </p>
+            <p className="font-heading text-text-primary">
+              From: {giftMessage.sender}
             </p>
             <p className="fond-body text-text-secondary text-base">
               ID: #{id.split("-").at(-1)}

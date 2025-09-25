@@ -5,7 +5,7 @@ import type { IOrder } from "@/interfaces";
 import clsx from "clsx";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { IoCardOutline } from "react-icons/io5";
+import { IoCardOutline, IoQrCode } from "react-icons/io5";
 
 interface Props {
   orders: IOrder[];
@@ -58,7 +58,10 @@ export const OrdersTable = ({ orders }: Props) => {
                 className="bg-white border-b border-b-gray-300 transition duration-300 ease-in-out hover:bg-gray-100"
               >
                 <td className="px-6 py-4 whitespace-nowrap text-sm md:text-base font-medium text-text-primary">
-                  {order.id.split("-").at(-1)}
+                  <div className="flex items-center justify-between gap-3">
+                    {order.id.split("-").at(-1)}
+                    {order?.giftMessage && <IoQrCode size={24} />}
+                  </div>
                 </td>
                 <td className="text-sm md:text-base  text-text-primary  px-6 py-4 whitespace-nowrap">
                   {order.OrderAddress?.firstName} {order.OrderAddress?.lastName}

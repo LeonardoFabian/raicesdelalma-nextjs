@@ -111,6 +111,7 @@ export const OrdersTable = ({ orders }: Props) => {
                   >
                     View Order
                   </Link>
+                  {order.giftMessage && <Link href="#">Message QR</Link>}
                 </td>
               </tr>
             ))

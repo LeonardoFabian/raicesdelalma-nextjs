@@ -1,3 +1,5 @@
+import { IGiftMessage } from "./gift-message.interface";
+
 export interface IOrderAddress {
     id: string;
     phone: string;
@@ -48,4 +50,5 @@ export interface IOrder {
     canceledAt: Date | null;
     transactionId?: string | null;
     OrderAddress?: IOrderAddress | null | undefined;
+    giftMessage?: IGiftMessage | null | undefined;
 }

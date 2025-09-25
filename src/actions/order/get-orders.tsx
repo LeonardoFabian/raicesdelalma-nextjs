@@ -29,6 +29,7 @@ export const getOrders = async ({ page = 1, take = 12 }: OrdersPagination) => {
       },
       include: {
         OrderAddress: true,
+        giftMessage: true,
       },
     });
 

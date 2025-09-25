@@ -3,6 +3,7 @@
 import { changeOrderStatus } from "@/actions";
 import type { IOrder } from "@/interfaces";
 import clsx from "clsx";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { IoCardOutline } from "react-icons/io5";
 
@@ -11,6 +12,8 @@ interface Props {
 }
 
 export const OrdersTable = ({ orders }: Props) => {
+  const { data: session } = useSession();
+
   return (
     <table className="min-w-full overflow-x-scroll">
       <thead className="bg-white border-b border-b-gray-300">
@@ -105,19 +108,19 @@ export const OrdersTable = ({ orders }: Props) => {
                   </select>
                 </td>
                 <td className="text-sm md:text-base text-text-primary px-6 text-right">
-                  <div className="flex items-center justify-end gap-3">
+                  <div className="flex items-center justify-end gap-4">
                     <Link
                       href={`/orders/${order.id}`}
                       className="text-link font-semibold hover:underline"
                     >
                       View Order
                     </Link>
-                    {order.giftMessage && (
+                    {order.giftMessage && session?.user.role === "admin" && (
                       <Link
                         href="#"
                         className="text-link font-semibold hover:underline"
                       >
-                        Message QR
+                        Generate QR
                       </Link>
                     )}
                   </div>

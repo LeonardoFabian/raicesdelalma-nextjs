@@ -359,8 +359,8 @@ export const placeOrder = async (products: ProductsToOrder[], address: Address, 
             if (giftMessage?.message) {
                 orderGiftMessage = await tx.giftMessage.create({
                     data: {
-                        sender: giftMessage.sender,
-                        recipient: giftMessage.recipient,
+                        sender: giftMessage.sender!,
+                        recipient: giftMessage.recipient!,
                         message: giftMessage.message,
                         orderId: order.id
                     }

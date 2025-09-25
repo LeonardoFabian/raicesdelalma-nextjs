@@ -3,9 +3,9 @@ import { IOrder } from "./order.interface";
 export interface IGiftMessage {
     id?: string;
     orderId?: string;
-    sender: string;
-    recipient: string;
-    message: string;
+    sender?: string;
+    recipient?: string;
+    message?: string;
     mediaUrl?: string;
     createdAt?: Date;
     views?: IGiftMessageView[];

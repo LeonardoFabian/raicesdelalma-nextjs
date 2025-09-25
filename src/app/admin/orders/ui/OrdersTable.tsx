@@ -105,13 +105,15 @@ export const OrdersTable = ({ orders }: Props) => {
                   </select>
                 </td>
                 <td className="text-sm md:text-base text-text-primary px-6 text-right">
-                  <Link
-                    href={`/orders/${order.id}`}
-                    className="text-link font-semibold hover:underline"
-                  >
-                    View Order
-                  </Link>
-                  {order.giftMessage && <Link href="#">Message QR</Link>}
+                  <div className="flex items-center justify-end gap-3">
+                    <Link
+                      href={`/orders/${order.id}`}
+                      className="text-link font-semibold hover:underline"
+                    >
+                      View Order
+                    </Link>
+                    {order.giftMessage && <Link href="#">Message QR</Link>}
+                  </div>
                 </td>
               </tr>
             ))

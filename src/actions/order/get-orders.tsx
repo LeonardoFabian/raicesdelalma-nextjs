@@ -42,6 +42,7 @@ export const getOrders = async ({ page = 1, take = 12 }: OrdersPagination) => {
       orders: orders.map((order) => {
         const {
           OrderAddress,
+          giftMessage,
           subTotal,
           shipping,
           tax,
@@ -56,6 +57,12 @@ export const getOrders = async ({ page = 1, take = 12 }: OrdersPagination) => {
           tax: Number(order.tax),
           totalAmount: Number(order.totalAmount),
           OrderAddress: OrderAddress,
+          giftMessage: {
+            id: giftMessage?.id,
+            message: giftMessage?.message,
+            sender: giftMessage?.sender,
+            recipient: giftMessage?.recipient,
+          },
         };
       }),
       count: count,

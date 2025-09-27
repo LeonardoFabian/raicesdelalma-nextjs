@@ -17,16 +17,16 @@ export const metadata: Metadata = {
     title: "Purple Butterfly Bouquets | Coffee, Tea & Floral Experiences",
     description:
       "Meet the heart of Purple Butterfly — where every bouquet and brew carries a touch of soul and creativity.",
-    url: "https://www.purplebutterflybouquets.com",
+    url: "https://www.raicesdelalma.com.do",
     type: "website",
-    images: [{ url: "https://www.purplebutterflybouquets.com/logo.svg" }],
+    images: [{ url: "https://www.raicesdelalma.com.do/logo.svg" }],
   },
   twitter: {
     title: "Purple Butterfly Bouquets",
     description:
       "Discover the story and inspiration behind our handcrafted coffee, tea, and floral experiences.",
     card: "summary_large_image",
-    images: [{ url: "https://www.purplebutterflybouquets.com/logo.svg" }],
+    images: [{ url: "https://www.raicesdelalma.com.do/logo.svg" }],
   },
 };
 
@@ -35,9 +35,9 @@ export default async function Home() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Purple Butterfly Bouquets",
-    url: "https://www.purplebutterflybouquets.com",
-    logo: "https://www.purplebutterflybouquets.com/logo.svg", // reemplázalo por tu logo real
-    sameAs: ["https://www.instagram.com/purplebutterflyde"],
+    url: "https://www.raicesdelalma.com.do",
+    logo: "https://www.raicesdelalma.com.do/logo.svg", // reemplázalo por tu logo real
+    sameAs: ["https://www.instagram.com/raicesdelalmard"],
     description:
       "Purple Butterfly creates unique gift experiences through coffee, tea, and floral design.",
     founder: {

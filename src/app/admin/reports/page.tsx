@@ -25,7 +25,7 @@ export default async function ReportsPage() {
       <Head>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
-      <div className="pbb-admin-reports-page flex flex-col gap-4 w-full px-4 md:px-6 bg-gray-100">
+      <div className="rda-admin-reports-page flex flex-col gap-4 w-full px-4 md:px-6 bg-gray-100">
         <PageTitle title="Reports" subtitle="Manage your business reports">
           {/* <AddNewProductButton /> */}
           {/* <DeleteInactiveProducts /> */}

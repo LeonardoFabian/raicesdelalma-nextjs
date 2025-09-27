@@ -326,13 +326,13 @@ export const initialData: SeedData = {
 
   users: [    
     {
-      email: process.env.ADMIN_USER ?? 'purplebutterflybouquets@gmail.com',
-      password: process.env.ADMIN_PASS ?? 'Paubra2526',
+      email: process.env.ADMIN_USER ?? 'raicesdelalmard@gmail.com',
+      password: process.env.ADMIN_PASS ?? 'Patricia310226',
       role: 'admin',
-      name: 'Alma Puello',
+      name: 'Alma Inoa',
     },    
     {
-      email: 'test@purplebutterflybouquets.com',
+      email: 'test@raicesdelalma.com',
       password: 'test123',
       role: 'user',
       name: 'John Doe',
@@ -342,17 +342,17 @@ export const initialData: SeedData = {
   socialLinks: [
     {
       platform: 'Instagram',
-      url: 'https://www.instagram.com/purplebutterflyde/',
+      url: 'https://www.instagram.com/raicesdelalmard/',
       iconName: 'instagram'
     },
     {
       platform: 'Facebook',
-      url: 'https://facebook.com/purplebutterflyde',
+      url: 'https://facebook.com/raicesdelalmard',
       iconName: 'facebook'
     },
     {
       platform: 'TikTok',
-      url: 'https://tiktok.com/@purplebutterflyde',
+      url: 'https://tiktok.com/@raicesdelalmard',
       iconName: 'tiktok'
     }
   ],
@@ -369,182 +369,48 @@ export const initialData: SeedData = {
 
   // incluye “ONE” para artículos sin tallas tradicionales
   sizes: [
-    { label: 'ONE' },
     { label: 'XS' },
     { label: 'S' },
     { label: 'M' },
     { label: 'L' },
     { label: 'XL' },
-    { label: 'XXL' },
-    { label: 'XXXL' },
   ],
 
-  categories: [
-    { title: "Valentine's Day", slug: 'valentines-day' },
-    { title: 'Birthday', slug: 'birthday' },
-    { title: "Mother's Day", slug: 'mothers-day' },
-    { title: "Father's Day", slug: 'fathers-day' },
-    { title: 'Spring', slug: 'spring' },
-    { title: 'Wellness', slug: 'wellness' },
-    { title: 'Specialty', slug: 'specialty' },
-    { title: 'Gifts', slug: 'gifts' },
-  ],
+   categories: [
+  { title: "Jabones", slug: "jabones" },
+  { title: "Cuidado Facial", slug: "cuidado-facial" },
+  { title: "Cuidado Corporal", slug: "cuidado-corporal" },
+  { title: "Cuidado Capilar", slug: "cuidado-capilar" },
+  { title: "Cuidado de Manos y Pies", slug: "manos-y-pies" },
+  { title: "Cuidado Íntimo", slug: "cuidado-intimo" },
+  { title: "Aromaterapia & Bienestar", slug: "aromaterapia-bienestar" },
+  { title: "Cuidado Masculino", slug: "cuidado-masculino" },
+  { title: "Higiene Oral", slug: "higiene-oral" },
+  { title: "Accesorios Naturales", slug: "accesorios-naturales" }
+],
 
   products: [
     // PREMADE (no configurable) — usa stock por talla “ONE”
     {
-      title: 'Bouquet of Roses',
-      slug: 'bouquet-of-roses',
+      title: 'Aclarador Exfoliante Orgánico',
+      slug: 'aclarador-exfoliante-organico',
       description:
-        'The M bouquet includes 6 units, the L bouquet includes 12 units, and the XL bouquet includes 24 units.',
-      categorySlug: 'valentines-day',
+        'Jabon de aclarador exfoliante orgánico 100% natural, hecho a base de arroz, avena, cacao, café, coco y aceites esenciales.',
+      categorySlug: 'jabones',
       images: ['bouquet-of-roses.png', 'bouquet-of-roses.jfif'],
-      price: 34.81,
-      discountPercentage: 15.00,
+      price: 200.00,
+      discountPercentage: 0.00,
       rating: 5.0,
       createdAt: new Date(),
       updatedAt: new Date(),
       isActive: true,
       isConfigurable: false,
       fulfillmentMode: 'PREMADE',
-      productSizes: { connect: [{ label: 'ONE' }] }, // stock por talla ONE
+      productSizes: { connect: [{ label: 'M' }] }, // stock por talla ONE
     },
 
-    // MAKE_TO_ORDER (configurable) — sin productSizes, se descuenta por BOM/opciones
-    {
-      title: 'Coffee & Roses Deluxe',
-      slug: 'coffee-and-roses-deluxe',
-      description:
-        'A romantic arrangement combining premium coffee beans with fresh red roses in a handcrafted basket.',
-      categorySlug: 'valentines-day',
-      images: ['coffee-and-roses-deluxe.png', 'coffee-and-roses-deluxe.jfif'],
-      price: 48.5,
-      discountPercentage: 10.00,
-      rating: 5.0,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      isActive: true,
-      isConfigurable: true,
-      fulfillmentMode: 'MAKE_TO_ORDER',
-            productSizes: { connect: [{ label: 'ONE' }] }, // stock por talla ONE
+    
 
-    },
 
-    // MAKE_TO_ORDER (configurable) — otro ejemplo
-    {
-      title: 'Sweet Morning Coffee Bouquet',
-      slug: 'sweet-morning-coffee-bouquet',
-      description:
-        'A bouquet of mixed flowers paired with artisanal ground coffee, perfect for a sweet morning surprise.',
-      categorySlug: 'birthday',
-      images: ['sweet-morning-coffee-bouquet.png', 'sweet-morning-coffee-bouquet.jfif'],
-      price: 42.99,
-      discountPercentage: 5.00,
-      rating: 4.9,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      isActive: true,
-      isConfigurable: true,
-      fulfillmentMode: 'MAKE_TO_ORDER',
-      productSizes: { connect: [{ label: 'ONE' }] }, // stock por talla ONE
-
-    },
-
-    // PREMADE — con tallas S/M/L (ejemplo mixto)
-    {
-      title: 'Tea Time Floral Gift Box',
-      slug: 'tea-time-floral-gift-box',
-      description:
-        'Includes premium herbal teas, a small floral arrangement, and honey sticks for a relaxing afternoon.',
-      categorySlug: 'wellness',
-      images: ['tea-time-floral-gift-box.png', 'tea-time-floral-gift-box.jfif'],
-      price: 39.25,
-      discountPercentage: 15.00,
-      rating: 4.8,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      isActive: true,
-      isConfigurable: false,
-      fulfillmentMode: 'PREMADE',
-      productSizes: { connect: [{ label: 'S' }, { label: 'M' }, { label: 'L' }] },
-    },
-
-    // MAKE_TO_ORDER
-    {
-      title: 'Purple Butterfly Signature Bouquet',
-      slug: 'purple-butterfly-signature-bouquet',
-      description:
-        'Our signature bouquet featuring seasonal flowers and gourmet coffee in an elegant reusable cup.',
-      categorySlug: 'specialty',
-      images: ['purple-butterfly-signature-bouquet.png', 'purple-butterfly-signature-bouquet.jfif'],
-      price: 55.0,
-      discountPercentage: 10.00,
-      rating: 5.0,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      isActive: true,
-      isConfigurable: true,
-      fulfillmentMode: 'MAKE_TO_ORDER',
-      productSizes: { connect: [{ label: 'ONE' }] }, // stock por talla ONE
-
-    },
-
-    // PREMADE — talla ONE
-    {
-      title: 'Coffee Lovers Gift Basket',
-      slug: 'coffee-lovers-gift-basket',
-      description:
-        'An arrangement of assorted coffee blends, mini bouquets, and sweet treats in a decorative basket.',
-      categorySlug: 'gifts',
-      images: ['coffee-lovers-gift-basket.png', 'coffee-lovers-gift-basket.jfif'],
-      price: 64.75,
-      discountPercentage: 5.00,
-      rating: 4.9,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      isActive: true,
-      isConfigurable: false,
-      fulfillmentMode: 'PREMADE',
-      productSizes: { connect: [{ label: 'ONE' }] },
-    },
-
-    // MAKE_TO_ORDER
-    {
-      title: 'Spring Floral Coffee Jar',
-      slug: 'spring-floral-coffee-jar',
-      description:
-        'Fresh spring flowers arranged in a glass jar with whole bean coffee sealed for freshness.',
-      categorySlug: 'spring',
-      images: ['spring-floral-coffee-jar.png', 'spring-floral-coffee-jar.jfif'],
-      price: 37.9,
-      discountPercentage: 15.00,
-      rating: 4.7,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      isActive: true,
-      isConfigurable: true,
-      fulfillmentMode: 'MAKE_TO_ORDER',
-      productSizes: { connect: [{ label: 'ONE' }] }, // stock por talla ONE
-
-    },
-
-    // PREMADE — talla ONE
-    {
-      title: 'Romantic Coffee Date Set',
-      slug: 'romantic-coffee-date-set',
-      description:
-        'Two personalized coffee mugs, a small bouquet of roses, and premium roast coffee for two.',
-      categorySlug: 'valentines-day',
-      images: ['romantic-coffee-date-set.png', 'romantic-coffee-date-set.jfif'],
-      price: 59.99,
-      discountPercentage: 10.00,
-      rating: 5.0,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      isActive: true,
-      isConfigurable: false,
-      fulfillmentMode: 'PREMADE',
-      productSizes: { connect: [{ label: 'ONE' }] },
-    },
   ],
 };

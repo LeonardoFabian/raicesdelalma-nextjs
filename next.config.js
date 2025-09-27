@@ -82,7 +82,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "www.purplebutterflybouquets.com",
+        hostname: "www.raicesdelalma.com.do",
       },
       {
         protocol: "https",

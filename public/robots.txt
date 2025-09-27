@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.purplebutterflybouquets.com/sitemap.xml
+Sitemap: https://www.raicesdelalma.com.do/sitemap.xml

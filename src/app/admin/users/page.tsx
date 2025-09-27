@@ -60,7 +60,7 @@ export default async function AdminUsersPage({ searchParams }: Props) {
       <Head>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
-      <div className="pbb-admin-users-page flex flex-col gap-4 w-full px-4 md:px-6">
+      <div className="rda-admin-users-page flex flex-col gap-4 w-full px-4 md:px-6">
         <PageTitle
           title="Users"
           subtitle="Manage application Users and Roles"

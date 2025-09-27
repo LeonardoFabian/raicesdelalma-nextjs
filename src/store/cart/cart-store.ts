@@ -154,7 +154,7 @@ export const useCartStore = create<CartState>()(
                 };                  
             },        
         }), {
-            name: 'pbb-shopping-cart',
+            name: 'rda-shopping-cart',
             // skipHydration: true
         }
     )

@@ -86,10 +86,10 @@ async function main() {
     const businessSettings = await prisma.businessSettings.create({
       data: {
         id: 'default', // porque el modelo usa @id como string fijo
-        businessName: 'Purple Butterfly Bouquets',
-        email: 'info@purplebutterflybouquets.com',
-        phone: '+1 302 682 5779',
-        website: 'https://purplebutterflybouquets.com',
+        businessName: 'Raices del Alma',
+        email: 'raicesdelalmard@gmail.com',
+        phone: '+1 809 915 8927',
+        website: 'https://raicesdelalma.com.do',
         createdAt: new Date(),
         updatedAt: new Date(),
       }
@@ -199,8 +199,8 @@ async function main() {
         data: sizeIds.map(sizeId => ({
             productId: product.id,
             sizeId,
-            stock: 10,
-            extraPrice: 6.99,
+            stock: 20,
+            extraPrice: 0.00,
         })),
         skipDuplicates: true
         })

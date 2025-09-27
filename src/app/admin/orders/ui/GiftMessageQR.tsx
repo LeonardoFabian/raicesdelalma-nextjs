@@ -39,7 +39,7 @@ export const GiftMessageQR = ({ messageId, orderId }: Props) => {
   return (
     <div className="flex flex-col items-center space-y-2">
       <QRCodeCanvas
-        id="pbb-gift-message-qr"
+        id="rda-gift-message-qr"
         value={url}
         size={256}
         bgColor="#ffffff"

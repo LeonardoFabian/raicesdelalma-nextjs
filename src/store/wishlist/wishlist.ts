@@ -27,7 +27,7 @@ interface FavoriteProductsState {
 
 //     // if ( typeof localStorage === 'undefined') return {};
 
-//     const favorites = JSON.parse( localStorage.getItem( 'my-purplebutterfly-wishlist' ) ?? '{}' );
+//     const favorites = JSON.parse( localStorage.getItem( 'my-raicesdelalma-wishlist' ) ?? '{}' );
 //     return favorites;
 // }
 
@@ -58,7 +58,7 @@ const productsSlice = createSlice({
             state.favorites[id] = product;
         }
 
-        localStorage.setItem( 'my-purplebutterfly-wishlist', JSON.stringify( state.favorites ) );
+        localStorage.setItem( 'my-raicesdelalma-wishlist', JSON.stringify( state.favorites ) );
     }
   }
 });

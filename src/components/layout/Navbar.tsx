@@ -44,7 +44,7 @@ export const Navbar = () => {
   // };
 
   // const cookieStore = await cookies();
-  // const cart = JSON.parse(cookieStore.get("ppbbCart")?.value ?? "{}") as {
+  // const cart = JSON.parse(cookieStore.get("rdaCart")?.value ?? "{}") as {
   //   [id: string]: number;
   // };
 

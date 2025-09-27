@@ -57,7 +57,7 @@ export default async function EmptyPage() {
 
   const cookieStore = await cookies();
   const cart = JSON.parse(
-    (cookieStore.get("ppbbCart")?.value as string) ?? "{}"
+    (cookieStore.get("rdaCart")?.value as string) ?? "{}"
   ) as { [id: string]: number };
   // console.log({ cart });
 

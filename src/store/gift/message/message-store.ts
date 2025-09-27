@@ -23,7 +23,7 @@ export const useGiftMessageStore = create<MessageState>()(
                 set({ message });
             }
         }), {
-            name: 'pbb-gift-message'
+            name: 'rda-gift-message'
         }
     )
 );

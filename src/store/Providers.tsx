@@ -12,7 +12,7 @@ interface Props {
 export const StoreProviders = ({ children }: Props) => {
   useEffect(() => {
     const favorites = JSON.parse(
-      localStorage.getItem("my-purplebutterfly-wishlist") ?? "{}"
+      localStorage.getItem("my-raicesdelalma-wishlist") ?? "{}"
     );
     // console.log({ favorites });
     store.dispatch(setFavoriteProducts(favorites));

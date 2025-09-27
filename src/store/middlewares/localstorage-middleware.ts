@@ -9,7 +9,7 @@ export const localStorageMiddleware = ( state: MiddlewareAPI) => {
 
         if ( action.type === 'wishlist/toggleFavorite' ) {
             const { counter, wishlist} = state.getState() as RootState;
-            localStorage.setItem( 'my-purplebutterfly-wishlist', JSON.stringify( wishlist ));
+            localStorage.setItem( 'my-raicesdelalma-wishlist', JSON.stringify( wishlist ));
             return;
         }
 

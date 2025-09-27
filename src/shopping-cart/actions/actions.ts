@@ -8,8 +8,8 @@ cookieCart
 
 export const getShoppingCartCookie = (): { [id: string]: number } => {
     
-    if ( hasCookie( 'ppbbCart' ) ) {
-        const cookieCart = JSON.parse( getCookie( 'ppbbCart' ) as string ?? '{}' );
+    if ( hasCookie( 'rdaCart' ) ) {
+        const cookieCart = JSON.parse( getCookie( 'rdaCart' ) as string ?? '{}' );
         return cookieCart;
     }
     
@@ -26,7 +26,7 @@ export const addToShoppingCartCookie = ( id: string, quantity?: number ) => {
         cookieCart[id] = quantity ?? 1;
     }
 
-    setCookie( 'ppbbCart', JSON.stringify( cookieCart ) );
+    setCookie( 'rdaCart', JSON.stringify( cookieCart ) );
 }
 
 /**
@@ -39,7 +39,7 @@ export const removeFromShoppingCartCookie = ( id: string ) => {
     if ( cookieCart[id] ) {
         delete cookieCart[id];
     }
-    setCookie( 'ppbbCart', JSON.stringify( cookieCart ) );
+    setCookie( 'rdaCart', JSON.stringify( cookieCart ) );
 
 }
 
@@ -55,5 +55,5 @@ export const removeSingleItemFromCartCookie = ( id: string ) => {
         cookieCart[id] = itemsInCart;
     }
     
-    setCookie( 'ppbbCart', JSON.stringify( cookieCart ) );
+    setCookie( 'rdaCart', JSON.stringify( cookieCart ) );
 }

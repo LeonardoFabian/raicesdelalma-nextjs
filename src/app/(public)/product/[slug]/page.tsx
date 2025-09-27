@@ -63,7 +63,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         title: product?.title ?? "Product Not Found",
         description: product?.description ?? "Single product page",
         images: [{ url: product?.images[0].url ?? "" }],
-        url: `https://www.purplebutterflybouquets.com/product/${slug}`,
+        url: `https://www.raicesdelalma.com.do/product/${slug}`,
         type: "website",
       },
       twitter: {

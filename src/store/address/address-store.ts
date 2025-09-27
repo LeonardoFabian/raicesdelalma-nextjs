@@ -35,7 +35,7 @@ export const useAddressStore = create<AddressState>()(
                 set({ address });
             }
         }), {
-            name: 'pbb-shipping-address'
+            name: 'rda-shipping-address'
         }
     )
 );

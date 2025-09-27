@@ -106,7 +106,7 @@ export default function CartPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       /> */}
-      <div className="ppbb-cart-page text-left w-full py-6 md:py-12 flex flex-col gap-16">
+      <div className="rda-cart-page text-left w-full py-6 md:py-12 flex flex-col gap-16">
         <div className="container cart-grid">
           <div className="bg-white shadow-2xl p-4 md:p-8 col-span-1 md:col-span-4 xl:col-span-9 flex flex-col  items-start justify-start rounded-sm">
             <div className="flex items-center justify-between w-full gap-8 pb-4 border-b border-b-gray-200">

@@ -66,8 +66,11 @@ export const Footer = () => {
             />
           </div>
           <div className="flex flex-col text-center md:text-left gap-1">
-            <p>Milford, DE</p>
-            <p>info@purplebutterflybouquets.com</p>
+            <p>Carretera Mella, Km.6</p>
+            <p>Santana,</p>
+            <p>Higüey, R.D.</p>
+            <p>23000</p>
+            <p>raicesdelalmard@gmail.com</p>
           </div>
         </div>
         <div className="w-full flex flex-row items-start justify-between md:justify-start gap-4 md:gap-12">
@@ -128,7 +131,7 @@ export const Footer = () => {
           </h5>
           <div className="flex items-center justify-center md:justify-start gap-3">
             <Link
-              href="https://instagram.com/purplebutterflyde"
+              href="https://instagram.com/raicesdelalmard"
               className="hover:text-gold-pastel hover:cursor-pointer"
               target="_blank"
               title="Instagram"

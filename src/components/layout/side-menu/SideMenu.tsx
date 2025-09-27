@@ -96,7 +96,7 @@ export const SideMenu = () => {
       {/* TODO: slide effect */}
       <nav
         className={clsx(
-          "ppbb-c-layout-side-menu fixed p-5 right-0 top-0 w-[300px] h-screen bg-white z-50 shadow-2xl transform transition-all duration-300",
+          "rda-c-layout-side-menu fixed p-5 right-0 top-0 w-[300px] h-screen bg-white z-50 shadow-2xl transform transition-all duration-300",
           {
             "translate-x-full": !isSideMenuOpen,
           }

@@ -1,7 +1,7 @@
 services:
-  ecommerce-db:
+  postgres-db:
     image: postgres:15.3
-    container_name: postgres-purplebutterfly
+    container_name: postgres-raicesdelalma
     restart: always
     environment:
       POSTGRES_USER: ${DB_USER}

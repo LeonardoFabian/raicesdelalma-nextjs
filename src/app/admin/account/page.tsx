@@ -29,7 +29,7 @@ export default async function AdminAccountPage() {
       <Head>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
-      <div className="pbb-admin-account-page flex flex-col gap-4 w-full px-4 md:px-6">
+      <div className="rda-admin-account-page flex flex-col gap-4 w-full px-4 md:px-6">
         <PageTitle
           title="Manage Account"
           subtitle="Manage your profile, change password, and manage security"

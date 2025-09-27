@@ -66,7 +66,7 @@ export default async function AdminProductsPage({ searchParams }: Props) {
         <meta name="robots" content="noindex, nofollow" />
       </Head>
       {/* { JSON.stringify( products ) } */}
-      <div className="pbb-admin-products-page flex flex-col gap-4 w-full px-4 md:px-6">
+      <div className="rda-admin-products-page flex flex-col gap-4 w-full px-4 md:px-6">
         <PageTitle title="Products" subtitle="Manage your Products">
           <AddNewProductButton />
           {/* <DeleteInactiveProducts /> */}

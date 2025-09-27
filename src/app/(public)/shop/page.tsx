@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     title: "Shop Coffee Bouquets, Tea & Flowers",
     description:
       "Unique gifts for every soul — shop coffee, tea, and floral arrangements made with love.",
-    url: "https://www.purplebutterflybouquets.com/shop",
+    url: "https://www.raicesdelalma.com.do/shop",
     type: "website",
   },
   twitter: {
@@ -105,7 +105,7 @@ export default async function ShopPage({ searchParams }: Props) {
               {JSON.stringify(schema)}
             </Script> */}
 
-      <div className="ppbb-shop-products-page container text-left py-12 flex flex-col gap-16">
+      <div className="rda-shop-products-page container text-left py-12 flex flex-col gap-16">
         <div className="flex flex-col gap-4 items-center justify-center">
           <H1>Bouquets for every occasion</H1>
           {categories && (

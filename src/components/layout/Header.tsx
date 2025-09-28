@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 // import { MdMenu, MdOutlineClose } from "react-icons/md";
 // import { useAppSelector } from "@/store";
 import { ActiveLink, ActiveLinkProps } from "../active-link/ActiveLink";
-import { Logo } from "./Logo";
+// import { Logo } from "./Logo";
+import Logo from "../../../public/logo.svg";
 import { MenuMobile } from "./MenuMobile/MenuMobile";
 // import { HeaderOptionsWrapper } from "./HeaderOptionsWrapper";
 import { AccountButton, LoginButton } from "@/components";
@@ -15,6 +16,8 @@ import { MdOutlineFavoriteBorder, MdOutlineShoppingBag } from "react-icons/md";
 import { FavoriteProductsCount } from "@/components/auth/getFavoriteProductsCount";
 import { useCartStore, useWishlistStore } from "@/store";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
+
 
 export const Header = () => {
   const { data: session } = useSession();
@@ -95,11 +98,12 @@ export const Header = () => {
         </span>
 
         <span className="flex items-center justify-start md:justify-center !fill-white">
-          <Logo
-            theme="light"
-            height={54}
-            className={`text-white md:text-primary`}
-          />
+          <Image
+                    src={Logo}
+                    className={`h-8`}
+                    alt="Logo"
+                    height={50}
+                  />
         </span>
 
         <ul className="flex items-center justify-end md:mt-2 space-x-3 md:space-x-6">

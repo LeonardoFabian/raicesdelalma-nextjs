@@ -31,6 +31,7 @@ import {
 import { AddToCartOptions } from "./ui/AddToCartOptions";
 import { calcDiscountCents, currencyFormat, toCents } from "@/utils";
 import { RelatedProducts } from "./ui/RelatedProducts";
+import { fontHeading } from "@/config/fonts";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -125,14 +126,18 @@ export default async function SingleProductPage({ params }: Props) {
           />
         </div>
         <div className="product-info px-5 pb-5 md:pb-0 md:px-0 col-span-1 flex flex-col gap-4">
-          <H1>{product.title}</H1>
+          <h1
+            className={`${fontHeading.className} font-heading text-xl md:text-4xl text-primary`}
+          >
+            {product.title}
+          </h1>
           {product.rating && <Rating rating={+product.rating} />}
 
           <AddToCartOptions product={product} settings={settings} />
 
           <section id="product-details" className="py-2 flex flex-col gap-2">
             <h5 className="font-bold text-lg text-body">
-              <strong>Details</strong>
+              <strong>Detalles</strong>
             </h5>
             <table className="w-full text-base">
               <tbody>
@@ -149,7 +154,7 @@ export default async function SingleProductPage({ params }: Props) {
                 {product.categoryId && (
                   <tr>
                     <td colSpan={2} className="font-semibold text-left">
-                      Category:
+                      Categoría:
                     </td>
                     <td colSpan={10} className="text-left">
                       {category?.title}
@@ -160,7 +165,7 @@ export default async function SingleProductPage({ params }: Props) {
             </table>
           </section>
           <h5 className="font-bold text-lg text-body">
-            <strong>Description</strong>
+            <strong>Descripción</strong>
           </h5>
           <p className={`${fontBody.className} product-description text-lg`}>
             {product.description}
@@ -169,7 +174,7 @@ export default async function SingleProductPage({ params }: Props) {
       </div>
       {relatedProducts && (
         <div className="container flex flex-col gap-2">
-          <PageTitle title="Related Products" />
+          <PageTitle title="Productos Relacionados" />
           <RelatedProducts products={relatedProducts} />
         </div>
       )}

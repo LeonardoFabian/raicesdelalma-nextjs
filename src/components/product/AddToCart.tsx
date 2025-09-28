@@ -45,7 +45,7 @@ export const AddToCart = ({ product, quantity = 1, size, disabled }: Props) => {
           />
         </span>
         <span className={`${fontBody.className} inline-block`}>
-          Add to Cart
+          Añadir al Carrito
         </span>
       </button>
     </>

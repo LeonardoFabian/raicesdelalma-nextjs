@@ -2,20 +2,25 @@
 
 /* Design tokens (remplaza/ajusta a tu gusto) */
 @theme {
-  --color-primary: #a76f33;
-  --color-primary-hover: #f3e4d2;
-  --color-primary-dark: #4d3217;
-  --color-accent: #f6e3ba;
-  --color-background: #ffefcb;
-  --color-text-primary: #2e2a35;
-  --color-text-secondary: #565959;
-  --color-link: #a76f33;
+  --color-primary: #a76f33; /* Dorado cálido */
+  --color-primary-light: #d9a86c; /* Más cercano al primario, no tan claro */
+  --color-primary-dark: #6e471e; /* Oscuro cálido, más cercano que #4d3217 */
+
+  --color-accent: #f6e3ba; /* Arena clara (buena base para contraste) */
+  --color-background: #fff4df; /* Más limpio y claro que #ffefcb */
+
+  --color-text-primary: #2e2a25; /* Marrón oscuro más cálido */
+  --color-text-secondary: #5e5545; /* Marrón neutro para elementos suaves */
+  --color-link: #a76f33; /* Igual al primario */
 
   --color-blue-pastel: #c5d8f0;
   --color-yellow-pastel: #fdf1c3;
   --color-brown-pastel: #dbc4b0;
   --color-gold-pastel: #f6e2a6;
   --color-green-pastel: #c5e8c2;
+
+  --color-men-line: #2e6171;
+  --color-women-line: #ff4b3e;
 
   --font-heading: "Barlow Semi Condensed", sans-serif;
   --font-body: "Roboto", sans-serif;

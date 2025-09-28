@@ -40,7 +40,7 @@ export default function AboutPage() {
 
   return (
     <>
-      <Title title="About Us" />
+      <Title title="Sobre Nosotros" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}

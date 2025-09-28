@@ -75,7 +75,7 @@ export const CategoriesTabBar = ({ currentCategoryId, categories }: Props) => {
             }
           )}
         >
-          {`All`}
+          {`Todas`}
         </Link>
       </div>
       {categories &&

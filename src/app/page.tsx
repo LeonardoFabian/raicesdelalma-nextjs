@@ -79,7 +79,7 @@ export default async function Home() {
           title="Porque el cuidado debe sentirse natural"
           subtitle="Jabones artesanales y productos de cuidado personal elaborados con ingredientes puros, vegetales y sostenibles. Cuidamos tu piel y el planeta."
           ctaPath="/shop"
-          ctaText="Haz tu pedido ahora"
+          ctaText="Accede a nuestro catálogo"
         />
 
         <div className="container">

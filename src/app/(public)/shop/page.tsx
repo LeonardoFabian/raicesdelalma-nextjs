@@ -91,7 +91,7 @@ export default async function ShopPage({ searchParams }: Props) {
 
   return (
     <>
-      <Title title="Shop" />
+      <Title title="Productos" />
       {/* <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -107,7 +107,7 @@ export default async function ShopPage({ searchParams }: Props) {
 
       <div className="rda-shop-products-page container text-left py-12 flex flex-col gap-16">
         <div className="flex flex-col gap-4 items-center justify-center">
-          <H1>Bouquets for every occasion</H1>
+          <H1>Categorías</H1>
           {categories && (
             <CategoriesTabBar categories={categories} currentCategoryId={"0"} />
           )}

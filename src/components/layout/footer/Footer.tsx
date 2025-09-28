@@ -60,7 +60,6 @@ export const Footer = () => {
           <div className="flex flex-col text-center md:text-left gap-1">
             <p>Carretera Mella Km.6, Santana,</p>
             <p>Higüey, R.D.</p>
-            <p>23000</p>
             <p>raicesdelalmard@gmail.com</p>
             <p>(829) 915-8927</p>
           </div>
@@ -144,7 +143,7 @@ export const Footer = () => {
       </div>
       <div className="container px-5 text-xs sm:text-sm text-center">
         <p>
-          &copy; {`${year} Raíces del Alma. Todos los derechos reservados.`}
+          &copy; {`${year} Raíces Del Alma. Todos los derechos reservados.`}
         </p>
       </div>
     </footer>

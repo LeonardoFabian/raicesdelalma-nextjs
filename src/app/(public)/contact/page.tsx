@@ -48,7 +48,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <Title title="Contact Us" />
+      <Title title="Contáctanos" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}

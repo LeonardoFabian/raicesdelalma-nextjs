@@ -127,7 +127,7 @@ export default async function SingleProductPage({ params }: Props) {
         </div>
         <div className="product-info px-5 pb-5 md:pb-0 md:px-0 col-span-1 flex flex-col gap-4">
           <h1
-            className={`${fontHeading.className} font-heading text-xl md:text-4xl text-primary`}
+            className={`${fontHeading.className} font-heading text-xl md:text-2xl text-primary`}
           >
             {product.title}
           </h1>

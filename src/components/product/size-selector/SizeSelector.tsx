@@ -20,7 +20,7 @@ export const SizeSelector = ({
 
   return (
     <div className="my-5 flex flex-col gap-4">
-      <p>Select a Size</p>
+      <p>Selecciona un tamaño</p>
       <div className="flex items-center gap-4">
         {availableSizes?.map((size, index) => {
           // TODO: fix size.stock not exists in ISize

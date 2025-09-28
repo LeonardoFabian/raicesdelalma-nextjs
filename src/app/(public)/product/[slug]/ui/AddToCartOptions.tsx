@@ -234,7 +234,7 @@ export const AddToCartOptions = ({ product, settings }: Props) => {
             {currencyFormat(unitPrice)}
           </span>
         </div>
-        {product.discountPercentage && (
+        {product.discountPercentage && product.discountPercentage > 0 && (
           <span className="text-sm text-text-secondary font-regular text-body ">
             Base price:{" "}
             <span className="line-through">
@@ -246,7 +246,8 @@ export const AddToCartOptions = ({ product, settings }: Props) => {
 
       {isSubmitting && !size && (
         <span className="bg-red-100 text-red-600 p-2 rounded fade-in">
-          The product size is required
+          Debes hacer clic en el tamaño del producto antes de agregarlo al
+          carrito
         </span>
       )}
 
@@ -306,7 +307,7 @@ export const AddToCartOptions = ({ product, settings }: Props) => {
             />
           </span>
           <span className={`${fontBody.className} inline-block`}>
-            Add to Cart
+            Añadir al carrito
           </span>
         </button>
       </div>

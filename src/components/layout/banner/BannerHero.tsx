@@ -27,7 +27,11 @@ export const BannerHero = ({ title, subtitle, ctaPath, ctaText }: Props) => {
         height={1080}
         priority={false}
       />
-      <div className="absolute top-0 left-0 right-0 z-10 h-full max-w-5xl mx-auto p-4 lg:p-24  overflow-hidden rounded-lg">
+      <div className="absolute top-0 left-0 right-0 w-screen h-full max-w-5xl mx-auto bg-white opacity-30 z-10" />
+
+      <div className="fade-in absolute top-0 left-0 right-0 h-full max-w-5xl mx-auto z-20 backdrop-filter backdrop-blur-sm" />
+
+      <div className="absolute top-0 left-0 right-0 z-30 h-full max-w-5xl mx-auto p-4 lg:p-24  overflow-hidden rounded-lg">
         <div
           className="flex flex-col items-center justify-start pt-32 md:pt-12 gap-4 h-full text-center"
           data-carousel-item

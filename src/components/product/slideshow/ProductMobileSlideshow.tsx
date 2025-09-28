@@ -40,7 +40,7 @@ export const ProductMobileSlideshow = ({ images, title, className }: Props) => {
       >
         {images.map((img, index) => (
           <SwiperSlide key={img.id}>
-            <div className="relative w-full h-[80vh] bg-gray-200">
+            <div className="relative w-full h-[50vh] bg-white">
               <ProductImage
                 src={img.url}
                 alt={title}
@@ -50,7 +50,7 @@ export const ProductMobileSlideshow = ({ images, title, className }: Props) => {
                 sizes="(max-width: 768px) 100vw,
                        (max-width: 1024px) 60vw,
                        50vw"
-                className="object-contain overflow-hidden"
+                className="object-cover overflow-hidden"
               />
             </div>
           </SwiperSlide>

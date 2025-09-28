@@ -47,7 +47,7 @@ export const ProductSlideshow = ({ images, title, className }: Props) => {
       >
         {images.map((img) => (
           <SwiperSlide key={img.id}>
-            <div className="relative w-full pt-[75%] bg-gray-200">
+            <div className="relative w-full pt-[50%] bg-white">
               <ProductImage
                 src={img.url}
                 alt={title}
@@ -57,7 +57,7 @@ export const ProductSlideshow = ({ images, title, className }: Props) => {
                 sizes="(max-width: 768px) 100vw,
                        (max-width: 1024px) 60vw,
                        50vw"
-                className="rounded-lg object-contain overflow-hidden"
+                className="rounded-lg object-cover overflow-hidden"
               />
               {/* <Image
                 src={`/uploads/${img}`}

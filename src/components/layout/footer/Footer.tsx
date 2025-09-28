@@ -47,7 +47,7 @@ export const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-primary-dark text-primary-hover py-4">
+    <footer className="bg-primary-dark text-white py-4">
       <div className="container py-8 flex flex-col md:flex-row gap-8 items-start justify-between">
         <div className="w-full justify-center flex flex-col md:justify-start md:gap-4">
           <div className="flex items-center justify-center md:justify-start gap-2">
@@ -58,11 +58,11 @@ export const Footer = () => {
             />
           </div>
           <div className="flex flex-col text-center md:text-left gap-1">
-            <p>Carretera Mella, Km.6</p>
-            <p>Santana,</p>
+            <p>Carretera Mella Km.6, Santana,</p>
             <p>Higüey, R.D.</p>
             <p>23000</p>
             <p>raicesdelalmard@gmail.com</p>
+            <p>(829) 915-8927</p>
           </div>
         </div>
         <div className="w-full flex flex-row items-start justify-between md:justify-start gap-4 md:gap-12">
@@ -125,7 +125,7 @@ export const Footer = () => {
           <div className="flex items-center justify-center md:justify-start gap-3">
             <Link
               href="https://instagram.com/raicesdelalmard"
-              className="hover:text-gold-pastel hover:cursor-pointer"
+              className="hover:text-primary-hover hover:cursor-pointer"
               target="_blank"
               title="Instagram"
             >
@@ -133,7 +133,7 @@ export const Footer = () => {
             </Link>
             <Link
               href="#"
-              className="hover:text-gold-pastel hover:cursor-pointer"
+              className="hover:text-primary-hover hover:cursor-pointer"
               target="_blank"
               title="Facebook"
             >

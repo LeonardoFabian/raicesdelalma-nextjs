@@ -8,6 +8,7 @@ import { ProductGrid } from "@/components";
 import { Footer } from "@/components";
 import { getFeaturedProducts } from "@/actions";
 import type { Metadata } from "next";
+import { fontHeading } from "@/config/fonts";
 
 export const metadata: Metadata = {
   title: "Purple Butterfly Bouquets | Coffee, Tea & Floral Experiences",
@@ -75,15 +76,19 @@ export default async function Home() {
 
       <main className="flex min-h-screen flex-col items-center justify-between ">
         <BannerHero
-          title="Coffee Bouquets that speak your heart"
-          subtitle="A unique gift experience that combines the aroma of premium coffee with the elegance of floral presentation. Perfect for any occasion."
+          title="Descubre la pureza de lo natural"
+          subtitle="Jabones artesanales y productos de cuidado personal elaborados con ingredientes puros, vegetales y sostenibles. Cuidamos tu piel y el planeta."
           ctaPath="/shop"
-          ctaText="Shop Now"
+          ctaText="Haz tu pedido ahora"
         />
 
         <div className="container">
           <div className="latest-products text-center py-12 flex flex-col gap-6">
-            <H1>Featured Bouquets</H1>
+            <h2
+              className={`${fontHeading.className} font-heading text-xl md:text-2xl text-text-primary`}
+            >
+              Productos Destacados
+            </h2>
             {/* { JSON.stringify( products ) } */}
             <div className="flex flex-col ">
               <ProductGrid products={featuredProducts} />

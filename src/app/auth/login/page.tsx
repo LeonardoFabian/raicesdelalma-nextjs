@@ -11,7 +11,7 @@ export default function LoginPage() {
       <h1
         className={`${fontHeading.className} text-4xl mb-5 text-white text-center`}
       >
-        Login
+        Inicia sesión
       </h1>
 
       <LoginForm />

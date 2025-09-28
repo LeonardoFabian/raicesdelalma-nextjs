@@ -11,7 +11,7 @@ export default function RegisterPage() {
       <h1
         className={`${fontHeading.className} text-4xl mb-5 text-white text-center`}
       >
-        Register
+        Crear una cuenta
       </h1>
 
       <RegisterForm />

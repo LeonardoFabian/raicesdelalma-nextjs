@@ -45,7 +45,7 @@ export const LoginForm = () => {
   return (
     <form action={formAction} className="flex flex-col">
       <label htmlFor="email" className="text-white">
-        Email Address
+        Correo electrónico
       </label>
       <input
         className="px-5 py-2  bg-gray-200 rounded mb-5"
@@ -55,7 +55,7 @@ export const LoginForm = () => {
       />
 
       <label htmlFor="password" className="text-white">
-        Password
+        Contraseña
       </label>
       <input
         className="px-5 py-2  bg-gray-200 rounded mb-5"
@@ -104,7 +104,7 @@ export const LoginForm = () => {
       </div>
 
       <Link href="/auth/register" className="btn-secondary text-center">
-        Create New Account
+        Crear una cuenta
       </Link>
     </form>
   );
@@ -124,7 +124,7 @@ export const LoginButton = ({ isPending }: LoginButtonProps) => {
       })}
       disabled={isPending}
     >
-      {isPending ? "Logging in..." : "Login"}
+      {isPending ? "Iniciando sesión..." : "Iniciar sesión"}
     </button>
   );
 };

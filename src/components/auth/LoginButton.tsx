@@ -6,7 +6,7 @@ export const LoginButton = () => {
       href="/auth/login"
       className="flex items-center py-2 px-4 transition-all bg-gold-pastel text-primary font-body font-semibold rounded-lg"
     >
-      Log In
+      Inicia sesión
     </Link>
   );
 };

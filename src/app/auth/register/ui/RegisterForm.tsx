@@ -49,7 +49,7 @@ export const RegisterForm = () => {
       )} */}
 
       <label htmlFor="name" className="text-white">
-        Full Name
+        Nombre y Apellido
       </label>
       <input
         className={clsx("px-5 py-2  bg-gray-200 rounded mb-5", {
@@ -61,7 +61,7 @@ export const RegisterForm = () => {
       />
 
       <label htmlFor="email" className="text-white">
-        Email Address
+        Correo Electrónico
       </label>
       <input
         className={clsx("px-5 py-2  bg-gray-200 rounded mb-5", {
@@ -75,7 +75,7 @@ export const RegisterForm = () => {
       />
 
       <label htmlFor="password" className="text-white">
-        Password
+        Contraseña
       </label>
       <input
         className={clsx("px-5 py-2  bg-gray-200 rounded mb-5", {
@@ -85,7 +85,7 @@ export const RegisterForm = () => {
         {...register("password", { required: true, minLength: 6 })}
       />
 
-      <button className="btn-accent">Create Account</button>
+      <button className="btn-accent">Crear Cuenta</button>
 
       {errorMessage && (
         <span className="bg-red-200 text-red-600 rounded flex items-center gap-2 p-2 mt-2">
@@ -101,7 +101,7 @@ export const RegisterForm = () => {
       </div>
 
       <Link href="/auth/login" className="btn-secondary text-center">
-        Login
+        Inicia Sesión
       </Link>
     </form>
   );

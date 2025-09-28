@@ -47,13 +47,13 @@ export const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-primary-dark text-white py-4">
+    <footer className="bg-primary-dark text-primary-hover py-4">
       <div className="container py-8 flex flex-col md:flex-row gap-8 items-start justify-between">
         <div className="w-full justify-center flex flex-col md:justify-start md:gap-4">
           <div className="flex items-center justify-center md:justify-start gap-2">
             <Logo
               theme="dark"
-              className="text-white text-center md:text-left"
+              className="text-accent text-center md:text-left"
               // height={100}
             />
           </div>
@@ -109,7 +109,7 @@ export const Footer = () => {
             <form className="w-full flex flex-col lg:flex-row items-center justify-between gap-2">
               <input
                 type="email"
-                placeholder="Enter your email"
+                placeholder="Introduce tu correo electrónico"
                 className="bg-white text-text-primary px-4 py-2 rounded-lg w-full"
               />
               <Button type="button" className="accent">

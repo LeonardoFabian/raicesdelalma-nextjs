@@ -27,16 +27,20 @@
 
 /* Tus estilos extra opcionales */
 :root {
+  --color-accent: #f6e3ba;
+  --color-background: #fff4df;
+
+  --color-gradient-start: var(--color-accent);
+  --color-gradient-end: var(--color-background);
+
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --color-gradient-start: #1e1e1e;
+    --color-gradient-end: #121212;
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
   }
 }
 

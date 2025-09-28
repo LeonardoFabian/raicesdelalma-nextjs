@@ -53,7 +53,7 @@ export const Header = () => {
   const navItems: ActiveLinkProps[] = [
     {
       path: "/about",
-      label: "Sobre nosotros",
+      label: "Nosotros",
     },
     {
       path: "/shop",
@@ -71,13 +71,13 @@ export const Header = () => {
       icon: <MdOutlineFavoriteBorder className="w-6 h-6" />,
       badge: <NotificationBadge value={wishlist.length} />,
       // badge: <FavoriteProductsCount />,
-      title: "Favorites",
+      title: "Favoritos",
     },
     {
       path: +getTotalItemsInCart === 0 && loaded ? "/empty" : "/cart",
       icon: <MdOutlineShoppingBag className="w-6 h-6" />,
       badge: <NotificationBadge value={getTotalItemsInCart} />,
-      title: "Cart",
+      title: "Carrito de compras",
     },
   ];
 

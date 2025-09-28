@@ -10,45 +10,37 @@ export const Footer = () => {
   const navItems: ActiveLinkProps[] = [
     {
       path: "/about",
-      label: "About Us",
+      label: "Sobre nosotros",
     },
     {
       path: "/shop",
-      label: "Shop",
-    },
-    {
-      path: "/customize",
-      label: "Customize",
-    },
-    {
-      path: "/how-it-works",
-      label: "How It Works",
+      label: "Productos",
     },
     {
       path: "/contact",
-      label: "Contact Us",
+      label: "Contáctanos",
     },
   ];
   const legalNavItems: ActiveLinkProps[] = [
     {
       path: "/legal/privacy-policy",
-      label: "Privacy Policy",
+      label: "Política de privacidad",
     },
-    {
-      path: "/legal/refund-policy",
-      label: "Refund Policy",
-    },
+    // {
+    //   path: "/legal/refund-policy",
+    //   label: "Refund Policy",
+    // },
     {
       path: "/legal/shipping-policy",
-      label: "Shipping Policy",
+      label: "Política de envío",
     },
     {
       path: "/legal/ads-policy",
-      label: "Ads Policy",
+      label: "Política de anuncios",
     },
     {
       path: "/legal/terms-and-conditions",
-      label: "Terms and Conditions",
+      label: "Terminos y condiciones",
     },
   ];
 
@@ -76,7 +68,7 @@ export const Footer = () => {
         <div className="w-full flex flex-row items-start justify-between md:justify-start gap-4 md:gap-12">
           <div className="flex flex-col gap-3 justify-start">
             <h5 className={`${fontHeading.className} font-semibold text-2xl`}>
-              Shop
+              Enlaces
             </h5>
             <div className="flex flex-col gap-1">
               {navItems.map((navItem) => (
@@ -107,11 +99,12 @@ export const Footer = () => {
           <h5
             className={`${fontHeading.className} font-semibold text-2xl text-center md:text-left`}
           >
-            Subscribe
+            Suscríbete
           </h5>
           <div className="flex flex-col gap-1">
             <p className="hover:text-gold-pastel text-center md:text-left">
-              Subscribe to our newsletter
+              Suscríbete y recibe más información sobre nuestros productos y
+              ofertas.
             </p>
             <form className="w-full flex flex-col lg:flex-row items-center justify-between gap-2">
               <input
@@ -120,14 +113,14 @@ export const Footer = () => {
                 className="bg-white text-text-primary px-4 py-2 rounded-lg w-full"
               />
               <Button type="button" className="accent">
-                Send
+                Enviar
               </Button>
             </form>
           </div>
           <h5
             className={`${fontHeading.className} font-semibold text-2xl text-center md:text-left mt-4`}
           >
-            Follow Us
+            Síguenos en
           </h5>
           <div className="flex items-center justify-center md:justify-start gap-3">
             <Link
@@ -151,7 +144,7 @@ export const Footer = () => {
       </div>
       <div className="container px-5 text-xs sm:text-sm text-center">
         <p>
-          &copy; {`${year} Purple Butterfly Bouquets. All rights reserved.`}
+          &copy; {`${year} Raíces del Alma. Todos los derechos reservados.`}
         </p>
       </div>
     </footer>

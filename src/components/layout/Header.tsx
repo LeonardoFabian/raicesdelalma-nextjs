@@ -53,15 +53,15 @@ export const Header = () => {
   const navItems: ActiveLinkProps[] = [
     {
       path: "/about",
-      label: "About Us",
+      label: "Sobre nosotros",
     },
     {
       path: "/shop",
-      label: "Shop",
+      label: "Productos",
     },
     {
       path: "/contact",
-      label: "Contact Us",
+      label: "Contáctanos",
     },
   ];
 

@@ -59,23 +59,15 @@ export const Navbar = () => {
   const navItems: ActiveLinkProps[] = [
     {
       path: "/about",
-      label: "About Us",
+      label: "Sobre nosotros",
     },
     {
       path: "/shop",
-      label: "Shop",
-    },
-    {
-      path: "/customize",
-      label: "Customize",
-    },
-    {
-      path: "/how-it-works",
-      label: "How It Works",
+      label: "Productos",
     },
     {
       path: "/contact",
-      label: "Contact Us",
+      label: "Contáctanos",
     },
   ];
 
@@ -88,14 +80,14 @@ export const Navbar = () => {
       path: "/favorites",
       icon: <MdOutlineFavoriteBorder className="w-6 h-6" />,
       badge: <NotificationBadge value={wishlist.length} />,
-      title: "Favorites",
+      title: "Favoritos",
     },
     {
       path: +getTotalItemsInCart === 0 && loaded ? "/empty" : "/cart",
       icon: <MdOutlineShoppingBag className="w-6 h-6" />,
       // badge: <NotificationBadge value={getShoppingCartTotalItems()} />,
       badge: <NotificationBadge value={+getTotalItemsInCart} />,
-      title: "Cart",
+      title: "Carrito de compra",
     },
   ];
 

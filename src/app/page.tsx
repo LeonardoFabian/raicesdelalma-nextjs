@@ -76,7 +76,7 @@ export default async function Home() {
 
       <main className="flex min-h-screen flex-col items-center justify-between ">
         <BannerHero
-          title="Descubre la pureza de lo natural"
+          title="Porque cuidarte deberia sentirse natural"
           subtitle="Jabones artesanales y productos de cuidado personal elaborados con ingredientes puros, vegetales y sostenibles. Cuidamos tu piel y el planeta."
           ctaPath="/shop"
           ctaText="Haz tu pedido ahora"

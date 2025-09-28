@@ -2,14 +2,14 @@
 
 /* Design tokens (remplaza/ajusta a tu gusto) */
 @theme {
-  --color-primary: #7b2d87;
-  --color-primary-hover: #9b4ca9;
-  --color-primary-dark: #5a1f63;
-  --color-accent: #d88cc4;
-  --color-background: #fdf6fa;
+  --color-primary: #a76f33;
+  --color-primary-hover: #f3e4d2;
+  --color-primary-dark: #4d3217;
+  --color-accent: #f6e3ba;
+  --color-background: #ffefcb;
   --color-text-primary: #2e2a35;
   --color-text-secondary: #565959;
-  --color-link: #a134c4;
+  --color-link: #a76f33;
 
   --color-blue-pastel: #c5d8f0;
   --color-yellow-pastel: #fdf1c3;

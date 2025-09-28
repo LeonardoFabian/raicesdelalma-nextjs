@@ -3,9 +3,8 @@
 /* Design tokens (remplaza/ajusta a tu gusto) */
 @theme {
   --color-primary: #a76f33;
-  --color-primary-light: #d9a86c;
+  --color-primary-hover: #d9a86c;
   --color-primary-dark: #6e471e;
-
   --color-accent: #f6e3ba;
   --color-background: #fff4df;
 

@@ -1,13 +1,15 @@
-import { Inter, Galada, Montserrat_Alternates } from "next/font/google";
 
-export const fontHeading = Galada({
-    weight: ["400"],
-    subsets: ["latin"],
-    variable: "--font-heading",
+import { Playfair_Display, Nunito_Sans } from "next/font/google";
+
+export const fontHeading = Playfair_Display({
+  weight: ["700"],
+  subsets: ["latin"],
+  variable: "--font-heading",
 });
-// export const fontHeading = Montserrat_Alternates({
-//     weight: ["500", "700"],
-//     subsets: ["latin"],
-//     variable: "--font-heading",
-// });
-export const fontBody = Inter({ subsets: ["latin"], variable: "--font-body" });
+
+export const fontBody = Nunito_Sans({
+  weight: ["300", "400", "600"],
+  subsets: ["latin"],
+  variable: "--font-body",
+});
+

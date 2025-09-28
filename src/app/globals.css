@@ -2,16 +2,16 @@
 
 /* Design tokens (remplaza/ajusta a tu gusto) */
 @theme {
-  --color-primary: #a76f33; /* Dorado cálido */
-  --color-primary-light: #d9a86c; /* Más cercano al primario, no tan claro */
-  --color-primary-dark: #6e471e; /* Oscuro cálido, más cercano que #4d3217 */
+  --color-primary: #a76f33;
+  --color-primary-light: #d9a86c;
+  --color-primary-dark: #6e471e;
 
-  --color-accent: #f6e3ba; /* Arena clara (buena base para contraste) */
-  --color-background: #fff4df; /* Más limpio y claro que #ffefcb */
+  --color-accent: #f6e3ba;
+  --color-background: #fff4df;
 
-  --color-text-primary: #2e2a25; /* Marrón oscuro más cálido */
-  --color-text-secondary: #5e5545; /* Marrón neutro para elementos suaves */
-  --color-link: #a76f33; /* Igual al primario */
+  --color-text-primary: #2e2a25;
+  --color-text-secondary: #5e5545;
+  --color-link: #a76f33;
 
   --color-blue-pastel: #c5d8f0;
   --color-yellow-pastel: #fdf1c3;
@@ -22,8 +22,8 @@
   --color-men-line: #2e6171;
   --color-women-line: #ff4b3e;
 
-  --font-heading: "Barlow Semi Condensed", sans-serif;
-  --font-body: "Roboto", sans-serif;
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Nunito Sans", sans-serif;
 }
 
 /* Tus estilos extra opcionales */

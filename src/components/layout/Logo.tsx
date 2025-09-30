@@ -23,7 +23,7 @@ export const Logo = ({ theme = "light", height, className }: Props) => {
           }
           className={`h-8 !md:h-[${height ? height + "px" : "8"}]`}
           alt="Logo"
-          height={height ?? 32}
+          height={height ?? 40}
         />
       ) : (
         <span

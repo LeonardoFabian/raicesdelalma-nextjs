@@ -18,7 +18,6 @@ import { useCartStore, useWishlistStore } from "@/store";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 
-
 export const Header = () => {
   const { data: session } = useSession();
   const getTotalItemsInCart = useCartStore((state) => state.getTotalItems());
@@ -98,12 +97,7 @@ export const Header = () => {
         </span>
 
         <span className="flex items-center justify-start md:justify-center !fill-white">
-          <Image
-                    src={Logo}
-                    className={`h-8`}
-                    alt="Logo"
-                    height={50}
-                  />
+          <Image src={Logo} className="h-36" alt="Logo" height={144} />
         </span>
 
         <ul className="flex items-center justify-end md:mt-2 space-x-3 md:space-x-6">

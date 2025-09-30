@@ -117,7 +117,7 @@ export const ShareMenu = ({ title, url }: Props) => {
               className="w-full flex items-center gap-4 text-left px-4 py-2 text-sm text-text-secondary hover:bg-gray-100"
             >
               <BsLink45Deg size={24} className="text-text-primary" />
-              <span>Copy link</span>
+              <span>Copiar enlace</span>
             </button>
           </div>
         </div>

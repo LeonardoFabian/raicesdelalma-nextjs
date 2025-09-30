@@ -101,7 +101,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
 
       <div className="ppbb-shop-products-page container text-left py-12 flex flex-col gap-16">
         <div className="flex flex-col gap-4 items-center justify-center">
-          <H1>Bouquets for every occasion</H1>
+          <H1>Categoría</H1>
           {categories && (
             <CategoriesTabBar
               categories={categories}

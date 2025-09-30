@@ -16,7 +16,7 @@ export const BannerHero = ({ title, subtitle, ctaPath, ctaText }: Props) => {
   return (
     <div
       id="banner-hero default-carousel"
-      className="banner-hero relative bg-accent text-text-primary font-body rounded-lg h-screen w-full"
+      className="banner-hero relative bg-accent text-text-primary font-body rounded-lg h-screen w-full flex items-center justify-center"
       data-carousel="slide"
     >
       {/* <Image

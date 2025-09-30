@@ -33,7 +33,7 @@ export const BannerHero = ({ title, subtitle, ctaPath, ctaText }: Props) => {
 
       <div className="absolute top-0 left-0 right-0 z-30 h-full max-w-5xl mx-auto p-4 lg:p-24  overflow-hidden rounded-lg">
         <div
-          className="flex flex-col items-center justify-start pt-32 md:pt-12 gap-4 h-full text-center"
+          className="flex flex-col items-center justify-center pt-32 md:pt-12 gap-4 h-full text-center"
           data-carousel-item
         >
           {/* <Image className="p-4 w-full h-40 rounded-t-lg object-contain" src={ logo } alt="hero" width={ 250 } height={ 150 } priority={false} /> */}

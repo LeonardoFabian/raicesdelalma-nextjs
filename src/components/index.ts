@@ -41,6 +41,7 @@ export * from './layout/animations/pulse/Pulse';
 // server components
 export { Footer } from './layout/footer/Footer';
 export { ProductGrid } from './products/ProductGrid';
+export * from './products/ProductsGridCard';
 // export { CreateProductForm } from './product/CreateProductForm';
 export * from './product/ProductForm';
 export * from './layout/loading/Loading';

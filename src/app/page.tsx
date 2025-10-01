@@ -83,17 +83,32 @@ export default async function Home() {
         />
 
         <div className="container">
-          <div className="latest-products text-center py-12 flex flex-col gap-6">
-            <h2
-              className={`${fontHeading.className} font-heading text-xl md:text-2xl text-text-primary`}
-            >
+          <section className="featured-products-section text-center py-12 flex flex-col gap-6">
+            <h2 className="font-heading text-4xl font-medium">            
               Productos Destacados
             </h2>
             {/* { JSON.stringify( products ) } */}
             <div className="flex flex-col ">
               <ProductGrid products={featuredProducts} />
             </div>
-          </div>
+          </section>
+
+ <section className="products-by-category-section text-center py-12 flex flex-col gap-6">
+            <h2 className="font-heading text-4xl font-medium">
+              Productos por Categoría
+            </h2>
+            {/* { JSON.stringify( products ) } */}
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {categories.map((category) => (
+                <ProductsGridCard
+                  key={category.id}
+                  category={category}
+                  products={category.products}
+                />
+              ))}
+            </div>
+          </section>
+
         </div>
       </main>
 

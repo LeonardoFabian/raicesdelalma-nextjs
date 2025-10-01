@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { ActiveLink, ActiveLinkProps } from "../active-link/ActiveLink";
 // import { Logo } from "./Logo";
 import Logo from "../../../public/logo.svg";
+import LogoMobile from "../../../public/logo-header-light.svg";
 import { MenuMobile } from "./MenuMobile/MenuMobile";
 // import { HeaderOptionsWrapper } from "./HeaderOptionsWrapper";
 import { AccountButton, LoginButton } from "@/components";
@@ -96,8 +97,22 @@ export const Header = () => {
           </ul>
         </span>
 
-        <span className="flex items-center justify-start md:justify-center !fill-white">
-          <Image src={Logo} className="h-36" alt="Logo" height={144} />
+        <span className="flex items-center justify-start md:justify-center">
+          {/* Logo Mobile */}
+          <Image
+            src={LogoMobile}
+            alt="Logo móvil"
+            className="block md:hidden h-10 w-auto"
+            height={40}
+          />
+
+          {/* Logo Desktop */}
+          <Image
+            src={Logo}
+            alt="Logo de escritorio"
+            className="hidden md:block h-36 w-auto"
+            height={144}
+          />
         </span>
 
         <ul className="flex items-center justify-end md:mt-2 space-x-3 md:space-x-6">

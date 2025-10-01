@@ -2,11 +2,11 @@
 export const dynamic = "force-dynamic";
 export const revalidate = 60; // 60 | 0
 
-import { BannerHero, H1, SideMenu } from "@/components";
+import { BannerHero, H1, ProductsGridCard, SideMenu } from "@/components";
 import { Header } from "@/components/layout/Header";
 import { ProductGrid } from "@/components";
 import { Footer } from "@/components";
-import { getFeaturedProducts } from "@/actions";
+import { getCategories, getFeaturedProducts } from "@/actions";
 import type { Metadata } from "next";
 import { fontHeading } from "@/config/fonts";
 
@@ -50,6 +50,7 @@ export default async function Home() {
   };
 
   const { featuredProducts } = await getFeaturedProducts({ take: 5 });
+  const categories = await getCategories();
 
   //    products.forEach( product => product.slug = `product/${product.slug}`);
 
@@ -84,7 +85,7 @@ export default async function Home() {
 
         <div className="container">
           <section className="featured-products-section text-center py-12 flex flex-col gap-6">
-            <h2 className="font-heading text-4xl font-medium">            
+            <h2 className="font-heading text-4xl font-medium">
               Productos Destacados
             </h2>
             {/* { JSON.stringify( products ) } */}
@@ -93,7 +94,7 @@ export default async function Home() {
             </div>
           </section>
 
- <section className="products-by-category-section text-center py-12 flex flex-col gap-6">
+          <section className="products-by-category-section text-center py-12 flex flex-col gap-6">
             <h2 className="font-heading text-4xl font-medium">
               Productos por Categoría
             </h2>
@@ -108,7 +109,6 @@ export default async function Home() {
               ))}
             </div>
           </section>
-
         </div>
       </main>
 

@@ -46,7 +46,7 @@ export const ProductsGridCard = ({ category, products }: Props) => {
       </div>
       {category && (
         <Link href={`/category/${category.slug}`} className="btn-link w-full">
-          View more
+          Ver más
         </Link>
       )}
     </div>

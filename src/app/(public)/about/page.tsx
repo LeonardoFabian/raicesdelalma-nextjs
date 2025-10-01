@@ -2,21 +2,34 @@ import { Title } from "@/components";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Purple Butterfly | Coffee, Tea & Floral Experiences",
+  title: "Sobre Nosotros | Ráices del Alma",
   description:
-    "Discover the soul behind Purple Butterfly — where coffee, tea, and floral arrangements come together to create meaningful, personalized gifts that sweeten the soul.",
+    "Conoce la historia de Ráices del Alma — una marca dedicada a crear jabones artesanales, cosmética natural y productos hechos con amor desde la raíz.",
   openGraph: {
-    title: "About Purple Butterfly | Coffee, Tea & Floral Experiences",
+    title: "Sobre Nosotros | Ráices del Alma",
     description:
-      "Meet the heart of Purple Butterfly — where every bouquet and brew carries a touch of soul and creativity.",
+      "En Ráices del Alma creemos que el cuidado debe sentirse natural. Descubre nuestra esencia, nuestra historia y el propósito que nos mueve.",
     url: "https://www.purplebutterflybouquets.com/about",
     type: "website",
+    images: [
+      {
+        url: "https://www.raicesdelalma.com.do/logo.svg", // puedes cambiar esto por una imagen de la fundadora o taller
+        width: 800,
+        height: 600,
+        alt: "Equipo de Ráices del Alma",
+      },
+    ],
   },
   twitter: {
-    title: "About Purple Butterfly",
+    title: "Sobre Ráices del Alma",
     description:
-      "Discover the story and inspiration behind our handcrafted coffee, tea, and floral experiences.",
+      "Descubre la historia detrás de nuestros productos naturales y artesanales. Inspirados por la tierra, guiados por el alma.",
     card: "summary_large_image",
+    images: [
+      {
+        url: "https://www.raicesdelalma.com.do/logo.svg",
+      },
+    ],
   },
 };
 
@@ -24,18 +37,19 @@ export default function AboutPage() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Purple Butterfly Bouquets",
-    url: "https://www.purplebutterflybouquets.com",
-    logo: "https://www.purplebutterflybouquets.com/logo.svg", // reemplázalo por tu logo real
-    sameAs: ["https://www.instagram.com/purplebutterflyde"],
+    name: "Ráices del Alma",
+    url: "https://www.raicesdelalma.com.do",
+    logo: "https://www.raicesdelalma.com.do/logo.svg", // reemplázalo por tu logo real
+    sameAs: ["https://www.instagram.com/raicesdelalmard"],
     description:
-      "Purple Butterfly creates unique gift experiences through coffee, tea, and floral design.",
+      "Ráices del Alma nace del deseo de ofrecer bienestar desde lo natural. Elaboramos productos artesanales como jabones, bálsamos y velas con ingredientes puros y conciencia ecológica.",
     founder: {
       "@type": "Person",
-      name: "Alma Puello",
+      name: "Alma Inoa",
+      sameAs: "https://www.instagram.com/raicesdelalmard",
     },
-    foundingDate: "2023-01-01",
-    foundingLocation: "Delaware, USA",
+    foundingDate: "2025-02-01",
+    foundingLocation: "Higüey, República Dominicana",
   };
 
   return (

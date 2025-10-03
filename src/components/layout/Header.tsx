@@ -102,7 +102,7 @@ export const Header = () => {
           <Image
             src={LogoMobile}
             alt="Logo móvil"
-            className="block md:hidden h-10 w-auto"
+            className="block md:hidden h-8 w-auto"
             height={32}
           />
 

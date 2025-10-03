@@ -373,7 +373,7 @@ export const placeOrder = async (products: ProductsToOrder[], address: Address, 
                     userId,
                     orderId: order.id,
                     totalAmount: order.totalAmount.toString(),
-                    itemsInOrder,
+                    itemsInOrder: itemsInOrder.toString(),
                     date: new Date().toLocaleString()
                 });
 

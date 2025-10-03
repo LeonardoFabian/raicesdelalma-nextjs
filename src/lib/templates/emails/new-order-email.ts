@@ -5,7 +5,7 @@ interface NewOrderEmailOptions {
   userId: string;
   orderId: string;
   totalAmount: string;
-  itemsInOrder: number;
+  itemsInOrder: string;
   date: string;
 }
 

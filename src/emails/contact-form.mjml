@@ -1,0 +1,81 @@
+<mjml>
+  <mj-head>
+    <mj-title>Nuevo Mensaje de Contacto</mj-title>
+    <mj-preview>Has recibido un nuevo mensaje desde el formulario de contacto</mj-preview>
+    <mj-style inline="inline">
+      .label {
+        font-weight: bold;
+        color: #333;
+      }
+    </mj-style>
+  </mj-head>
+
+  <mj-body background-color="#c5e8c2">
+
+    <!-- ESPACIO SUPERIOR -->
+    <mj-section padding="30px 0">
+      <mj-column>
+        <!-- Espacio arriba -->
+      </mj-column>
+    </mj-section>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <mj-section background-color="#ffffff" padding="20px" border-radius="8px">
+      <mj-column>
+
+        <mj-image width="200px" src="https://raicesdelalma.com.do/logo.svg" alt="Raíces Del Alma" />
+        
+        <mj-text font-size="20px" font-weight="bold" color="#333333" align="center">
+          📩 Nuevo Mensaje de Contacto
+        </mj-text>
+
+        <mj-divider border-color="#cccccc" />
+
+        <mj-text font-size="16px" color="#555555">
+          <span class="label">Nombre:</span> {{name}}<br />
+          <span class="label">Correo:</span> {{email}}<br />
+          <span class="label">Teléfono:</span> {{phone}}<br />
+          <span class="label">Fecha:</span> {{date}}<br /><br />
+          
+          <span class="label">Mensaje:</span><br />
+          {{message}}
+        </mj-text>
+
+        <mj-button background-color="#84732d" color="#ffffff" href="mailto:{{email}}" font-size="16px">
+          Responder al Cliente
+        </mj-button>
+
+      </mj-column>
+    </mj-section>
+
+    <!-- PIE DE PÁGINA -->
+    <mj-section background-color="#fafafa" padding="30px 20px">
+      <mj-column width="100%">
+        <mj-text font-size="14px" color="#666666" align="center">
+          <strong>Raíces Del Alma</strong><br />
+          Carretera Mella Km.6, Santana,<br />
+          Higüey, R.D., 23000<br />
+          raicesdelalmard@gmail.com | +1 829 915 8927
+        </mj-text>
+
+        <mj-social font-size="14px" icon-size="20px" mode="horizontal" align="center">
+          <mj-social-element name="facebook" href="https://facebook.com/raicesdelalmard" />
+          <mj-social-element name="instagram" href="https://instagram.com/raicesdelalmard" />
+          <mj-social-element name="twitter" href="https://twitter.com/raicesdelalmard" />
+        </mj-social>
+
+        <mj-text font-size="12px" color="#999999" align="center">
+          Este es un correo automático. No respondas a este mensaje.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- ESPACIO INFERIOR -->
+    <mj-section padding="20px 0">
+      <mj-column>
+        <!-- Espacio abajo -->
+      </mj-column>
+    </mj-section>
+
+  </mj-body>
+</mjml>

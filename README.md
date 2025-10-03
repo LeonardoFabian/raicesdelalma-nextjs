@@ -58,7 +58,16 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-### Check Updates (update proyect)
+## Generate Email templates
+
+* Put your email template using mjml in src/emails folder, for more info visit [MJML](https://documentation.mjml.io/)
+* Open your terminal
+* Run the following command: `npm run build:emails`. NOTE: you need to have multiple files in the src/emails folder.
+* This generate an html email template in `src/lib/templates/emails/` folder
+
+Try it live in: [MJML TRY IT LIVE](https://mjml.io/try-it-live/intro)
+
+### Check Updates (update project)
 
 1. install global [npm-check-updates](https://www.npmjs.com/package/npm-check-updates): `npm install -g npm-check-updates`
 2. Open the terminal
@@ -120,19 +129,21 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 4. Execute `npm run seed`
 
 #### Update code in vercel
+
 5. For updates, execute `git add .`
 6. `git commit -m "your commit message here"`
 7. `git push -u origin main`
 8. Go to vercel project deployments tab and check for posible errors to fix
 
 #### Update database schema in vercel
+
 1. Comment the vercel prisma postgresql DATABASE_URL in your .env file
 2. Uncomment the local DATABASE_URL in your .env file
 3. Open Docker Desktop
-4. In your project, execute the command ```npx prisma migrate dev --name your_migration_name```
+4. In your project, execute the command `npx prisma migrate dev --name your_migration_name`
 5. Uncomment the vercel prisma postgresql DATABASE_URL in .env
 6. Comment your local DATABASE_URL in .env
-7. Execute the command ```npx prisma migrate deploy```
+7. Execute the command `npx prisma migrate deploy`
 
 ### Atajos de la extension de Nextjs para generar componentes
 

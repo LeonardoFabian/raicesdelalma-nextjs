@@ -6,6 +6,8 @@ import type { CartOption, SelectedSize } from "@/lib/pricing";
 import prisma from "@/lib/prisma";
 import { calcDiscountCents, calcTaxCents, currencyFormat, toCents } from "@/utils";
 import { getSettings } from "../settings/get-settings";
+import { sendEmail } from "@/lib/email";
+import { getNewOrderEmailHtml } from "@/lib/templates/emails/new-order-email";
 
 interface ProductsToOrder {
     productId: string;
@@ -365,6 +367,25 @@ export const placeOrder = async (products: ProductsToOrder[], address: Address, 
                         orderId: order.id
                     }
                 });
+            }
+
+            const emailHtml = getNewOrderEmailHtml({
+                    userId,
+                    orderId: order.id,
+                    totalAmount: order.totalAmount.toString(),
+                    itemsInOrder,
+                    date: new Date().toLocaleString()
+                });
+
+            // Notify admin by email
+            const isEmailSent = await sendEmail({
+                to: process.env.ADMIN_EMAIL!,
+                subject: `🛒 Nueva orden #${order.id} realizada`,
+                html: emailHtml
+            });
+
+            if (isEmailSent) {
+                console.log(`Email sent to ${process.env.ADMIN_EMAIL}`);
             }
 
             return {

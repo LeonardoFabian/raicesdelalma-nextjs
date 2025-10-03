@@ -56,3 +56,6 @@ export * from "./category/get-category-by-id";
 export * from "./wishlist/add-product-to-wishlist";
 export * from "./wishlist/remove-product-from-wishlist";
 export * from "./wishlist/get-wishlist-by-user";
+
+// Emails
+export * from "./email/send-contact-email";

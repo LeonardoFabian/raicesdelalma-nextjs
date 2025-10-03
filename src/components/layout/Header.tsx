@@ -103,7 +103,7 @@ export const Header = () => {
             src={LogoMobile}
             alt="Logo móvil"
             className="block md:hidden h-10 w-auto"
-            height={40}
+            height={32}
           />
 
           {/* Logo Desktop */}

@@ -23,7 +23,7 @@
     <mj-section background-color="#ffffff" padding="20px" border-radius="8px">
       <mj-column>
 
-        <mj-image width="200px" src="https://raicesdelalma.com.do/logo.svg" alt="Raíces Del Alma" />
+        <mj-image width="200px" src="https://www.raicesdelalma.com.do/logo.svg" alt="Raíces Del Alma" />
         
         <mj-text font-size="20px" font-weight="bold" color="#333333" align="center">
           📩 Nuevo Mensaje de Contacto

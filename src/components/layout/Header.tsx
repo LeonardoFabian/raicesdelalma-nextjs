@@ -86,7 +86,7 @@ export const Header = () => {
 
   return (
     <>
-      <nav className="fixed bg-white !text-primary flex items-start md:absolute w-full top-0 left-0 right-0 z-20 md:grid md:grid-cols-3 md:bg-transparent md:text-text-primary font-body py-2 px-3 md:px-6">
+      <nav className="fixed bg-white !text-primary flex items-start justify-between md:absolute w-full top-0 left-0 right-0 z-20 md:grid md:grid-cols-3 md:bg-transparent md:text-text-primary font-body py-2 px-3 md:px-6">
         <span className="hidden md:flex items-start">
           <ul className="flex items-center mt-4 space-x-6">
             {navItems.map((navItem) => (

@@ -23,6 +23,7 @@ const PageTransition = ({ children }: Props) => {
           damping: 40,
           duration: 0.2,
         }}
+        className="w-full max-w-screen-xl mx-auto"
       >
         {children}
       </motion.div>

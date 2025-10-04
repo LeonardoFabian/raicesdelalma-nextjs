@@ -35,8 +35,10 @@ export default async function PublicLayout({
       )}
       <Navbar />
       <SideMenu />
-      <main className="flex flex-col bg-white min-h-screen">
-        <PageTransition>{children}</PageTransition>
+      <main>
+        <PageTransition className="flex flex-col bg-white min-h-screen">
+          {children}
+        </PageTransition>
       </main>
       <Footer />
       <ScrollToTopButton />

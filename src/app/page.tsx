@@ -83,8 +83,8 @@ export default async function Home() {
       />
       <SideMenu />
 
-      <main className="flex min-h-screen flex-col items-center justify-between ">
-        <PageTransition>
+      <main>
+        <PageTransition className="flex min-h-screen flex-col items-center justify-between ">
           <BannerHero
             title="Porque el cuidado debe sentirse natural"
             subtitle="Jabones artesanales y productos de cuidado personal elaborados con ingredientes puros, vegetales y sostenibles. Cuidamos tu piel y el planeta."

@@ -5,9 +5,10 @@ import { usePathname } from "next/navigation";
 
 interface Props {
   children: React.ReactNode;
+  className?: React.StyleHTMLAttributes<HTMLDivElement>["className"];
 }
 
-const PageTransition = ({ children }: Props) => {
+const PageTransition = ({ children, className }: Props) => {
   const pathname = usePathname();
 
   return (
@@ -23,7 +24,7 @@ const PageTransition = ({ children }: Props) => {
           damping: 40,
           duration: 0.2,
         }}
-        className="w-full max-w-screen-xl mx-auto"
+        className={className}
       >
         {children}
       </motion.div>

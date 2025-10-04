@@ -29,10 +29,8 @@ const PageTransition = ({ children, className }: Props) => {
         animate={{ y: 0, opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{
-          type: "spring",
-          stiffness: 260,
-          damping: 40,
-          duration: 0.2,
+          duration: 0.3,
+          ease: "easeInOut",
         }}
         className={className}
       >

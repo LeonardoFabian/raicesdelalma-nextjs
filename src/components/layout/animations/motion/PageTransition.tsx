@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 interface Props {
   children: React.ReactNode;
@@ -10,11 +11,20 @@ interface Props {
 
 const PageTransition = ({ children, className }: Props) => {
   const pathname = usePathname();
+  const [displayedPathname, setDisplayedPathname] = useState(pathname);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setDisplayedPathname(pathname);
+    }, 300);
+
+    return () => clearTimeout(timeout);
+  }, [pathname]);
 
   return (
     <AnimatePresence mode="wait">
       <motion.div
-        key={pathname}
+        key={displayedPathname}
         initial={{ y: 12, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ opacity: 0 }}

@@ -1,3 +1,7 @@
+// Motion 
+export * from './layout/animations/motion/PageTransition';
+
+
 export * from './layout/side-menu/SideMenu';
 
 export * from './layout/badges/NotificationBadge';

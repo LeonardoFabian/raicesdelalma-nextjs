@@ -9,6 +9,7 @@ import { Footer } from "@/components";
 import { getCategories, getFeaturedProducts } from "@/actions";
 import type { Metadata } from "next";
 import { fontHeading } from "@/config/fonts";
+import PageTransition from "@/components/layout/animations/motion/PageTransition";
 
 export const metadata: Metadata = {
   title: "Ráices del Alma | Porque el cuidado debe sentirse natural",
@@ -83,40 +84,42 @@ export default async function Home() {
       <SideMenu />
 
       <main className="flex min-h-screen flex-col items-center justify-between ">
-        <BannerHero
-          title="Porque el cuidado debe sentirse natural"
-          subtitle="Jabones artesanales y productos de cuidado personal elaborados con ingredientes puros, vegetales y sostenibles. Cuidamos tu piel y el planeta."
-          ctaPath="/shop"
-          ctaText="Accede a nuestro catálogo"
-        />
+        <PageTransition>
+          <BannerHero
+            title="Porque el cuidado debe sentirse natural"
+            subtitle="Jabones artesanales y productos de cuidado personal elaborados con ingredientes puros, vegetales y sostenibles. Cuidamos tu piel y el planeta."
+            ctaPath="/shop"
+            ctaText="Accede a nuestro catálogo"
+          />
 
-        <div className="container">
-          <section className="featured-products-section text-center py-12 flex flex-col gap-6">
-            <h2 className="font-heading text-4xl font-medium">
-              Productos Destacados
-            </h2>
-            {/* { JSON.stringify( products ) } */}
-            <div className="flex flex-col ">
-              <ProductGrid products={featuredProducts} />
-            </div>
-          </section>
+          <div className="container">
+            <section className="featured-products-section text-center py-12 flex flex-col gap-6">
+              <h2 className="font-heading text-4xl font-medium">
+                Productos Destacados
+              </h2>
+              {/* { JSON.stringify( products ) } */}
+              <div className="flex flex-col ">
+                <ProductGrid products={featuredProducts} />
+              </div>
+            </section>
 
-          <section className="products-by-category-section text-center py-12 flex flex-col gap-6">
-            <h2 className="font-heading text-4xl font-medium">
-              Productos por Categoría
-            </h2>
-            {/* { JSON.stringify( products ) } */}
-            <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {categories.map((category) => (
-                <ProductsGridCard
-                  key={category.id}
-                  category={category}
-                  products={category.products}
-                />
-              ))}
-            </div>
-          </section>
-        </div>
+            <section className="products-by-category-section text-center py-12 flex flex-col gap-6">
+              <h2 className="font-heading text-4xl font-medium">
+                Productos por Categoría
+              </h2>
+              {/* { JSON.stringify( products ) } */}
+              <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                {categories.map((category) => (
+                  <ProductsGridCard
+                    key={category.id}
+                    category={category}
+                    products={category.products}
+                  />
+                ))}
+              </div>
+            </section>
+          </div>
+        </PageTransition>
       </main>
 
       <Footer />

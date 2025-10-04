@@ -3,6 +3,7 @@ import { Navbar, Footer, SideMenu, HydrateZustandWishlist } from "@/components";
 import { ScrollToTopButton } from "@/components";
 import { getWishlistByUser } from "@/actions";
 import { auth } from "@/auth.config";
+import PageTransition from "@/components/layout/animations/motion/PageTransition";
 
 export const metadata: Metadata = {
   title: {
@@ -34,7 +35,9 @@ export default async function PublicLayout({
       )}
       <Navbar />
       <SideMenu />
-      <main className="flex flex-col bg-white min-h-screen">{children}</main>
+      <main className="flex flex-col bg-white min-h-screen">
+        <PageTransition>{children}</PageTransition>
+      </main>
       <Footer />
       <ScrollToTopButton />
     </>

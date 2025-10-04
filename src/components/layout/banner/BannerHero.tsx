@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import banner from "../../../../public/images/hero.png";
+import bannerImage from "../../../../public/images/soaps.png";
 import { H1 } from "../../title/H1";
 import Link from "next/link";
 
@@ -31,21 +31,35 @@ export const BannerHero = ({ title, subtitle, ctaPath, ctaText }: Props) => {
 
       <div className="fade-in absolute top-0 left-0 right-0 h-full max-w-5xl mx-auto z-20 backdrop-filter backdrop-blur-sm" /> */}
 
-      <div className="absolute top-0 left-0 right-0 z-30 h-full max-w-5xl mx-auto p-4 lg:p-24  overflow-hidden rounded-lg">
+      <div className="container flex flex-col lg:flex-row items-center justify-center lg:justify-between w-full h-full gap-8">
         <div
-          className="flex flex-col items-center justify-center pt-32 md:pt-12 gap-4 h-full text-center"
+          className="flex flex-col justify-center lg:justify-start items-start gap-4 text-left"
           data-carousel-item
         >
           {/* <Image className="p-4 w-full h-40 rounded-t-lg object-contain" src={ logo } alt="hero" width={ 250 } height={ 150 } priority={false} /> */}
           <H1>{title}</H1>
-          <h2 className="text-text-primary text-md md:text-2xl">{subtitle}</h2>
+          <h2 className="text-text-primary text-md md:text-2xl break-words">
+            {subtitle}
+          </h2>
           {ctaPath && (
-            <div className="flex justify-center gap-4 mt-4">
+            <div className="flex justify-start gap-4 mt-4">
               <Link href={ctaPath ?? "#"} className="btn btn-primary">
                 {ctaText ?? "Get Started"}
               </Link>
             </div>
           )}
+        </div>
+        <div className="relative w-full h-full flex justify-center">
+          {/* Sombra detrás de la imagen */}
+          {/* <div className="absolute top-4 left-4 w-full h-full rounded-xl bg-black/10 blur-xl z-0"></div> */}
+          <Image
+            className="relative w-full h-full object-contain z-10"
+            src={bannerImage}
+            alt="hero"
+            width={450}
+            height={650}
+            priority={false}
+          />
         </div>
       </div>
     </div>
